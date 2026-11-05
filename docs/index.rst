@@ -14,11 +14,7 @@ train their own models efficiently and accurately.
    :caption: Contents:
    
    section1/overview
-   section2/overview
-   section3/overview
    section4/overview
-   section5/overview
-
 
 Additional Resources
 ====================
