@@ -40,8 +40,8 @@ us our present location. Try executing this command on Lonestar6:
 
 .. code-block:: console
 
-   $ pwd
-   /home1/03439/wallen
+   [ls6]$ pwd
+   /home1/03302/lconcia
 
 This home location on the Linux filesystem is unique for each user, and it is roughly
 analogous to C:\\Users\\username on Windows, or /Users/username on Mac.
@@ -50,7 +50,7 @@ To see what files and folders are available at this location, use the ``ls`` (li
 
 .. code-block:: console
 
-   $ ls
+   [ls6]$ ls
 
 I have no files or folders in my home directory yet, so I do not get a response.
 We can create some folders using the ``mkdir`` (make directory) command. The words 
@@ -58,13 +58,13 @@ We can create some folders using the ``mkdir`` (make directory) command. The wor
 
 .. code-block:: console
 
-   $ mkdir folder1
-   $ mkdir folder2
-   $ mkdir folder3
+   [ls6]$ mkdir folder1
+   [ls6]$ mkdir folder2
+   [ls6]$ mkdir folder3
 
 .. code-block:: console
 
-   $ ls
+   [ls6]$ ls
    folder1 folder2 folder3
 
 Now we have some folders to work with. To "open" a folder, navigate into that folder 
@@ -73,30 +73,30 @@ a folder on Windows or Mac:
 
 .. code-block:: console
 
-   $ pwd
-   /home/03439/wallen/
-   $ cd folder1
-   $ pwd
-   /home1/03439/wallen/folder1
+   [ls6]$ pwd
+   /home1/03302/lconcia
+   [ls6]$ cd folder1
+   [ls6]$ pwd
+   /home1/03302/lconcia/folder1
 
 Now that we are inside ``folder1``, make a few sub-folders:
 
 .. code-block:: console
 
-   $ mkdir subfolderA
-   $ mkdir subfolderB
-   $ mkdir subfolderC
-   $ ls
+   [ls6]$ mkdir subfolderA
+   [ls6]$ mkdir subfolderB
+   [ls6]$ mkdir subfolderC
+   [ls6]$ ls
    subfolderA subfolderB subfolderC
 
 Use ``cd`` to Navigate into ``subfolderA``, then use ``ls`` to list the contents. What do you expect to see?
 
 .. code-block:: console
 
-   $ cd subfolderA
-   $ pwd  
-   /home/03439/wallen/folder1/subfolderA
-   $ ls
+   [ls6]$ cd subfolderA
+   [ls6]$ pwd  
+   /home1/03302/lconcia/folder1/subfolderA
+   [ls6]$ ls
 
 There is nothing there because we have not made anything yet. Next, we will navigate back to the 
 home directory. So far we have seen how to navigate "down" into folders, but how do we navigate 
@@ -105,33 +105,33 @@ the complete path of where we want to go:
 
 .. code-block:: console
 
-   $ pwd
-   /home1/03439/wallen/folder1/subfolderA
-   $ cd /home1/03439/wallen/folder1
-   $ pwd
-   /home1/03439/wallen/folder1/
+   [ls6]$ pwd
+   /home1/03302/lconcia/folder1/subfolderA
+   [ls6]$ cd /home1/03302/lconcia/folder1
+   [ls6]$ pwd
+   /home1/03302/lconcia/folder1/
 
 Or, we could use a shortcut, ``..``, which refers to the **parent folder** - one level higher 
 than the present location:
 
 .. code-block:: console
 
-   $ pwd
-   /home1/03439/wallen/folder1
-   $ cd ..
-   $ pwd
-   /home1/03439/wallen
+   [ls6]$ pwd
+   /home1/03302/lconcia/folder1
+   [ls6]$ cd ..
+   [ls6]$ pwd
+   /home1/03302/lconcia
 
 We are back in our home directory. Finally, use the  ``rmdir`` (remove directory) command to remove 
 folders. This will not work on folders that have any contents (more on this later):
 
 .. code-block:: console
 
-   $ mkdir junkfolder
-   $ ls
+   [ls6]$ mkdir junkfolder
+   [ls6]$ ls
    folder1 folder2 folder3 junkfolder
-   $ rmdir junkfolder
-   $ ls
+   [ls6]$ rmdir junkfolder
+   [ls6]$ ls
    folder1 folder2 folder3
 
 A bonus command available on some Linux operating systems is called ``tree``. The ``tree`` command 
@@ -140,7 +140,7 @@ that you want to list files and folders in your **present location**.
 
 .. code-block:: console
 
-   $ tree .
+   [ls6]$ tree .
    .
    |-- folder1
    |   |-- subfolderA
@@ -155,17 +155,17 @@ and files located "down" the parent directory. ``-r`` is required for non-empty 
 
 .. code-block:: console
 
-   $ rm -r folder1
-   $ ls 
+   [ls6]$ rm -r folder1
+   [ls6]$ ls 
    folder2 folder3
 
 Which command should we use to remove ``folder2`` and ``folder3``?
 
 .. code-block:: console
 
-   $ rmdir folder2
-   $ rmdir folder3
-   $ ls
+   [ls6]$ rmdir folder2
+   [ls6]$ rmdir folder3
+   [ls6]$ ls
 
 Why could we use ``rmdir`` on ``folder2`` and ``folder3``, but not on ``folder1``?
 
@@ -183,16 +183,16 @@ few new folders and files with the ``mkdir`` and ``touch`` commands:
 
 .. code-block:: console
 
-   $ cd     # cd on an empty line will automatically take you back to the home directory
-   $ pwd
-   /home1/03439/wallen
-   $ mkdir folder1
-   $ mkdir folder2
-   $ mkdir folder3
-   $ touch file_a
-   $ touch file_b
-   $ touch file_c
-   $ ls
+   [ls6]$ cd     # cd on an empty line will automatically take you back to the home directory
+   [ls6]$ pwd
+   /home1/03302/lconcia
+   [ls6]$ mkdir folder1
+   [ls6]$ mkdir folder2
+   [ls6]$ mkdir folder3
+   [ls6]$ touch file_a
+   [ls6]$ touch file_b
+   [ls6]$ touch file_c
+   [ls6]$ ls
    file_a  file_b  file_c  folder1  folder2  folder3
 
 These files we have created are all empty. Removing a file is done with the ``rm`` (remove) command.
@@ -201,8 +201,8 @@ gone forever and often un-recoverable:
 
 .. code-block:: console 
 
-   $ touch junkfile
-   $ rm junkfile
+   [ls6]$ touch junkfile
+   [ls6]$ rm junkfile
 
 Moving files with the ``mv`` command and copying files with the ``cp`` command works similarly to
 how you would expect on a Windows or Mac machine. The context around the move or copy operation
@@ -210,15 +210,15 @@ determines what the result will be. For example, we could move and/or copy files
 
 .. code-block:: console
 
-   $ mv file_a folder1/
-   $ mv file_b folder2/
-   $ cp file_c folder3/
+   [ls6]$ mv file_a folder1/
+   [ls6]$ mv file_b folder2/
+   [ls6]$ cp file_c folder3/
 
 Before listing the results with ``ls`` or ``tree``, try to guess what the result will be.
 
 .. code-block:: console
 
-   $ tree .
+   [ls6]$ tree .
    .
    |-- file_c
    |-- folder1
@@ -234,8 +234,8 @@ a file:
 
 .. code-block:: console
 
-   $ cp file_c file_c_copy
-   $ mv file_c file_c_new_name
+   [ls6]$ cp file_c file_c_copy
+   [ls6]$ mv file_c file_c_new_name
 
 By now, you may have found that Linux is very unforgiving with typos. Generous use of the ``<Tab>``
 key to auto-complete file and folder names, as well as the ``<UpArrow>`` to cycle back through
@@ -256,16 +256,16 @@ you remember the command for removing non-empty folders?
 
 .. code-block:: console
 
-   $ rm -r folder1
-   $ rm -r folder2
-   $ rm -r folder3
+   [ls6]$ rm -r folder1
+   [ls6]$ rm -r folder2
+   [ls6]$ rm -r folder3
 
 How do we remove ``file_c_copy`` and ``file_c_new_name``?
 
 .. code-block:: console
 
-   $ rm file_c_copy
-   $ rm file_c_new_name
+   [ls6]$ rm file_c_copy
+   [ls6]$ rm file_c_new_name
 
 
 
@@ -279,10 +279,10 @@ some real data. Navigate to your home directory, then issue the following ``cp``
 
 .. code-block:: console
 
-   $ cd ~    # the tilde ~ is also a shortcut referring to your home directory
-   $ pwd
-   /home1/03439/wallen
-   $ cp /work/03439/wallen/public/IntroToLinuxHPC.tar .
+   [ls6]$ cd ~    # the tilde ~ is also a shortcut referring to your home directory
+   [ls6]$ pwd
+   /home1/03302/lconcia
+   [ls6]$ cp /work/03302/lconcia/public/IntroToLinuxHPC.tar .
 
 Try to use ``<Tab>`` to autocomplete the name of the file. Do NOT change the username or lustre
 number to your username and lustre number - in this case you are copying a file from my directory
@@ -294,27 +294,27 @@ transportable object. Once it is copied over, un-pack the file with the followin
 
 .. code-block:: console
 
-   $ ls
+   [ls6]$ ls
    IntroToLinuxHPC.tar
-   $ tar -xvf IntroToLinuxHPC.tar
+   [ls6]$ tar -xvf IntroToLinuxHPC.tar
 
 In the first lab (``Lab01``), we have a file called ``websters.txt``. This a list of all the words
 in Webster's Dictionary. But how can we see the contents of the file?
 
 .. code-block:: console
 
-   $ cd IntroToLinuxHPC
-   $ cd Lab01
-   $ pwd
-   /home1/03439/wallen/IntroToLinuxHPC/Lab01
-   $ ls
+   [ls6]$ cd IntroToLinuxHPC
+   [ls6]$ cd Lab01
+   [ls6]$ pwd
+   /home1/03302/lconcia/IntroToLinuxHPC/Lab01
+   [ls6]$ ls
    README websters.txt
 
 If you want to see the contents of a file, use the ``cat`` command to print it to screen:
 
 .. code-block:: console
 
-   $ cat websters.txt
+   [ls6]$ cat websters.txt
    A
    a
    aa
@@ -329,7 +329,7 @@ a few other commands to look at the contents of the file with ``more`` control:
 
 .. code-block:: console
 
-   $ more websters.txt
+   [ls6]$ more websters.txt
 
 Press the ``<Enter>`` key to scroll through line-by-line, or the ``<Space>`` key to scroll through
 page-by-page. Press ``q`` to quit the view, or ``<Ctrl+c>`` to force a quit if things freeze up. A
@@ -339,7 +339,7 @@ bit cleaner:
 
 .. code-block:: console
 
-   $ less websters.txt
+   [ls6]$ less websters.txt
 
 Scrolling through the data is the same, but now we can also search the data. Press the ``/`` forward
 slash key, and type a word that you would like to search for. The screen will jump down to the first
@@ -350,16 +350,16 @@ commands. For example:
 
 .. code-block:: console
 
-   $ head websters.txt
-   $ tail websters.txt
+   [ls6]$ head websters.txt
+   [ls6]$ tail websters.txt
 
 The ``>`` and ``>>`` shortcuts in Linux indicate that you would like to redirect the output of one
 of the commands above. Instead of printing to screen, the output can be redirected into a file:
 
 .. code-block:: console
 
-   $ cat websters.txt > websters_new.txt
-   $ head websters.txt > first_10_lines.txt
+   [ls6]$ cat websters.txt > websters_new.txt
+   [ls6]$ head websters.txt > first_10_lines.txt
 
 A single greater than sign ``>`` will redirect and **overwrite** any contents in the target file. A
 double greater than sign ``>>`` will redirect and **append** any output to the end of the target
@@ -370,7 +370,7 @@ searches a file for a specific pattern, and returns all lines that match the pat
 
 .. code-block:: console
 
-   $ grep "banana" websters.txt
+   [ls6]$ grep "banana" websters.txt
    banana
    cassabanana
 
@@ -397,27 +397,10 @@ easy to determine using the following commands:
 
 .. code-block:: console
 
-   $ whoami
-   wallen
-   $ hostname -f
-   login4.ls6.tacc.utexas.edu
-
-Given that information, a user would remotely login to this Linux machine using the Terminal
-command:
-
-.. code-block:: console
-
-   $ ssh wallen@ls6.tacc.utexas.edu
-   (enter password)
-   (enter token)
-
-Windows users would typically use the program **PuTTY** to perform this operation. Logging out of a
-remote system is done using the ``logout`` command, or the shortcut ``<Ctrl+d>``:
-
-.. code-block:: console
-
-  [ls6]$ logout
-  [local]$
+   [ls6]$ whoami
+   lconcia
+   [ls6]$ hostname -f
+   login2.ls6.tacc.utexas.edu
 
 To practice transferring files to Lonestar6's ``$WORK`` and ``$SCRATCH``, we need to identify the
 path to our ``$WORK`` and ``$SCRATCH`` directory. To identify these paths, we can use helpful command shortcuts.
@@ -427,38 +410,38 @@ To identify the path to our ``$WORK`` directory, we can use ``cd $WORK`` or the 
 
 .. code-block:: console
    
-   $ cdw
-   $ pwd
-   /work/03439/wallen/ls6
+   [ls6]$ cdw
+   [ls6]$ pwd
+   /work/03302/lconcia/ls6
 
 To identify the path to our ``$SCRATCH`` directory, we can use ``cd $SCRATCH`` or the helpful
 shortcut ``cds``:
 
 .. code-block:: console
    
-   $ cds
-   $ pwd
-   /scratch/03439/wallen    
+   [ls6]$ cds
+   [ls6]$ pwd
+   /scratch/03302/lconcia    
 
 Copying files from your local computer to Lonestar6's ``$WORK`` would require the ``scp`` command
 (Windows users use the program "WinSCP"):
 
 .. code-block:: console
 
-   [local]$ scp my_file wallen@ls6.tacc.utexas.edu:/work/03439/wallen/ls6
+   [local]$ scp my_file lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6
    (enter password)
    (enter token)
 
 In this command, you specify the name of the file you want to transfer (``my_file``), the username
-(``wallen``), the hostname (``ls6.tacc.utexas.edu``), and the path you want to put the file
-(``/work/03439/wallen/ls6``). Take careful notice of the separators including spaces, the @ symbol,
+(``lconcia``), the hostname (``ls6.tacc.utexas.edu``), and the path you want to put the file
+(``/work/03302/lconcia/ls6``). Take careful notice of the separators including spaces, the @ symbol,
 and the colon. 
 
 Copying files from your local computer to Lonestar6's ``$SCRATCH`` using ``scp``:
 
 .. code-block:: console
 
-   [local]$ scp my_file wallen@ls6.tacc.utexas.edu:/scratch/03439/wallen
+   [local]$ scp my_file lconcia@ls6.tacc.utexas.edu:/scratch/03302/lconcia
    (enter password)
    (enter token)
 
@@ -466,25 +449,17 @@ Copy files from Lonestar6 to your local computer using the following:
 
 .. code-block:: console
 
-   [local]$ scp wallen@ls6.tacc.utexas.edu:/work/03439/wallen/ls6/my_file ./
+   [local]$ scp lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6/my_file ./
    (enter password)
    (enter token)
 
-Note: If you wanted to copy ``my_file`` from ``$SCRATCH``, the path you would specify after the
-colon would be ``/scratch/03439/wallen/my_file``.
- 
-Instead of files, full directories can be copied using the "recursive" flag (``scp -r ...``). The
-``rsync`` tool is an advanced copy tool that is useful for synching data between two sites. Although
-we will not go into depth here, example ``rsync`` usage is as follows:
+.. note::
 
-.. code-block:: console
+   If you wanted to copy ``my_file`` from ``$SCRATCH``, the path you would specify after the
+   colon would be ``/scratch1/03302/lconcia/frontera/my_file``.
 
-   $ rsync -azv local remote
-   $ rsync -azv remote local
-
-This is just the basics of copying files. See example ``scp`` usage
-`here-1 <https://en.wikipedia.org/wiki/Secure_copy>`_ and example ``rsync`` usage
-`here-2 <https://en.wikipedia.org/wiki/Rsync>`_.
+Instead of files, full directories can be copied using the "recursive" flag (``scp -r ...``). See
+additional example ``scp`` usage `here <https://en.wikipedia.org/wiki/Secure_copy>`__.
 
 
 EXERCISE

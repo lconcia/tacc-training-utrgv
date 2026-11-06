@@ -36,7 +36,7 @@ because they require too many resources and will interrupt the work of others. I
 submit a job to a queue to run on **compute nodes**.
 
 Some Systems Available at TACC
--------------------------
+------------------------------
 
 Clusters
 ^^^^^^^^
@@ -83,6 +83,12 @@ Files in ``$SCRATCH`` are subject to purge if access time is more than 10 days o
 
 
 
+User Responsibility on Shared Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+HPC systems are shared resources. Your jobs and activity on a cluster, if mismanaged,
+can affect others. TACC staff are always
+`available to help <https://www.tacc.utexas.edu/about/help/>`_.
 
 
 Tips for Success
@@ -95,19 +101,9 @@ Read the `documentation <https://docs.tacc.utexas.edu/>`_.
 * Determine the right resource for the job
 
 
-User Responsibility on Shared Resources
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-HPC systems are shared resources. Your jobs and activity on a cluster, if mismanaged,
-can affect others. TACC staff are always
-`available to help <https://www.tacc.utexas.edu/about/help/>`_.
-
-
-
 Additional Resources
 --------------------
 
-* `TACC account set up <https://tacc.utexas.edu/portal/login>`_
 * `TACC documentation <https://docs.tacc.utexas.edu/>`_
 * `TACC help desk <https://www.tacc.utexas.edu/about/help>`_
 

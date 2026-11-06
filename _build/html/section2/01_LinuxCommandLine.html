@@ -30,8 +30,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Running on HPC Systems" href="04_running_on_hpc.html" />
-    <link rel="prev" title="Create an Account" href="02_Create_an_account.html" /> 
+    <link rel="next" title="Running on HPC Systems" href="02_running_on_hpc.html" />
+    <link rel="prev" title="Introduction" href="overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,9 +56,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction to Systems and Data</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_intro_to_hpc.html">Introduction to HPC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_Create_an_account.html">Create an Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Linux Command Line</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#creating-and-changing-folders">Creating and Changing Folders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creating-and-manipulating-files">Creating and Manipulating Files</a></li>
@@ -74,8 +73,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="04_running_on_hpc.html">Running on HPC Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05_set_up_for_tutorials.html">Set up for Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_running_on_hpc.html">Running on HPC Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_set_up_for_tutorials.html">Set up for Tutorials</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../section4/overview.html">ML/DL on HPC Systems</a></li>
@@ -95,10 +94,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="overview.html">Introduction to Systems and Data</a></li>
+          <li class="breadcrumb-item"><a href="overview.html">Introduction</a></li>
       <li class="breadcrumb-item active">Linux Command Line</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/section1/03_LinuxCommandLine.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/section2/01_LinuxCommandLine.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -143,87 +142,87 @@ interface - I could be looking at my Desktop, or the contents of a folder, for e
 In a Linux command-line interface, we lack the same visual queues to tell us what our
 location is. Instead, we use a command - <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (print working directory) - to tell
 us our present location. Try executing this command on Lonestar6:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home1/03439/wallen</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia</span>
 </pre></div>
 </div>
 <p>This home location on the Linux filesystem is unique for each user, and it is roughly
 analogous to C:\Users\username on Windows, or /Users/username on Mac.</p>
 <p>To see what files and folders are available at this location, use the <code class="docutils literal notranslate"><span class="pre">ls</span></code> (list) command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>ls
 </pre></div>
 </div>
 <p>I have no files or folders in my home directory yet, so I do not get a response.
 We can create some folders using the <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> (make directory) command. The words
 ‘folder’ and ‘directory’ are interchangeable:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>folder1
-<span class="gp">$ </span>mkdir<span class="w"> </span>folder2
-<span class="gp">$ </span>mkdir<span class="w"> </span>folder3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>folder1
+<span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>folder2
+<span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>folder3
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>ls
 <span class="go">folder1 folder2 folder3</span>
 </pre></div>
 </div>
 <p>Now we have some folders to work with. To “open” a folder, navigate into that folder
 using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> (change directory) command. This process is analogous to double-clicking
 a folder on Windows or Mac:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home/03439/wallen/</span>
-<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>folder1
-<span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home1/03439/wallen/folder1</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia</span>
+<span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span>folder1
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia/folder1</span>
 </pre></div>
 </div>
 <p>Now that we are inside <code class="docutils literal notranslate"><span class="pre">folder1</span></code>, make a few sub-folders:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>subfolderA
-<span class="gp">$ </span>mkdir<span class="w"> </span>subfolderB
-<span class="gp">$ </span>mkdir<span class="w"> </span>subfolderC
-<span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>subfolderA
+<span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>subfolderB
+<span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>subfolderC
+<span class="gp">[ls6]$ </span>ls
 <span class="go">subfolderA subfolderB subfolderC</span>
 </pre></div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">cd</span></code> to Navigate into <code class="docutils literal notranslate"><span class="pre">subfolderA</span></code>, then use <code class="docutils literal notranslate"><span class="pre">ls</span></code> to list the contents. What do you expect to see?</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>subfolderA
-<span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home/03439/wallen/folder1/subfolderA</span>
-<span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span>subfolderA
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia/folder1/subfolderA</span>
+<span class="gp">[ls6]$ </span>ls
 </pre></div>
 </div>
 <p>There is nothing there because we have not made anything yet. Next, we will navigate back to the
 home directory. So far we have seen how to navigate “down” into folders, but how do we navigate
 back “up” to the parent folder? There are different ways to do it. For example, we could specify
 the complete path of where we want to go:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home1/03439/wallen/folder1/subfolderA</span>
-<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/home1/03439/wallen/folder1
-<span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home1/03439/wallen/folder1/</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia/folder1/subfolderA</span>
+<span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span>/home1/03302/lconcia/folder1
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia/folder1/</span>
 </pre></div>
 </div>
 <p>Or, we could use a shortcut, <code class="docutils literal notranslate"><span class="pre">..</span></code>, which refers to the <strong>parent folder</strong> - one level higher
 than the present location:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home1/03439/wallen/folder1</span>
-<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>..
-<span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home1/03439/wallen</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia/folder1</span>
+<span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span>..
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia</span>
 </pre></div>
 </div>
 <p>We are back in our home directory. Finally, use the  <code class="docutils literal notranslate"><span class="pre">rmdir</span></code> (remove directory) command to remove
 folders. This will not work on folders that have any contents (more on this later):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>junkfolder
-<span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>junkfolder
+<span class="gp">[ls6]$ </span>ls
 <span class="go">folder1 folder2 folder3 junkfolder</span>
-<span class="gp">$ </span>rmdir<span class="w"> </span>junkfolder
-<span class="gp">$ </span>ls
+<span class="gp">[ls6]$ </span>rmdir<span class="w"> </span>junkfolder
+<span class="gp">[ls6]$ </span>ls
 <span class="go">folder1 folder2 folder3</span>
 </pre></div>
 </div>
 <p>A bonus command available on some Linux operating systems is called <code class="docutils literal notranslate"><span class="pre">tree</span></code>. The <code class="docutils literal notranslate"><span class="pre">tree</span></code> command
 displays files and folders in a hierarchical view. Use another Linux shortcut, <code class="docutils literal notranslate"><span class="pre">.</span></code>, to indicate
 that you want to list files and folders in your <strong>present location</strong>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>.
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>tree<span class="w"> </span>.
 <span class="go">.</span>
 <span class="go">|-- folder1</span>
 <span class="go">|   |-- subfolderA</span>
@@ -236,15 +235,15 @@ that you want to list files and folders in your <strong>present location</strong
 <p>Before we move on, let’s remove the directories we have made, using <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span></code> to remove our parent
 folder <code class="docutils literal notranslate"><span class="pre">folder1</span></code> and its subfolders. The <code class="docutils literal notranslate"><span class="pre">-r</span></code> command line option recursively removes subfolders
 and files located “down” the parent directory. <code class="docutils literal notranslate"><span class="pre">-r</span></code> is required for non-empty folders.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rm<span class="w"> </span>-r<span class="w"> </span>folder1
-<span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>rm<span class="w"> </span>-r<span class="w"> </span>folder1
+<span class="gp">[ls6]$ </span>ls
 <span class="go">folder2 folder3</span>
 </pre></div>
 </div>
 <p>Which command should we use to remove <code class="docutils literal notranslate"><span class="pre">folder2</span></code> and <code class="docutils literal notranslate"><span class="pre">folder3</span></code>?</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rmdir<span class="w"> </span>folder2
-<span class="gp">$ </span>rmdir<span class="w"> </span>folder3
-<span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>rmdir<span class="w"> </span>folder2
+<span class="gp">[ls6]$ </span>rmdir<span class="w"> </span>folder3
+<span class="gp">[ls6]$ </span>ls
 </pre></div>
 </div>
 <p>Why could we use <code class="docutils literal notranslate"><span class="pre">rmdir</span></code> on <code class="docutils literal notranslate"><span class="pre">folder2</span></code> and <code class="docutils literal notranslate"><span class="pre">folder3</span></code>, but not on <code class="docutils literal notranslate"><span class="pre">folder1</span></code>?</p>
@@ -255,36 +254,36 @@ and files located “down” the parent directory. <code class="docutils literal
 about files? Just like on Windows or Mac, we can easily create new files, copy files, rename files,
 and move files to different locations. First, we will navigate to the home directory and create a
 few new folders and files with the <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> and <code class="docutils literal notranslate"><span class="pre">touch</span></code> commands:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w">     </span><span class="c1"># cd on an empty line will automatically take you back to the home directory</span>
-<span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home1/03439/wallen</span>
-<span class="gp">$ </span>mkdir<span class="w"> </span>folder1
-<span class="gp">$ </span>mkdir<span class="w"> </span>folder2
-<span class="gp">$ </span>mkdir<span class="w"> </span>folder3
-<span class="gp">$ </span>touch<span class="w"> </span>file_a
-<span class="gp">$ </span>touch<span class="w"> </span>file_b
-<span class="gp">$ </span>touch<span class="w"> </span>file_c
-<span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w">     </span><span class="c1"># cd on an empty line will automatically take you back to the home directory</span>
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia</span>
+<span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>folder1
+<span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>folder2
+<span class="gp">[ls6]$ </span>mkdir<span class="w"> </span>folder3
+<span class="gp">[ls6]$ </span>touch<span class="w"> </span>file_a
+<span class="gp">[ls6]$ </span>touch<span class="w"> </span>file_b
+<span class="gp">[ls6]$ </span>touch<span class="w"> </span>file_c
+<span class="gp">[ls6]$ </span>ls
 <span class="go">file_a  file_b  file_c  folder1  folder2  folder3</span>
 </pre></div>
 </div>
 <p>These files we have created are all empty. Removing a file is done with the <code class="docutils literal notranslate"><span class="pre">rm</span></code> (remove) command.
 Please note that on Linux file systems, there is no “Recycle Bin”. Any file or folder removed is
 gone forever and often un-recoverable:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>touch<span class="w"> </span>junkfile
-<span class="gp">$ </span>rm<span class="w"> </span>junkfile
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>touch<span class="w"> </span>junkfile
+<span class="gp">[ls6]$ </span>rm<span class="w"> </span>junkfile
 </pre></div>
 </div>
 <p>Moving files with the <code class="docutils literal notranslate"><span class="pre">mv</span></code> command and copying files with the <code class="docutils literal notranslate"><span class="pre">cp</span></code> command works similarly to
 how you would expect on a Windows or Mac machine. The context around the move or copy operation
 determines what the result will be. For example, we could move and/or copy files into folders:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mv<span class="w"> </span>file_a<span class="w"> </span>folder1/
-<span class="gp">$ </span>mv<span class="w"> </span>file_b<span class="w"> </span>folder2/
-<span class="gp">$ </span>cp<span class="w"> </span>file_c<span class="w"> </span>folder3/
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>mv<span class="w"> </span>file_a<span class="w"> </span>folder1/
+<span class="gp">[ls6]$ </span>mv<span class="w"> </span>file_b<span class="w"> </span>folder2/
+<span class="gp">[ls6]$ </span>cp<span class="w"> </span>file_c<span class="w"> </span>folder3/
 </pre></div>
 </div>
 <p>Before listing the results with <code class="docutils literal notranslate"><span class="pre">ls</span></code> or <code class="docutils literal notranslate"><span class="pre">tree</span></code>, try to guess what the result will be.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tree<span class="w"> </span>.
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>tree<span class="w"> </span>.
 <span class="go">.</span>
 <span class="go">|-- file_c</span>
 <span class="go">|-- folder1</span>
@@ -298,8 +297,8 @@ determines what the result will be. For example, we could move and/or copy files
 <p>Two files have been moved into folders, and <code class="docutils literal notranslate"><span class="pre">file_c</span></code> has been copied - so there is still a copy
 of <code class="docutils literal notranslate"><span class="pre">file_c</span></code> in the home directory. Move and copy commands can also be used to change the name of
 a file:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cp<span class="w"> </span>file_c<span class="w"> </span>file_c_copy
-<span class="gp">$ </span>mv<span class="w"> </span>file_c<span class="w"> </span>file_c_new_name
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cp<span class="w"> </span>file_c<span class="w"> </span>file_c_copy
+<span class="gp">[ls6]$ </span>mv<span class="w"> </span>file_c<span class="w"> </span>file_c_new_name
 </pre></div>
 </div>
 <p>By now, you may have found that Linux is very unforgiving with typos. Generous use of the <code class="docutils literal notranslate"><span class="pre">&lt;Tab&gt;</span></code>
@@ -316,14 +315,14 @@ strange characters in files or folder names. Stick to:</p>
 </div>
 <p>Before we move on, let’s clean up once again by removing the files and folders we have created. Do
 you remember the command for removing non-empty folders?</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rm<span class="w"> </span>-r<span class="w"> </span>folder1
-<span class="gp">$ </span>rm<span class="w"> </span>-r<span class="w"> </span>folder2
-<span class="gp">$ </span>rm<span class="w"> </span>-r<span class="w"> </span>folder3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>rm<span class="w"> </span>-r<span class="w"> </span>folder1
+<span class="gp">[ls6]$ </span>rm<span class="w"> </span>-r<span class="w"> </span>folder2
+<span class="gp">[ls6]$ </span>rm<span class="w"> </span>-r<span class="w"> </span>folder3
 </pre></div>
 </div>
 <p>How do we remove <code class="docutils literal notranslate"><span class="pre">file_c_copy</span></code> and <code class="docutils literal notranslate"><span class="pre">file_c_new_name</span></code>?</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rm<span class="w"> </span>file_c_copy
-<span class="gp">$ </span>rm<span class="w"> </span>file_c_new_name
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>rm<span class="w"> </span>file_c_copy
+<span class="gp">[ls6]$ </span>rm<span class="w"> </span>file_c_new_name
 </pre></div>
 </div>
 </section>
@@ -332,10 +331,10 @@ you remember the command for removing non-empty folders?</p>
 <p>Everything we have seen so far has been with empty files and folders. We will now start looking at
 some real data. Navigate to your home directory, then issue the following <code class="docutils literal notranslate"><span class="pre">cp</span></code> command to copy a
 “tar archive” file from me:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~<span class="w">    </span><span class="c1"># the tilde ~ is also a shortcut referring to your home directory</span>
-<span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home1/03439/wallen</span>
-<span class="gp">$ </span>cp<span class="w"> </span>/work/03439/wallen/public/IntroToLinuxHPC.tar<span class="w"> </span>.
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span>~<span class="w">    </span><span class="c1"># the tilde ~ is also a shortcut referring to your home directory</span>
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia</span>
+<span class="gp">[ls6]$ </span>cp<span class="w"> </span>/work/03302/lconcia/public/IntroToLinuxHPC.tar<span class="w"> </span>.
 </pre></div>
 </div>
 <p>Try to use <code class="docutils literal notranslate"><span class="pre">&lt;Tab&gt;</span></code> to autocomplete the name of the file. Do NOT change the username or lustre
@@ -344,23 +343,23 @@ to your directory. Also, please notice the single dot <code class="docutils lite
 indicates that you want to cp the tar archive to <code class="docutils literal notranslate"><span class="pre">.</span></code>, this present location (your home directory).</p>
 <p>This archive file is actually a bundle of many files and folders, all packed into one nice, easily
 transportable object. Once it is copied over, un-pack the file with the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>ls
 <span class="go">IntroToLinuxHPC.tar</span>
-<span class="gp">$ </span>tar<span class="w"> </span>-xvf<span class="w"> </span>IntroToLinuxHPC.tar
+<span class="gp">[ls6]$ </span>tar<span class="w"> </span>-xvf<span class="w"> </span>IntroToLinuxHPC.tar
 </pre></div>
 </div>
 <p>In the first lab (<code class="docutils literal notranslate"><span class="pre">Lab01</span></code>), we have a file called <code class="docutils literal notranslate"><span class="pre">websters.txt</span></code>. This a list of all the words
 in Webster’s Dictionary. But how can we see the contents of the file?</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>IntroToLinuxHPC
-<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>Lab01
-<span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/home1/03439/wallen/IntroToLinuxHPC/Lab01</span>
-<span class="gp">$ </span>ls
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span>IntroToLinuxHPC
+<span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span>Lab01
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia/IntroToLinuxHPC/Lab01</span>
+<span class="gp">[ls6]$ </span>ls
 <span class="go">README websters.txt</span>
 </pre></div>
 </div>
 <p>If you want to see the contents of a file, use the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command to print it to screen:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>websters.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cat<span class="w"> </span>websters.txt
 <span class="go">A</span>
 <span class="go">a</span>
 <span class="go">aa</span>
@@ -373,7 +372,7 @@ in Webster’s Dictionary. But how can we see the contents of the file?</p>
 </div>
 <p>This is a long file! Printing everything to screen is much too fast and not very useful. We can use
 a few other commands to look at the contents of the file with <code class="docutils literal notranslate"><span class="pre">more</span></code> control:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>more<span class="w"> </span>websters.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>more<span class="w"> </span>websters.txt
 </pre></div>
 </div>
 <p>Press the <code class="docutils literal notranslate"><span class="pre">&lt;Enter&gt;</span></code> key to scroll through line-by-line, or the <code class="docutils literal notranslate"><span class="pre">&lt;Space&gt;</span></code> key to scroll through
@@ -381,7 +380,7 @@ page-by-page. Press <code class="docutils literal notranslate"><span class="pre"
 <code class="docutils literal notranslate"><span class="pre">%</span></code> indicator at the bottom of the screen shows your progress through the file. This is still a
 little bit messy and fills up the screen. The <code class="docutils literal notranslate"><span class="pre">less</span></code> command has the same effect, but is a little
 bit cleaner:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>less<span class="w"> </span>websters.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>less<span class="w"> </span>websters.txt
 </pre></div>
 </div>
 <p>Scrolling through the data is the same, but now we can also search the data. Press the <code class="docutils literal notranslate"><span class="pre">/</span></code> forward
@@ -389,14 +388,14 @@ slash key, and type a word that you would like to search for. The screen will ju
 match of that word. The <code class="docutils literal notranslate"><span class="pre">n</span></code> key will cycle through other matches, if they exist.</p>
 <p>Finally, you can view just the beginning or the end of a file with the <code class="docutils literal notranslate"><span class="pre">head</span></code> and <code class="docutils literal notranslate"><span class="pre">tail</span></code>
 commands. For example:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>head<span class="w"> </span>websters.txt
-<span class="gp">$ </span>tail<span class="w"> </span>websters.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>head<span class="w"> </span>websters.txt
+<span class="gp">[ls6]$ </span>tail<span class="w"> </span>websters.txt
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> shortcuts in Linux indicate that you would like to redirect the output of one
 of the commands above. Instead of printing to screen, the output can be redirected into a file:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>websters.txt<span class="w"> </span>&gt;<span class="w"> </span>websters_new.txt
-<span class="gp">$ </span>head<span class="w"> </span>websters.txt<span class="w"> </span>&gt;<span class="w"> </span>first_10_lines.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cat<span class="w"> </span>websters.txt<span class="w"> </span>&gt;<span class="w"> </span>websters_new.txt
+<span class="gp">[ls6]$ </span>head<span class="w"> </span>websters.txt<span class="w"> </span>&gt;<span class="w"> </span>first_10_lines.txt
 </pre></div>
 </div>
 <p>A single greater than sign <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> will redirect and <strong>overwrite</strong> any contents in the target file. A
@@ -404,7 +403,7 @@ double greater than sign <code class="docutils literal notranslate"><span class=
 file.</p>
 <p>One final useful way to look at the contents of files is with the <code class="docutils literal notranslate"><span class="pre">grep</span></code> command. <code class="docutils literal notranslate"><span class="pre">grep</span></code>
 searches a file for a specific pattern, and returns all lines that match the pattern. For example:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>grep<span class="w"> </span><span class="s2">&quot;banana&quot;</span><span class="w"> </span>websters.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>grep<span class="w"> </span><span class="s2">&quot;banana&quot;</span><span class="w"> </span>websters.txt
 <span class="go">banana</span>
 <span class="go">cassabanana</span>
 </pre></div>
@@ -426,76 +425,58 @@ searches a file for a specific pattern, and returns all lines that match the pat
 <p>In order to login or transfer files to a remote Linux file system, you must know the hostname
 (unique network identifier) and the username. If you are already on a Linux file system, those are
 easy to determine using the following commands:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>whoami
-<span class="go">wallen</span>
-<span class="gp">$ </span>hostname<span class="w"> </span>-f
-<span class="go">login4.ls6.tacc.utexas.edu</span>
-</pre></div>
-</div>
-<p>Given that information, a user would remotely login to this Linux machine using the Terminal
-command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>wallen@ls6.tacc.utexas.edu
-<span class="gp gp-VirtualEnv">(enter password)</span>
-<span class="gp gp-VirtualEnv">(enter token)</span>
-</pre></div>
-</div>
-<p>Windows users would typically use the program <strong>PuTTY</strong> to perform this operation. Logging out of a
-remote system is done using the <code class="docutils literal notranslate"><span class="pre">logout</span></code> command, or the shortcut <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl+d&gt;</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">logout</span>
-<span class="gp">[local]$</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>whoami
+<span class="go">lconcia</span>
+<span class="gp">[ls6]$ </span>hostname<span class="w"> </span>-f
+<span class="go">login2.ls6.tacc.utexas.edu</span>
 </pre></div>
 </div>
 <p>To practice transferring files to Lonestar6’s <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, we need to identify the
 path to our <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> directory. To identify these paths, we can use helpful command shortcuts.</p>
 <p>To identify the path to our <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directory, we can use <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$WORK</span></code> or the helpful shortcut
 <code class="docutils literal notranslate"><span class="pre">cdw</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cdw
-<span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/work/03439/wallen/ls6</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cdw
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/work/03302/lconcia/ls6</span>
 </pre></div>
 </div>
 <p>To identify the path to our <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> directory, we can use <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$SCRATCH</span></code> or the helpful
 shortcut <code class="docutils literal notranslate"><span class="pre">cds</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cds
-<span class="gp">$ </span><span class="nb">pwd</span>
-<span class="go">/scratch/03439/wallen</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cds
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/scratch/03302/lconcia</span>
 </pre></div>
 </div>
 <p>Copying files from your local computer to Lonestar6’s <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> would require the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command
 (Windows users use the program “WinSCP”):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>wallen@ls6.tacc.utexas.edu:/work/03439/wallen/ls6
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6
 <span class="gp gp-VirtualEnv">(enter password)</span>
 <span class="gp gp-VirtualEnv">(enter token)</span>
 </pre></div>
 </div>
 <p>In this command, you specify the name of the file you want to transfer (<code class="docutils literal notranslate"><span class="pre">my_file</span></code>), the username
-(<code class="docutils literal notranslate"><span class="pre">wallen</span></code>), the hostname (<code class="docutils literal notranslate"><span class="pre">ls6.tacc.utexas.edu</span></code>), and the path you want to put the file
-(<code class="docutils literal notranslate"><span class="pre">/work/03439/wallen/ls6</span></code>). Take careful notice of the separators including spaces, the &#64; symbol,
+(<code class="docutils literal notranslate"><span class="pre">lconcia</span></code>), the hostname (<code class="docutils literal notranslate"><span class="pre">ls6.tacc.utexas.edu</span></code>), and the path you want to put the file
+(<code class="docutils literal notranslate"><span class="pre">/work/03302/lconcia/ls6</span></code>). Take careful notice of the separators including spaces, the &#64; symbol,
 and the colon.</p>
 <p>Copying files from your local computer to Lonestar6’s <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> using <code class="docutils literal notranslate"><span class="pre">scp</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>wallen@ls6.tacc.utexas.edu:/scratch/03439/wallen
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>lconcia@ls6.tacc.utexas.edu:/scratch/03302/lconcia
 <span class="gp gp-VirtualEnv">(enter password)</span>
 <span class="gp gp-VirtualEnv">(enter token)</span>
 </pre></div>
 </div>
 <p>Copy files from Lonestar6 to your local computer using the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>wallen@ls6.tacc.utexas.edu:/work/03439/wallen/ls6/my_file<span class="w"> </span>./
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6/my_file<span class="w"> </span>./
 <span class="gp gp-VirtualEnv">(enter password)</span>
 <span class="gp gp-VirtualEnv">(enter token)</span>
 </pre></div>
 </div>
-<p>Note: If you wanted to copy <code class="docutils literal notranslate"><span class="pre">my_file</span></code> from <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, the path you would specify after the
-colon would be <code class="docutils literal notranslate"><span class="pre">/scratch/03439/wallen/my_file</span></code>.</p>
-<p>Instead of files, full directories can be copied using the “recursive” flag (<code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">...</span></code>). The
-<code class="docutils literal notranslate"><span class="pre">rsync</span></code> tool is an advanced copy tool that is useful for synching data between two sites. Although
-we will not go into depth here, example <code class="docutils literal notranslate"><span class="pre">rsync</span></code> usage is as follows:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rsync<span class="w"> </span>-azv<span class="w"> </span><span class="nb">local</span><span class="w"> </span>remote
-<span class="gp">$ </span>rsync<span class="w"> </span>-azv<span class="w"> </span>remote<span class="w"> </span><span class="nb">local</span>
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you wanted to copy <code class="docutils literal notranslate"><span class="pre">my_file</span></code> from <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, the path you would specify after the
+colon would be <code class="docutils literal notranslate"><span class="pre">/scratch1/03302/lconcia/frontera/my_file</span></code>.</p>
 </div>
-<p>This is just the basics of copying files. See example <code class="docutils literal notranslate"><span class="pre">scp</span></code> usage
-<a class="reference external" href="https://en.wikipedia.org/wiki/Secure_copy">here-1</a> and example <code class="docutils literal notranslate"><span class="pre">rsync</span></code> usage
-<a class="reference external" href="https://en.wikipedia.org/wiki/Rsync">here-2</a>.</p>
+<p>Instead of files, full directories can be copied using the “recursive” flag (<code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">...</span></code>). See
+additional example <code class="docutils literal notranslate"><span class="pre">scp</span></code> usage <a class="reference external" href="https://en.wikipedia.org/wiki/Secure_copy">here</a>.</p>
 <section id="id1">
 <h3>EXERCISE<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
@@ -684,8 +665,8 @@ we will not go into depth here, example <code class="docutils literal notranslat
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="02_Create_an_account.html" class="btn btn-neutral float-left" title="Create an Account" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="04_running_on_hpc.html" class="btn btn-neutral float-right" title="Running on HPC Systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="02_running_on_hpc.html" class="btn btn-neutral float-right" title="Running on HPC Systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

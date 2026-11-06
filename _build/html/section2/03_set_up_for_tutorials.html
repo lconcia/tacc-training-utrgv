@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ML/DL on HPC Systems" href="../section4/overview.html" />
-    <link rel="prev" title="Running on HPC Systems" href="04_running_on_hpc.html" /> 
+    <link rel="prev" title="Running on HPC Systems" href="02_running_on_hpc.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,11 +56,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction to Systems and Data</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_intro_to_hpc.html">Introduction to HPC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_Create_an_account.html">Create an Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_LinuxCommandLine.html">Linux Command Line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04_running_on_hpc.html">Running on HPC Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_LinuxCommandLine.html">Linux Command Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_running_on_hpc.html">Running on HPC Systems</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Set up for Tutorials</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#set-up-for-frontera">Set Up For Frontera</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#step-1-log-in-to-frontera">Step 1. Log in to Frontera</a></li>
@@ -100,10 +99,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="overview.html">Introduction to Systems and Data</a></li>
+          <li class="breadcrumb-item"><a href="overview.html">Introduction</a></li>
       <li class="breadcrumb-item active">Set up for Tutorials</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/section1/05_set_up_for_tutorials.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/section2/03_set_up_for_tutorials.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -200,29 +199,29 @@ as follows:</p>
 <p class="admonition-title">Warning</p>
 <p>The reservation name changes day by day.</p>
 </div>
-<img alt="Figure 1. Submitting a job through TAP" src="../_images/TAP_1.job_submittting.png" />
+<img alt="Figure 1. Submitting a job through TAP" src="section2/images/TAP_1.job_submittting.png" />
 <ul class="simple">
 <li><p>Click ‘Submit’ and wait for the job to start</p></li>
 <li><p>Click ‘Connect’ when the a node becomes available</p></li>
 </ul>
-<img alt="Figure 2 Submitting a job through TAP" src="../_images/TAP_2.job_connect.png" />
+<img alt="Figure 2 Submitting a job through TAP" src="section2/images/TAP_2.job_connect.png" />
 <ul class="simple">
 <li><p>The TAP job will open the user <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory. Open <code class="docutils literal notranslate"><span class="pre">Mushroom-ANN-tutorial.ipynb</span></code> or
 <code class="docutils literal notranslate"><span class="pre">Coral-CNN-tutorial.ipynb</span></code>.</p></li>
 </ul>
-<img alt="Figure 3 TAP session will log into user $HOME" src="../_images/TAP_3.jupyter_HOME.png" />
+<img alt="Figure 3 TAP session will log into user $HOME" src="section2/images/TAP_3.jupyter_HOME.png" />
 <ul class="simple">
 <li><p>Change your kernel to <code class="docutils literal notranslate"><span class="pre">Day3-tf-213</span></code>. Click on the menu <code class="docutils literal notranslate"><span class="pre">kernel</span></code>, then <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">kernel</span></code>, and select the kernel <code class="docutils literal notranslate"><span class="pre">Day3-tf-213</span></code>. Trust the kernel by clicking on the button “Not trusted” at the top right</p></li>
 </ul>
-<img alt="Figure 4 Changing the kernel version ant trust the kernel" src="../_images/TAP_4.kernel_change.png" />
+<img alt="Figure 4 Changing the kernel version ant trust the kernel" src="section2/images/TAP_4.kernel_change.png" />
 <ul class="simple">
 <li><p>The Jupyter notebook will ask confirmation before trusting the kernel.</p></li>
 </ul>
-<img alt="Figure 5 Kernel trusting confirmation" src="../_images/TAP_5.jupyter.trusting.png" />
+<img alt="Figure 5 Kernel trusting confirmation" src="section2/images/TAP_5.jupyter.trusting.png" />
 <ul class="simple">
 <li><p>After clicking “trust” on the confirmation button, the button at the top right will appear as “Trusted”.</p></li>
 </ul>
-<img alt="Figure 6 Kernel trusted" src="../_images/TAP_6.jupyter.trusted.png" />
+<img alt="Figure 6 Kernel trusted" src="section2/images/TAP_6.jupyter.trusted.png" />
 <ul class="simple">
 <li><p>The Jupyer notebook will be ready to be run. Note: The kernel may take a few moments to initialize on first use.</p></li>
 </ul>
@@ -332,18 +331,18 @@ as follows:</p>
 <p class="admonition-title">Warning</p>
 <p>The reservation name changes day by day.</p>
 </div>
-<img alt="Figure 1. Submitting a job through TAP" src="../_images/TAP1_vista_job_submitting.png" />
+<img alt="Figure 1. Submitting a job through TAP" src="section2/images/TAP1_vista_job_submitting.png" />
 <ul class="simple">
 <li><p>Click ‘Submit’ and wait for the job to start</p></li>
 <li><p>Click ‘Connect’ when the a node becomes available</p></li>
 </ul>
-<img alt="Figure 2 Submitting a job through TAP" src="../_images/TAP2_vista_connect.png" />
+<img alt="Figure 2 Submitting a job through TAP" src="section2/images/TAP2_vista_connect.png" />
 <ul class="simple">
 <li><p>By default on Vista, the Jupyter Notebook job will open with the Jupyter Lab interface showing the user
 <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory on the left. If the kernels are installed properly, you should see the
 <code class="docutils literal notranslate"><span class="pre">Day4-tf-217</span></code> and <code class="docutils literal notranslate"><span class="pre">Day4-pt-251</span></code> kernels listed in the Launcher tab under the Notebook section.</p></li>
 </ul>
-<img alt="Figure 3 Jupyter Lab interface showing user $HOME" src="../_images/TAP3_vista_jupyter_lab_home.png" />
+<img alt="Figure 3 Jupyter Lab interface showing user $HOME" src="section2/images/TAP3_vista_jupyter_lab_home.png" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you prefer to use the classic Jupyter Notebook interface instead of Jupyter Lab, you can edit the URL
@@ -353,7 +352,7 @@ in your browser to replace the word “/lab” with “/tree”.</p>
 <li><p>To verify that the kernels are installed properly in the Jupyter Notebook interface, click on the “New” dropdown
 menu in the upper right to see the <code class="docutils literal notranslate"><span class="pre">Day4-tf-217</span></code> or <code class="docutils literal notranslate"><span class="pre">Day4-pt-251</span></code> kernels.</p></li>
 </ul>
-<img alt="Figure 4 Jupyter Notebook interface showing user $HOME" src="../_images/TAP4_vista_jupyter_notebook_home.png" />
+<img alt="Figure 4 Jupyter Notebook interface showing user $HOME" src="section2/images/TAP4_vista_jupyter_notebook_home.png" />
 <ul class="simple">
 <li><p>The Jupyter notebooks are now ready to be launched.</p></li>
 </ul>
@@ -369,7 +368,7 @@ menu in the upper right to see the <code class="docutils literal notranslate"><s
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="04_running_on_hpc.html" class="btn btn-neutral float-left" title="Running on HPC Systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="02_running_on_hpc.html" class="btn btn-neutral float-left" title="Running on HPC Systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../section4/overview.html" class="btn btn-neutral float-right" title="ML/DL on HPC Systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -1,13 +1,14 @@
-Create an Account
-=================
+Connecting to the HPC cluster
+==================================
+
+In this section we will learn how to interact with a HPC cluster.
+
 
 Create an Account
 -----------------
 
-
-To log in to TACC systems and participate in this workshop, you will need a TACC account and must
-have set up multi-factor authentication using a token app or SMS.  You can do this by visiting the
-`TACC registration <https://accounts.tacc.utexas.edu/register>`_:
+To log in to TACC systems and participate in this workshop, you will need a TACC account. 
+You can do this by visiting the `TACC registration <https://accounts.tacc.utexas.edu/register>`_:
 
 .. image:: ./images/Create_an_account.png
    :target: ./images/Create_an_account.png
@@ -18,11 +19,13 @@ have set up multi-factor authentication using a token app or SMS.  You can do th
 |
 
 
-Authentication 
-^^^^^^^^^^^^^^
+Multi-factor authentication (MFA)  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To log in to TACC systems and participate in this workshop, you will need a TACC account and must
-have set up multi-factor authentication using a token app or SMS.  You can do this by visiting the
+ and must
+have set up 
+Once you have a TACC account, you need to set up multi-factor authentication using a token app or SMS.
+The MFA is required to connect to the cluster via SSH. You can do this by visiting the
 `TACC portal <https://tacc.utexas.edu/portal/login>`_:
 
 .. image:: ./images/TACC_login.png
@@ -87,27 +90,10 @@ Connecting to Lonestar6
 
 To log in to Lonestar6, follow the instructions for your operating system below.
 
-Mac / Linux (Use Terminal)
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Linux / Mac (use Terminal) / Windows (use Termius)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Open the application 'Terminal' and:
-
-.. code-block:: console
-   
-   [local]$ ssh username@ls6.tacc.utexas.edu
-
-   To access the system:
-   
-   1) If not using ssh-keys, please enter your TACC password at the password prompt
-   2) At the TACC Token prompt, enter your 6-digit code followed by <return>.
-
-   (enter password)
-   (enter 6-digit token)
-
-Windows (Use WSL2 or an SSH Client)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Open the application WSL2 :
+Open the application 'Terminal' / 'Termius' and:
 
 .. code-block:: console
    
@@ -118,17 +104,6 @@ Open the application WSL2 :
    1) If not using ssh-keys, please enter your TACC password at the password prompt
    2) At the TACC Token prompt, enter your 6-digit code followed by <return>.
 
-   (enter password)
-   (enter 6-digit token)
-
-Or open an SSH client like `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_:
-
-.. code-block:: console
-
-   Open the application 'PuTTY'
-   enter Host Name: ls6.tacc.utexas.edu
-   (click 'Open')
-   (enter username)
    (enter password)
    (enter 6-digit token)
 
@@ -141,7 +116,7 @@ If your login was successful, your terminal will look something like this:
 .. code-block:: console 
 
    ------------------------------------------------------------------------------
-   Welcome to the Loenstar6 Supercomputer
+   Welcome to the Lonestar6 Supercomputer
    Texas Advanced Computing Center, The University of Texas at Austin
    ------------------------------------------------------------------------------
    
@@ -169,11 +144,13 @@ If your login was successful, your terminal will look something like this:
    | /work             878.6    1024.0    85.80      1307128     3000000   43.57 |
    -------------------------------------------------------------------------------
 
+Coongratulations! You are now on a login node. From here, you can create, manipulate, and organize files and folders, write scripts, and launch jobs on the computation nodes.
+
 
 A Note About Quotas
 ^^^^^^^^^^^^^^^^^^^
 
-The welcome message you receive upon successful login to Frontera has useful information
+The welcome message you receive upon successful login to Lonestar6 has useful information
 for you to keep track of. Especially of note is the breakdown of disk quotas for your account,
 as you can keep an eye on whether your usage is nearing the determined limit. 
 

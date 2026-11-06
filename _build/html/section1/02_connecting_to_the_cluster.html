@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create an Account &mdash; Introduction to TACC 0.1 documentation</title>
+  <title>Connecting to the HPC cluster &mdash; Introduction to TACC 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -30,8 +30,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linux Command Line" href="03_LinuxCommandLine.html" />
-    <link rel="prev" title="Introduction to HPC" href="01_intro_to_hpc.html" /> 
+    <link rel="next" title="Introduction" href="../section2/overview.html" />
+    <link rel="prev" title="High Peformance Computing (HPC)" href="01_intro_to_hpc.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,11 +56,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction to Systems and Data</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_intro_to_hpc.html">Introduction to HPC</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Create an Account</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Create an Account</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_intro_to_hpc.html">High Peformance Computing (HPC)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Connecting to the HPC cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-an-account">Create an Account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multi-factor-authentication-mfa">Multi-factor authentication (MFA)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#connecting-to-the-machines">Connecting to the Machines</a><ul>
@@ -71,11 +71,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="03_LinuxCommandLine.html">Linux Command Line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04_running_on_hpc.html">Running on HPC Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05_set_up_for_tutorials.html">Set up for Tutorials</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../section2/overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section4/overview.html">ML/DL on HPC Systems</a></li>
 </ul>
 
@@ -93,10 +91,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="overview.html">Introduction to Systems and Data</a></li>
-      <li class="breadcrumb-item active">Create an Account</li>
+          <li class="breadcrumb-item"><a href="overview.html">Introduction</a></li>
+      <li class="breadcrumb-item active">Connecting to the HPC cluster</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/section1/02_Create_an_account.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/section1/02_connecting_to_the_cluster.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -104,22 +102,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="create-an-account">
-<h1>Create an Account<a class="headerlink" href="#create-an-account" title="Link to this heading"></a></h1>
-<section id="id1">
-<h2>Create an Account<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<p>To log in to TACC systems and participate in this workshop, you will need a TACC account and must
-have set up multi-factor authentication using a token app or SMS.  You can do this by visiting the
-<a class="reference external" href="https://accounts.tacc.utexas.edu/register">TACC registration</a>:</p>
+  <section id="connecting-to-the-hpc-cluster">
+<h1>Connecting to the HPC cluster<a class="headerlink" href="#connecting-to-the-hpc-cluster" title="Link to this heading"></a></h1>
+<p>In this section we will learn how to interact with a HPC cluster.</p>
+<section id="create-an-account">
+<h2>Create an Account<a class="headerlink" href="#create-an-account" title="Link to this heading"></a></h2>
+<p>To log in to TACC systems and participate in this workshop, you will need a TACC account.
+You can do this by visiting the <a class="reference external" href="https://accounts.tacc.utexas.edu/register">TACC registration</a>:</p>
 <a class="reference external image-reference" href="./images/Create_an_account.png"><img alt="Create a TACC account" class="align-center" src="../_images/Create_an_account.png" style="width: 600px;" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<section id="authentication">
-<h3>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h3>
-<p>To log in to TACC systems and participate in this workshop, you will need a TACC account and must
-have set up multi-factor authentication using a token app or SMS.  You can do this by visiting the
+<section id="multi-factor-authentication-mfa">
+<h3>Multi-factor authentication (MFA)<a class="headerlink" href="#multi-factor-authentication-mfa" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>and must</p>
+</div></blockquote>
+<p>have set up
+Once you have a TACC account, you need to set up multi-factor authentication using a token app or SMS.
+The MFA is required to connect to the cluster via SSH. You can do this by visiting the
 <a class="reference external" href="https://tacc.utexas.edu/portal/login">TACC portal</a>:</p>
 <a class="reference external image-reference" href="./images/TACC_login.png"><img alt="TACC login page" class="align-center" src="../_images/TACC_login.png" style="width: 400px;" />
 </a>
@@ -161,9 +163,9 @@ the command line. In this workshop, for commands on the local system we will use
 <section id="connecting-to-lonestar6">
 <h3>Connecting to Lonestar6<a class="headerlink" href="#connecting-to-lonestar6" title="Link to this heading"></a></h3>
 <p>To log in to Lonestar6, follow the instructions for your operating system below.</p>
-<section id="mac-linux-use-terminal">
-<h4>Mac / Linux (Use Terminal)<a class="headerlink" href="#mac-linux-use-terminal" title="Link to this heading"></a></h4>
-<p>Open the application ‘Terminal’ and:</p>
+<section id="linux-mac-use-terminal-windows-use-termius">
+<h4>Linux / Mac (use Terminal) / Windows (use Termius)<a class="headerlink" href="#linux-mac-use-terminal-windows-use-termius" title="Link to this heading"></a></h4>
+<p>Open the application ‘Terminal’ / ‘Termius’ and:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>ssh<span class="w"> </span>username@ls6.tacc.utexas.edu
 
 <span class="go">To access the system:</span>
@@ -171,30 +173,6 @@ the command line. In this workshop, for commands on the local system we will use
 <span class="go">1) If not using ssh-keys, please enter your TACC password at the password prompt</span>
 <span class="go">2) At the TACC Token prompt, enter your 6-digit code followed by &lt;return&gt;.</span>
 
-<span class="gp gp-VirtualEnv">(enter password)</span>
-<span class="gp gp-VirtualEnv">(enter 6-digit token)</span>
-</pre></div>
-</div>
-</section>
-<section id="windows-use-wsl2-or-an-ssh-client">
-<h4>Windows (Use WSL2 or an SSH Client)<a class="headerlink" href="#windows-use-wsl2-or-an-ssh-client" title="Link to this heading"></a></h4>
-<p>Open the application WSL2 :</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>ssh<span class="w"> </span>username@ls6.tacc.utexas.edu
-
-<span class="go">To access the system:</span>
-
-<span class="go">1) If not using ssh-keys, please enter your TACC password at the password prompt</span>
-<span class="go">2) At the TACC Token prompt, enter your 6-digit code followed by &lt;return&gt;.</span>
-
-<span class="gp gp-VirtualEnv">(enter password)</span>
-<span class="gp gp-VirtualEnv">(enter 6-digit token)</span>
-</pre></div>
-</div>
-<p>Or open an SSH client like <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY</a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Open the application &#39;PuTTY&#39;</span>
-<span class="go">enter Host Name: ls6.tacc.utexas.edu</span>
-<span class="gp gp-VirtualEnv">(click &#39;Open&#39;)</span>
-<span class="gp gp-VirtualEnv">(enter username)</span>
 <span class="gp gp-VirtualEnv">(enter password)</span>
 <span class="gp gp-VirtualEnv">(enter 6-digit token)</span>
 </pre></div>
@@ -204,7 +182,7 @@ the command line. In this workshop, for commands on the local system we will use
 <h4>Successful Login to Lonestar6<a class="headerlink" href="#successful-login-to-lonestar6" title="Link to this heading"></a></h4>
 <p>If your login was successful, your terminal will look something like this:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">------------------------------------------------------------------------------</span>
-<span class="go">Welcome to the Loenstar6 Supercomputer</span>
+<span class="go">Welcome to the Lonestar6 Supercomputer</span>
 <span class="go">Texas Advanced Computing Center, The University of Texas at Austin</span>
 <span class="go">------------------------------------------------------------------------------</span>
 
@@ -233,11 +211,12 @@ the command line. In this workshop, for commands on the local system we will use
 <span class="go">-------------------------------------------------------------------------------</span>
 </pre></div>
 </div>
+<p>Coongratulations! You are now on a login node. From here, you can create, manipulate, and organize files and folders, write scripts, and launch jobs on the computation nodes.</p>
 </section>
 </section>
 <section id="a-note-about-quotas">
 <h3>A Note About Quotas<a class="headerlink" href="#a-note-about-quotas" title="Link to this heading"></a></h3>
-<p>The welcome message you receive upon successful login to Frontera has useful information
+<p>The welcome message you receive upon successful login to Lonestar6 has useful information
 for you to keep track of. Especially of note is the breakdown of disk quotas for your account,
 as you can keep an eye on whether your usage is nearing the determined limit.</p>
 <p>Once your usage is nearing the quota, you’ll start to experience issues that will not only
@@ -268,8 +247,8 @@ execute:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="01_intro_to_hpc.html" class="btn btn-neutral float-left" title="Introduction to HPC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="03_LinuxCommandLine.html" class="btn btn-neutral float-right" title="Linux Command Line" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="01_intro_to_hpc.html" class="btn btn-neutral float-left" title="High Peformance Computing (HPC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../section2/overview.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
