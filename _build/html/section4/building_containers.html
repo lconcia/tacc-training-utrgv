@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building and Sharing Containers &mdash; Introduction to TACC 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=ccdb6887"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running Containers on HPC Systems" href="running_containers_on_hpc.html" />
+    <link rel="prev" title="Introduction to Containers" href="intro_containers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to TACC
+              <img src="../_static/TACC-White-No-Mask.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction to Systems and Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">ML/DL on HPC Systems</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro_containers.html">Introduction to Containers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building and Sharing Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#set-up">Set Up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#containerize-code-interactively">Containerize Code interactively</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update-and-upgrade">Update and Upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-required-packages">Install Required Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-and-test-your-code">Install and Test Your Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#assemble-a-dockerfile">Assemble a Dockerfile</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-from-instruction">The FROM Instruction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-run-instruction">The RUN Instruction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-copy-instruction">The COPY Instruction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-env-instruction">The ENV Instruction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-cmd-instruction">The CMD Instruction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#putting-it-all-together">Putting It All Together</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-image">Build the Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-the-image">Test the Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#share-your-docker-image">Share Your Docker Image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#commit-to-github">Commit to GitHub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#push-to-docker-hub">Push to Docker Hub</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running_containers_on_hpc.html">Running Containers on HPC Systems</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to TACC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="overview.html">ML/DL on HPC Systems</a></li>
+      <li class="breadcrumb-item active">Building and Sharing Containers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section4/building_containers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-and-sharing-containers">
+<h1>Building and Sharing Containers<a class="headerlink" href="#building-and-sharing-containers" title="Link to this heading"></a></h1>
+<p>In the previous section, we pulled and ran existing container images from Docker Hub. In this section,
+we will learn how to build our own container images and share them with others. After going through this
+section, you should be able to:</p>
+<ul class="simple">
+<li><p>Install and test code in a container interactively</p></li>
+<li><p>Write a Dockerfile from scratch</p></li>
+<li><p>Build a Docker image from a Dockerfile</p></li>
+<li><p>Push a Docker image to Docker Hub</p></li>
+</ul>
+<section id="set-up">
+<h2>Set Up<a class="headerlink" href="#set-up" title="Link to this heading"></a></h2>
+<p><em>Scenario:</em> You are a researcher who has developed some new code for a
+scientific application. You now want to distribute that code for others to use
+in what you know to be a stable production environment (including OS and
+dependency versions). End users may want to use this code on their local
+workstations, on an HPC cluster, or in the cloud.</p>
+<p>The first step in a typical container development workflow entails installing and testing
+an application interactively within a running Docker container.</p>
+<p>To begin, make a new directory somewhere on your local computer, and create an empty Dockerfile
+inside of it.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span><span class="nb">cd</span><span class="w"> </span>~/
+<span class="gp">[local]$ </span>mkdir<span class="w"> </span>image-classifier/
+<span class="gp">[local]$ </span><span class="nb">cd</span><span class="w"> </span>image-classifier/
+<span class="gp">[local]$ </span>touch<span class="w"> </span>Dockerfile
+<span class="gp">[local]$ </span><span class="nb">pwd</span>
+<span class="go">/Users/username/image-classifier/</span>
+<span class="gp">[local]$ </span>ls
+<span class="go">Dockerfile</span>
+</pre></div>
+</div>
+<p>Next, grab a copy of the source code we want to containerize:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/usr/bin/env python3</span>
+<span class="linenos"> 2</span><span class="c1">##</span>
+<span class="linenos"> 3</span><span class="c1"># SOURCE https://pytorch.org/vision/0.19/models.html</span>
+<span class="linenos"> 4</span><span class="c1">##</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_image</span>
+<span class="linenos"> 7</span><span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">resnet101</span><span class="p">,</span> <span class="n">ResNet101_Weights</span>
+<span class="linenos"> 8</span><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="linenos"> 9</span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="linenos">10</span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="linenos">13</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;the image to classify (str)&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="linenos">14</span><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="n">image_path</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">image</span>
+<span class="linenos">17</span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
+<span class="linenos">18</span>   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: file not found: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">19</span>   <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="c1"># 1 - Initialize model with best available weights</span>
+<span class="linenos">22</span><span class="n">weights</span> <span class="o">=</span> <span class="n">ResNet101_Weights</span><span class="o">.</span><span class="n">DEFAULT</span>
+<span class="linenos">23</span><span class="n">model</span> <span class="o">=</span> <span class="n">resnet101</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+<span class="linenos">24</span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="c1"># 2 - Initialize the inference transforms</span>
+<span class="linenos">27</span><span class="n">preprocess</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">transforms</span><span class="p">()</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classifying </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2"> with ResNet101...&quot;</span><span class="p">)</span>
+<span class="linenos">30</span><span class="n">img</span> <span class="o">=</span> <span class="n">read_image</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="c1"># 3 - Apply inference preprocessing transforms</span>
+<span class="linenos">33</span><span class="n">batch</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="c1"># 4 - Use the model and print the predicted category</span>
+<span class="linenos">36</span><span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">37</span><span class="n">class_id</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="linenos">38</span><span class="n">score</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="n">class_id</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="linenos">39</span><span class="n">category_name</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;categories&quot;</span><span class="p">][</span><span class="n">class_id</span><span class="p">]</span>
+<span class="linenos">40</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">category_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">score</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can cut and paste the code block above into a new file called, e.g.,
+<code class="docutils literal notranslate"><span class="pre">image_classifier.py</span></code>, or download it from the following link with <code class="docutils literal notranslate"><span class="pre">wget</span></code> or <code class="docutils literal notranslate"><span class="pre">curl</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span><span class="nb">pwd</span>
+<span class="go">/Users/username/image-classifier/</span>
+<span class="gp">[local]$ </span>wget<span class="w"> </span>https://raw.githubusercontent.com/TACC/life_sciences_ml_at_tacc/main/docs/section4/files/image_classifier.py
+</pre></div>
+</div>
+<p>Now, you should have two files and nothing else in this folder:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span><span class="nb">pwd</span>
+<span class="go">/Users/username/image-classifier/</span>
+<span class="gp">[local]$ </span>ls
+<span class="go">Dockerfile     image_classifier.py</span>
+</pre></div>
+</div>
+<p>Since this code is an image classifier, we will need some images to classify. You can download a few with
+<code class="docutils literal notranslate"><span class="pre">wget</span></code> or <code class="docutils literal notranslate"><span class="pre">curl</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span><span class="nb">pwd</span>
+<span class="go">/Users/username/image-classifier/</span>
+<span class="gp">[local]$ </span>wget<span class="w"> </span>https://raw.githubusercontent.com/TACC/life_sciences_ml_at_tacc/main/docs/section4/images/dog.jpg
+<span class="gp">[local]$ </span>wget<span class="w"> </span>https://raw.githubusercontent.com/TACC/life_sciences_ml_at_tacc/main/docs/section4/images/strawberries.jpg
+<span class="gp">[local]$ </span>wget<span class="w"> </span>https://raw.githubusercontent.com/TACC/life_sciences_ml_at_tacc/main/docs/section4/images/automotive.jpg
+</pre></div>
+</div>
+<p>Finally, your folder should look like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span><span class="nb">pwd</span>
+<span class="go">/Users/username/image-classifier/</span>
+<span class="gp">[local]$ </span>ls
+<span class="go">Dockerfile  automotive.jpg  dog.jpg  image_classifier.py  strawberries.jpg</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is important to carefully consider what files and folders are in the same
+<code class="docutils literal notranslate"><span class="pre">PATH</span></code> as a Dockerfile (known as the ‘build context’). The <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code>
+process will index and send all files and folders in the same directory as
+the Dockerfile to the Docker daemon, so take care not to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code> at
+a root level.</p>
+</div>
+</section>
+<section id="containerize-code-interactively">
+<h2>Containerize Code interactively<a class="headerlink" href="#containerize-code-interactively" title="Link to this heading"></a></h2>
+<p>There are several questions you must ask yourself when preparing to containerize
+code for the first time:</p>
+<ol class="arabic simple">
+<li><p>What is an appropriate base image?</p></li>
+<li><p>What dependencies are required for my program?</p></li>
+<li><p>What is the installation process for my program?</p></li>
+<li><p>What environment variables may be important?</p></li>
+</ol>
+<p>We can work through these questions by performing an <strong>interactive installation</strong>
+of our Python script. Our development environment (e.g. a Linux VM or workstation)
+is a Linux server running Ubuntu 22.04. We could start with a base Ubuntu 22.04 container and
+then install the dependencies including <a class="reference external" href="https://developer.nvidia.com/cuda-toolkit">CUDA</a> (for running on GPUs),
+<a class="reference external" href="https://www.python.org/">Python</a>, and <a class="reference external" href="https://pytorch.org/">PyTorch</a>, but
+why not start farther up the stack. If you want to run with NVIDIA GPUs, we usually recommend starting with the
+official CUDA (<a class="reference external" href="https://hub.docker.com/r/nvidia/cuda">nvidia/cuda</a>) images from NVIDIA on Docker Hub. So we will
+start with one of those. Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> to interactively
+attach to a fresh <a class="reference external" href="https://hub.docker.com/r/nvidia/cuda/tags?name=12.4.1-cudnn-runtime-ubuntu">CUDA 12.4.1 container</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>-v<span class="w"> </span><span class="nv">$PWD</span>:/code<span class="w"> </span>nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04<span class="w"> </span>/bin/bash
+<span class="gp">root@4f7f9ce3da83:/#</span>
+</pre></div>
+</div>
+<p>Here is an explanation of the options:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>docker run                                     # run a container
+--rm                                           # remove the container on exit
+-it                                            # interactively attach terminal to inside of container
+-v $PWD:/code                                  # mount the current directory to /code
+nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04   # image and tag from Docker Hub
+/bin/bash                                      # shell to start inside container
+</pre></div>
+</div>
+<p>The command prompt will change, signaling you are now ‘inside’ the container.
+And, new to this example, we are using the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag which mounts the contents
+of our current directory (<code class="docutils literal notranslate"><span class="pre">$PWD</span></code>) inside the container in a folder in the root
+directory called (<code class="docutils literal notranslate"><span class="pre">/code</span></code>).</p>
+<section id="update-and-upgrade">
+<h3>Update and Upgrade<a class="headerlink" href="#update-and-upgrade" title="Link to this heading"></a></h3>
+<p>The first thing we will typically do is use the Ubuntu package manager <code class="docutils literal notranslate"><span class="pre">apt</span></code> to
+update the list of available packages and install newer versions of the packages
+we have. We can do this with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@4f7f9ce3da83:/# </span>apt-get<span class="w"> </span>update
+<span class="go">...</span>
+<span class="gp">root@4f7f9ce3da83:/# </span>apt-get<span class="w"> </span>upgrade
+<span class="go">...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On the second command, you may need to choose ‘Y’ to install the upgrades.</p>
+</div>
+</section>
+<section id="install-required-packages">
+<h3>Install Required Packages<a class="headerlink" href="#install-required-packages" title="Link to this heading"></a></h3>
+<p>For our python script to work, we need to install python3:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@4f7f9ce3da83:/# </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3.10-full<span class="w"> </span>python3-pip
+<span class="go">...</span>
+<span class="gp">root@4f7f9ce3da83:/# </span>python3<span class="w"> </span>--version
+<span class="go">Python 3.10.12</span>
+</pre></div>
+</div>
+<p>An important question to ask is: Does this version match the version you are
+developing with on your local workstation? If not, make sure to install the
+correct version of python.</p>
+<p>The next step is to install the dependencies for our code. In this case, we
+need to install the <cite>torch</cite> and <cite>torchvision</cite> packages from <a class="reference external" href="https://pytorch.org/get-started/locally/">PyTorch</a>.
+We are going to install version 2.5.1:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@4f7f9ce3da83:/# </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">2</span>.5.1<span class="w"> </span><span class="nv">torchvision</span><span class="o">==</span><span class="m">0</span>.20.1<span class="w"> </span><span class="nv">torchaudio</span><span class="o">==</span><span class="m">2</span>.5.1<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu124
+</pre></div>
+</div>
+</section>
+<section id="install-and-test-your-code">
+<h3>Install and Test Your Code<a class="headerlink" href="#install-and-test-your-code" title="Link to this heading"></a></h3>
+<p>Since we are using a simple Python script, there is not a difficult install process.
+However, we can make it executable and add it to the user’s <cite>PATH</cite>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@4f7f9ce3da83:/# </span><span class="nb">cd</span><span class="w"> </span>/code
+<span class="gp">root@4f7f9ce3da83:/code# </span>chmod<span class="w"> </span>+rx<span class="w"> </span>image_classifier.py
+<span class="gp">root@4f7f9ce3da83:/code# </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/code:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>Now test with the following:</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/dog.jpg"><img alt="../_images/dog.jpg" src="../_images/dog.jpg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Yellow Labrador (Source: Wikipedia)</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root@4f7f9ce3da83:/code# </span><span class="nb">cd</span><span class="w"> </span>/home
+<span class="gp">root@4f7f9ce3da83:/home# </span>which<span class="w"> </span>image_classifier.py
+<span class="go">/code/image_classifier.py</span>
+<span class="gp">root@4f7f9ce3da83:/home# </span>image_classifier.py<span class="w"> </span>-h
+<span class="go">usage: image_classifier.py [-h] image</span>
+
+<span class="go">positional arguments:</span>
+<span class="go">  image       the image to classify (str)</span>
+
+<span class="go">options:</span>
+<span class="go">  -h, --help  show this help message and exit</span>
+<span class="gp">root@4f7f9ce3da83:/home# </span>image_classifier.py<span class="w"> </span>/code/dog.jpg
+<span class="go">Downloading: &quot;https://download.pytorch.org/models/resnet101-cd907fc2.pth&quot; to /root/.cache/torch/hub/checkpoints/resnet101-cd907fc2.pth</span>
+<span class="go">100%|████████████████████████████████████████████████████████████████████████████████████████████████| 171M/171M [00:01&lt;00:00, 105MB/s]</span>
+<span class="go">Classifying /code/dog.jpg with ResNet101...</span>
+<span class="go">Labrador retriever: 70.6%</span>
+</pre></div>
+</div>
+<p>We now have functional versions of our script ‘installed’ in this container.
+Now would be a good time to execute the <cite>history</cite> command to see a record of the
+build process. When you are ready, type <cite>exit</cite> to exit the container and we can
+start writing these build steps into a Dockerfile.</p>
+</section>
+</section>
+<section id="assemble-a-dockerfile">
+<h2>Assemble a Dockerfile<a class="headerlink" href="#assemble-a-dockerfile" title="Link to this heading"></a></h2>
+<p>After going through the build process interactively, we can translate our build
+steps into a Dockerfile using the directives described below. Open up your copy
+of <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> with a text editor and enter the following:</p>
+<section id="the-from-instruction">
+<h3>The FROM Instruction<a class="headerlink" href="#the-from-instruction" title="Link to this heading"></a></h3>
+<p>We can use the FROM instruction to start our new image from a known base image.
+This should be the first line of our Dockerfile. In our scenario, we found that
+the <code class="docutils literal notranslate"><span class="pre">nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04</span></code> image from the official Nvidia repository
+on Docker Hub was a good place to start, so that is
+how we will containerize it for others to use:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04</span>
+</pre></div>
+</div>
+<p>Base images typically take the form <cite>image_name:version</cite>. Avoid using the ‘<cite>latest</cite>’
+version; it is hard to track where it came from and the identity of ‘<cite>latest</cite>’
+can change.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Browse <a class="reference external" href="https://hub.docker.com/">Docker Hub</a> to discover other potentially
+useful base images. Keep an eye out for the ‘Official Image’ badge.</p>
+</div>
+</section>
+<section id="the-run-instruction">
+<h3>The RUN Instruction<a class="headerlink" href="#the-run-instruction" title="Link to this heading"></a></h3>
+<p>We can install updates, install new software, or download code to our image by
+running commands with the RUN instruction. In our case, our dependencies are Python3
+and PyTorch, so we will use a few RUN instructions to update the base OS and install them
+using the Ubuntu package manager (<code class="docutils literal notranslate"><span class="pre">apt</span></code>). Keep in mind that the the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code>
+process cannot handle interactive prompts, so we use the <code class="docutils literal notranslate"><span class="pre">-y</span></code> flag with <code class="docutils literal notranslate"><span class="pre">apt</span></code>.</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
+<span class="k">RUN</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3.10-full<span class="w"> </span>python3-pip
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">DEBIAN_FRONTEND=noninteractive</span></code> flag is used to suppress any
+interactive prompts that may occur during the installation process using the Ubuntu
+package manager <code class="docutils literal notranslate"><span class="pre">apt</span></code>. This is important because it will allow package installations
+that aren’t caught by the <code class="docutils literal notranslate"><span class="pre">-y</span></code> flag (like <code class="docutils literal notranslate"><span class="pre">tzdata</span></code>). This is a common problem with
+<code class="docutils literal notranslate"><span class="pre">apt</span></code>, so it is a good idea to include this flag in your Dockerfile.</p>
+</div>
+<p>Each RUN instruction creates an intermediate image (called a ‘layer’). Too many
+layers makes the Docker image less performant, and makes building less
+efficient. We can minimize the number of layers by combining RUN instructions.
+Dependencies that are more likely to change over time (e.g. Python3 libraries)
+still might be better off in in their own RUN instruction in order to save time
+building later on:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3.10-full<span class="w"> </span>python3-pip
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In the above code block, the character at the end of the lines causes the
+newline character to be ignored. This can make very long run-on lines with
+many commands separated by &amp;&amp; easier to read.</p>
+</div>
+<p>We will add another RUN instruction to install the PyTorch dependencies. We can
+use the same command we used interactively:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">2</span>.5.1<span class="w"> </span><span class="nv">torchvision</span><span class="o">==</span><span class="m">0</span>.20.1<span class="w"> </span><span class="nv">torchaudio</span><span class="o">==</span><span class="m">2</span>.5.1<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu124
+</pre></div>
+</div>
+</section>
+<section id="the-copy-instruction">
+<h3>The COPY Instruction<a class="headerlink" href="#the-copy-instruction" title="Link to this heading"></a></h3>
+<p>There are a couple different ways to get your source code inside the image. One
+way is to use a RUN instruction with <code class="docutils literal notranslate"><span class="pre">wget</span></code> to pull your code from the web.
+When you are developing, however, it is usually more practical to copy code in
+from the Docker build context using the COPY instruction. For example, we can
+copy our script to the root-level <code class="docutils literal notranslate"><span class="pre">/code</span></code> directory with the following
+instructions:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">COPY</span><span class="w"> </span>image_classifier.py<span class="w"> </span>/code/image_classifier.py
+</pre></div>
+</div>
+<p>And, don’t forget to perform another RUN instruction to make the script
+executable:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">RUN</span><span class="w"> </span>chmod<span class="w"> </span>+rx<span class="w"> </span>/code/image_classifier.py
+</pre></div>
+</div>
+</section>
+<section id="the-env-instruction">
+<h3>The ENV Instruction<a class="headerlink" href="#the-env-instruction" title="Link to this heading"></a></h3>
+<p>Another useful instruction is the ENV instruction. This allows the image
+developer to set environment variables inside the container runtime. In our
+interactive build, we added the <code class="docutils literal notranslate"><span class="pre">/code</span></code> folder to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code>. We can do this
+with ENV instructions as follows:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/code:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="the-cmd-instruction">
+<h3>The CMD Instruction<a class="headerlink" href="#the-cmd-instruction" title="Link to this heading"></a></h3>
+<p>Finally, we can use the CMD instruction to specify a default command to run
+when the container starts. This is useful for setting a default behavior for the container.
+In our case, we can set the default command to run our script with the <code class="docutils literal notranslate"><span class="pre">-h</span></code> flag to
+display the help message if someone runs the container without specifying a command:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;image_classifier.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-h&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="putting-it-all-together">
+<h3>Putting It All Together<a class="headerlink" href="#putting-it-all-together" title="Link to this heading"></a></h3>
+<p>The contents of the final Dockerfile should look like:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">FROM</span><span class="w"> </span><span class="s">nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos"> 4</span><span class="w">    </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3.10-full<span class="w"> </span>python3-pip
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">2</span>.5.1<span class="w"> </span><span class="nv">torchvision</span><span class="o">==</span><span class="m">0</span>.20.1<span class="w"> </span><span class="nv">torchaudio</span><span class="o">==</span><span class="m">2</span>.5.1<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu124
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">COPY</span><span class="w"> </span>image_classifier.py<span class="w"> </span>/code/image_classifier.py
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">RUN</span><span class="w"> </span>chmod<span class="w"> </span>+rx<span class="w"> </span>/code/image_classifier.py
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/code:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;image_classifier.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-h&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="build-the-image">
+<h2>Build the Image<a class="headerlink" href="#build-the-image" title="Link to this heading"></a></h2>
+<p>Once the Dockerfile is written and we are satisfied that we have minimized the
+number of layers, the next step is to build an image. Building a Docker image
+generally takes the form:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;dockerhubusername&gt;/&lt;code&gt;:&lt;version&gt;<span class="w"> </span>.
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-t</span></code> flag is used to name or ‘tag’ the image with a descriptive name and
+version. Optionally, you can preface the tag with your <strong>Docker Hub username</strong>.
+Adding that namespace allows you to push your image to a public registry and
+share it with others. The trailing dot ‘<code class="docutils literal notranslate"><span class="pre">.</span></code>’ in the line above simply
+indicates the location of the Dockerfile (a single ‘<code class="docutils literal notranslate"><span class="pre">.</span></code>’ means ‘the current
+directory’).</p>
+<p>To build the image, use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>username/image-classifier:0.1<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Or for a different architecture (see <a class="reference external" href="https://containers-at-tacc.readthedocs.io/en/latest/advanced/02.multiarchitecture.html">Multi-architecture builds</a>), you can use, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/arm64<span class="w"> </span>-t<span class="w"> </span>username/image-classifier:0.1<span class="w"> </span>.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t forget to replace ‘username’ with your Docker Hub username.</p>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code> to ensure you see a copy of your image has been built. You can
+also use <cite>docker inspect</cite> to find out more information about the image.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>images
+<span class="go">REPOSITORY                TAG                                IMAGE ID       CREATED          SIZE</span>
+<span class="go">eriksf/image-classifier   0.1                                a23875141d7a   34 seconds ago   6.01GB</span>
+<span class="go">nvidia/cuda               12.4.1-cudnn-runtime-ubuntu22.04   33f27d22a52d   11 months ago    3.1GB</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>inspect<span class="w"> </span>username/image-classifier:0.1
+</pre></div>
+</div>
+<p>If you need to rename your image, you can either re-tag it with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">tag</span></code>, or
+you can remove it with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rmi</span></code> and build it again. Issue each of the
+commands on an empty command line to find out usage information.</p>
+</section>
+<section id="test-the-image">
+<h2>Test the Image<a class="headerlink" href="#test-the-image" title="Link to this heading"></a></h2>
+<p>We can test a newly-built image two ways: interactively and non-interactively.
+In interactive testing, we will use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> to start a shell inside the
+image, just like we did when we were building it interactively. The difference
+this time is that we are NOT mounting the code inside with the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag,
+because the code is already in the container:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>-v<span class="w"> </span><span class="nv">$PWD</span>:/images<span class="w"> </span>username/image-classifier:0.1<span class="w"> </span>/bin/bash
+<span class="go">...</span>
+<span class="gp">root@10adb20f07b7:/# </span>ls<span class="w"> </span>/code
+<span class="go">image_classifier.py</span>
+<span class="gp">root@10adb20f07b7:/# </span>image_classifier.py<span class="w"> </span>/images/dog.jpg
+<span class="go">Downloading: &quot;https://download.pytorch.org/models/resnet101-cd907fc2.pth&quot; to /root/.cache/torch/hub/checkpoints/resnet101-cd907fc2.pth</span>
+<span class="go">100%|████████████████████████████████████████████████████████████████████████████████████████████████| 171M/171M [00:01&lt;00:00, 107MB/s]</span>
+<span class="go">Classifying /images/dog.jpg with ResNet101...</span>
+<span class="go">Labrador retriever: 70.6%</span>
+</pre></div>
+</div>
+<p>Here is an explanation of the options:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">docker run      # run a container</span>
+<span class="go">--rm            # remove the container when we exit</span>
+<span class="go">-it             # interactively attach terminal to inside of container</span>
+<span class="go">-v $PWD:/images # mount the current directory to /images</span>
+<span class="go">username/...    # image and tag on local machine</span>
+<span class="go">/bin/bash       # shell to start inside container</span>
+</pre></div>
+</div>
+<p>Next, exit the container and test the code non-interactively. Notice we are calling
+the container again with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code>, but instead of specifying an interactive
+(<code class="docutils literal notranslate"><span class="pre">-it</span></code>) run, we just issue the command as we want to call it (’<code class="docutils literal notranslate"><span class="pre">image_classifier.py</span> <span class="pre">/images/dog.jpg</span></code>’)
+on the command line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="nv">$PWD</span>:/images<span class="w"> </span>username/image-classifier:0.1<span class="w"> </span>image_classifier.py<span class="w"> </span>/images/dog.jpg
+<span class="go">Downloading: &quot;https://download.pytorch.org/models/resnet101-cd907fc2.pth&quot; to /root/.cache/torch/hub/checkpoints/resnet101-cd907fc2.pth</span>
+<span class="go">100%|██████████| 171M/171M [00:01&lt;00:00, 106MB/s]</span>
+<span class="go">Classifying /images/dog.jpg with ResNet101...</span>
+<span class="go">Labrador retriever: 70.6%</span>
+</pre></div>
+</div>
+<p>If there are no errors, the container is built and ready to share!</p>
+</section>
+<section id="share-your-docker-image">
+<h2>Share Your Docker Image<a class="headerlink" href="#share-your-docker-image" title="Link to this heading"></a></h2>
+<p>Now that you have containerized, tested, and tagged your code in a Docker image,
+the next step is to disseminate it so others can use it.</p>
+<section id="commit-to-github">
+<h3>Commit to GitHub<a class="headerlink" href="#commit-to-github" title="Link to this heading"></a></h3>
+<p>In the spirit of promoting Reproducible Science, it is now a good idea to create
+a new GitHub repository for this project and commit our files. The steps are:</p>
+<ol class="arabic simple">
+<li><p>Log in to <a class="reference external" href="https://github.com/">GitHub</a> and create a new repository called <em>image-classifier</em></p></li>
+<li><p>Do not add a README or license file at this time</p></li>
+<li><p>Then in your working folder, issue the following:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span><span class="nb">pwd</span>
+<span class="go">/Users/username/image-classifier/</span>
+<span class="gp">[local]$ </span>ls
+<span class="go">Dockerfile  automotive.jpg  dog.jpg  image_classifier.py  strawberries.jpg</span>
+<span class="gp">[local]$ </span>git<span class="w"> </span>init
+<span class="gp">[local]$ </span>git<span class="w"> </span>add<span class="w"> </span>*
+<span class="gp">[local]$ </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;first commit&quot;</span>
+<span class="gp">[local]$ </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:username/image-classifier.git
+<span class="gp">[local]$ </span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
+<span class="gp">[local]$ </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This assumes you have previously added an
+<a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">SSH key to your GitHub account</a>
+for the machine you are working on.</p>
+</div>
+<p>Make sure to use the GitHub URI which matches your username and repo name.
+Let’s also tag the repo as ‘0.1’ to match our Docker image tag:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span><span class="m">0</span>.1<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;first release&quot;</span>
+<span class="gp">[local]$ </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span><span class="m">0</span>.1
+</pre></div>
+</div>
+<p>Finally, navigate back to your GitHub repo in a web browser and make sure your
+files were uploaded and the tag exists.</p>
+</section>
+<section id="push-to-docker-hub">
+<h3>Push to Docker Hub<a class="headerlink" href="#push-to-docker-hub" title="Link to this heading"></a></h3>
+<p>Docker Hub is the <em>de facto</em> place to share an image you built. Remember, the
+image must be name-spaced with either your Docker Hub username or a Docker Hub
+organization where you have write privileges in order to push it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>login
+<span class="go">...</span>
+<span class="gp">[local]$ </span>docker<span class="w"> </span>push<span class="w"> </span>username/image-classifier:0.1
+</pre></div>
+</div>
+<p>You and others will now be able to pull a copy of your container with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>docker<span class="w"> </span>pull<span class="w"> </span>username/image-classifier:0.1
+</pre></div>
+</div>
+<p>As a matter of best practice, it is highly recommended that you store your
+Dockerfiles somewhere safe. A great place to do this is alongside the code
+in, e.g., GitHub. GitHub also has integrations to automatically update your
+image in the public container registry every time you commit new code.</p>
+<p>For example, see: <a class="reference external" href="https://docs.github.com/en/actions/publishing-packages/publishing-docker-images/">Publishing Docker Images</a>.</p>
+</section>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.docker.com/">Docker Docs</a></p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/">Docker Hub</a></p></li>
+<li><p><a class="reference external" href="https://training.play-with-docker.com/beginner-linux/">Docker for Beginners</a></p></li>
+<li><p><a class="reference external" href="https://labs.play-with-docker.com/">Play with Docker</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best Practices for Writing Dockerfiles</a></p></li>
+<li><p><a class="reference external" href="https://pytorch.org/vision/0.19/models.html">PyTorch Models and pre-trained weights</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intro_containers.html" class="btn btn-neutral float-left" title="Introduction to Containers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="running_containers_on_hpc.html" class="btn btn-neutral float-right" title="Running Containers on HPC Systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Texas Advanced Computing Center.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

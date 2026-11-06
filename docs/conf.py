@@ -22,7 +22,7 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'Welcome @ TACC'
+project = 'Introduction to TACC'
 copyright = '2026, Texas Advanced Computing Center'
 author = 'Texas Advanced Computing Center'
 
