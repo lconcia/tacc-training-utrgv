@@ -1,5 +1,5 @@
 High Peformance Computing (HPC) 
-===============================
+===============================================
 
 High Peformance Computing (HPC) refers to the aggregation of computing resources (i.e.
 supercomputers or clusters) to achieve performance far greater than a single workstation or server.
@@ -58,31 +58,6 @@ Storage Systems
 * `Ranch <https://tacc.utexas.edu/systems/ranch/>`_: Long-term data archiving system, high capacity (1,000,000 TB).
 
 
-File Systems
-^^^^^^^^^^^^
-
-Every TACC user has access to three filesystems on each cluster. 
-The account-level environment variables ``$HOME``, ``$WORK``, and ``$SCRATCH`` store the paths to
-directories that you own on each of these file systems. 
- 
-+---------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| File System         | Quota                             | Key Features                                                                                                       | 
-+=====================+===================================+====================================================================================================================+
-| ``$HOME``           |- 25GB                             |- Backed up.                                                                                                        |
-|                     |- 200,000 files                    |- Recommended Use: scripts and templates, environment settings, compilation, cron jobs                              |
-+---------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| ``$WORK``           |- 1TB                              |- NOT backed up.                                                                                                    |
-|                     |- 3,000,000 files                  |- Recommended Use: software installations, original datasets that can't be reproduced.                              |
-+---------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| ``$SCRATCH``        |- No quota assigned                |- NOT backed up.                                                                                                    |
-|                     |                                   |                                                                                                                    |
-|                     |                                   |- Recommended Use: Reproducible datasets, I/O files: temporary files, checkpoint/restart files, job output files    |
-+---------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------+
-
-Files in ``$SCRATCH`` are subject to purge if access time is more than 10 days old.
-
-
-
 User Responsibility on Shared Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -101,9 +76,11 @@ Read the `documentation <https://docs.tacc.utexas.edu/>`_.
 * Determine the right resource for the job
 
 
+
 Additional Resources
 --------------------
 
+* `Lonestar6 User Guide <https://docs.tacc.utexas.edu/hpc/lonestar6/>`_
 * `TACC documentation <https://docs.tacc.utexas.edu/>`_
 * `TACC help desk <https://www.tacc.utexas.edu/about/help>`_
 

@@ -1,31 +1,19 @@
 Linux Command Line 
 ==================
 
-Modern computational research is conducted primarily on Linux-based systems. Most research computing
-infrastructure, including the HPC clusters and cloud resources at TACC, runs Linux and supports
-software developed for Linux environments. These systems are accessed through a **command-line
-interface (CLI)**, a text-based interface where users type commands to interact directly with a
-computer. In research computing, the CLI is used to log into remote systems, manage files, and
-launch computational analyses.
-
-Learning how to use the Linux command line interface is therefore an essential skill for research
-computing. Once you are comfortable working in a Linux environment, you can work on virtually any
-research computing system in the world. After completing this module, participants should be able to:
+Learning how to use the Linux command line interface is an essential skill for research computing. Once you are comfortable working in a Linux environment, you can work on virtually any research computing system in the world. After completing this module, participants should be able to:
 
  * Describe basic functions of essential Linux commands
  * Use Linux commands to navigate a file system and manipulate files
  * Edit files directly on a Linux system using a command line utility (e.g. vim, nano, emacs)
  * Transfer data to a remote Linux file system
- * Print, identify, and modify environment variables
 
 Topics covered include:
 
  * Creating and changing folders (``pwd``, ``ls``, ``mkdir``, ``cd``, ``rmdir``)
  * Creating and manipulating files (``touch``, ``rm``, ``mv``, ``cp``)
  * Looking at the Contents of files (``cat``, ``more``, ``less``, ``head``, ``tail``, ``grep``)
- * Network and file transfers (``hostname``, ``whoami``, ``logout``, ``ssh``, ``scp``, ``rsync``)
-
-
+ * Network and file transfers (``hostname``, ``whoami``, ``logout``, ``ssh``, ``scp``)
 
 
 Creating and Changing Folders
@@ -410,6 +398,14 @@ To identify the path to our ``$WORK`` directory, we can use ``cd $WORK`` or the 
 
 .. code-block:: console
    
+   [ls6]$ cd $WORK
+   [ls6]$ pwd
+   /work/03302/lconcia/ls6
+
+or
+
+.. code-block:: console
+   
    [ls6]$ cdw
    [ls6]$ pwd
    /work/03302/lconcia/ls6
@@ -419,12 +415,19 @@ shortcut ``cds``:
 
 .. code-block:: console
    
+   [ls6]$ cd $SCRATCH
+   [ls6]$ pwd
+   /scratch/03302/lconcia
+
+or
+
+.. code-block:: console
+   
    [ls6]$ cds
    [ls6]$ pwd
    /scratch/03302/lconcia    
 
-Copying files from your local computer to Lonestar6's ``$WORK`` would require the ``scp`` command
-(Windows users use the program "WinSCP"):
+Copying files from your local computer to Lonestar6's ``$WORK`` would require the ``scp`` command:
 
 .. code-block:: console
 
@@ -465,16 +468,9 @@ additional example ``scp`` usage `here <https://en.wikipedia.org/wiki/Secure_cop
 EXERCISE
 ~~~~~~~~
 
-1. Identify which Lonestar6 login node you are on (login1, login2, login3)
-2. Remotely login to a different Lonestar6 login node and list what files are available.
-3. Logout until you are back to your original login node.
-4. Make your own ``my_file`` on your local computer using knowledge from our previous sections and copy ``my_file`` to your ``$WORK`` file system on Lonestar6 
-
-
-
-
-
-
+1. Logout until you are back to your local computer.
+2. Make your own ``my_file`` on your local computer using knowledge from our previous sections 
+3. copy ``my_file`` to your ``$WORK`` file system on Lonestar6 
 
 
 
@@ -582,10 +578,6 @@ Review of Topics Covered
 | ``scp local remote``               |  copy a file from local to remote               |
 +------------------------------------+-------------------------------------------------+
 | ``scp remote local``               |  copy a file from remote to local               |
-+------------------------------------+-------------------------------------------------+
-|  ``rsync -azv local remote``       |  sync files between local and remote            |
-+------------------------------------+-------------------------------------------------+
-|  ``rsync -azv remote local``       |  sync files between remote and local            |
 +------------------------------------+-------------------------------------------------+
 |  ``<Ctrl+d>``                      |  logout of host                                 |
 +------------------------------------+-------------------------------------------------+

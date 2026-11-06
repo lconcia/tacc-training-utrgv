@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Running on HPC Systems" href="02_running_on_hpc.html" />
-    <link rel="prev" title="Introduction" href="overview.html" /> 
+    <link rel="prev" title="Introduction to the Command Line Interface" href="overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,8 +56,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction to High Performance Computing (HPC)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction to the Command Line Interface</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Linux Command Line</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#creating-and-changing-folders">Creating and Changing Folders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creating-and-manipulating-files">Creating and Manipulating Files</a></li>
@@ -94,7 +94,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="overview.html">Introduction</a></li>
+          <li class="breadcrumb-item"><a href="overview.html">Introduction to the Command Line Interface</a></li>
       <li class="breadcrumb-item active">Linux Command Line</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/section2/01_LinuxCommandLine.rst.txt" rel="nofollow"> View page source</a>
@@ -107,22 +107,13 @@
              
   <section id="linux-command-line">
 <h1>Linux Command Line<a class="headerlink" href="#linux-command-line" title="Link to this heading"></a></h1>
-<p>Modern computational research is conducted primarily on Linux-based systems. Most research computing
-infrastructure, including the HPC clusters and cloud resources at TACC, runs Linux and supports
-software developed for Linux environments. These systems are accessed through a <strong>command-line
-interface (CLI)</strong>, a text-based interface where users type commands to interact directly with a
-computer. In research computing, the CLI is used to log into remote systems, manage files, and
-launch computational analyses.</p>
-<p>Learning how to use the Linux command line interface is therefore an essential skill for research
-computing. Once you are comfortable working in a Linux environment, you can work on virtually any
-research computing system in the world. After completing this module, participants should be able to:</p>
+<p>Learning how to use the Linux command line interface is an essential skill for research computing. Once you are comfortable working in a Linux environment, you can work on virtually any research computing system in the world. After completing this module, participants should be able to:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Describe basic functions of essential Linux commands</p></li>
 <li><p>Use Linux commands to navigate a file system and manipulate files</p></li>
 <li><p>Edit files directly on a Linux system using a command line utility (e.g. vim, nano, emacs)</p></li>
 <li><p>Transfer data to a remote Linux file system</p></li>
-<li><p>Print, identify, and modify environment variables</p></li>
 </ul>
 </div></blockquote>
 <p>Topics covered include:</p>
@@ -131,7 +122,7 @@ research computing system in the world. After completing this module, participan
 <li><p>Creating and changing folders (<code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>, <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span></code>, <code class="docutils literal notranslate"><span class="pre">rmdir</span></code>)</p></li>
 <li><p>Creating and manipulating files (<code class="docutils literal notranslate"><span class="pre">touch</span></code>, <code class="docutils literal notranslate"><span class="pre">rm</span></code>, <code class="docutils literal notranslate"><span class="pre">mv</span></code>, <code class="docutils literal notranslate"><span class="pre">cp</span></code>)</p></li>
 <li><p>Looking at the Contents of files (<code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">more</span></code>, <code class="docutils literal notranslate"><span class="pre">less</span></code>, <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">tail</span></code>, <code class="docutils literal notranslate"><span class="pre">grep</span></code>)</p></li>
-<li><p>Network and file transfers (<code class="docutils literal notranslate"><span class="pre">hostname</span></code>, <code class="docutils literal notranslate"><span class="pre">whoami</span></code>, <code class="docutils literal notranslate"><span class="pre">logout</span></code>, <code class="docutils literal notranslate"><span class="pre">ssh</span></code>, <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">rsync</span></code>)</p></li>
+<li><p>Network and file transfers (<code class="docutils literal notranslate"><span class="pre">hostname</span></code>, <code class="docutils literal notranslate"><span class="pre">whoami</span></code>, <code class="docutils literal notranslate"><span class="pre">logout</span></code>, <code class="docutils literal notranslate"><span class="pre">ssh</span></code>, <code class="docutils literal notranslate"><span class="pre">scp</span></code>)</p></li>
 </ul>
 </div></blockquote>
 <section id="creating-and-changing-folders">
@@ -435,6 +426,12 @@ easy to determine using the following commands:</p>
 path to our <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> directory. To identify these paths, we can use helpful command shortcuts.</p>
 <p>To identify the path to our <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directory, we can use <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$WORK</span></code> or the helpful shortcut
 <code class="docutils literal notranslate"><span class="pre">cdw</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORK</span>
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/work/03302/lconcia/ls6</span>
+</pre></div>
+</div>
+<p>or</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cdw
 <span class="gp">[ls6]$ </span><span class="nb">pwd</span>
 <span class="go">/work/03302/lconcia/ls6</span>
@@ -442,13 +439,18 @@ path to our <code class="docutils literal notranslate"><span class="pre">$WORK</
 </div>
 <p>To identify the path to our <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> directory, we can use <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$SCRATCH</span></code> or the helpful
 shortcut <code class="docutils literal notranslate"><span class="pre">cds</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$SCRATCH</span>
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/scratch/03302/lconcia</span>
+</pre></div>
+</div>
+<p>or</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cds
 <span class="gp">[ls6]$ </span><span class="nb">pwd</span>
 <span class="go">/scratch/03302/lconcia</span>
 </pre></div>
 </div>
-<p>Copying files from your local computer to Lonestar6’s <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> would require the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command
-(Windows users use the program “WinSCP”):</p>
+<p>Copying files from your local computer to Lonestar6’s <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> would require the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6
 <span class="gp gp-VirtualEnv">(enter password)</span>
 <span class="gp gp-VirtualEnv">(enter token)</span>
@@ -480,10 +482,9 @@ additional example <code class="docutils literal notranslate"><span class="pre">
 <section id="id1">
 <h3>EXERCISE<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
-<li><p>Identify which Lonestar6 login node you are on (login1, login2, login3)</p></li>
-<li><p>Remotely login to a different Lonestar6 login node and list what files are available.</p></li>
-<li><p>Logout until you are back to your original login node.</p></li>
-<li><p>Make your own <code class="docutils literal notranslate"><span class="pre">my_file</span></code> on your local computer using knowledge from our previous sections and copy <code class="docutils literal notranslate"><span class="pre">my_file</span></code> to your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> file system on Lonestar6</p></li>
+<li><p>Logout until you are back to your local computer.</p></li>
+<li><p>Make your own <code class="docutils literal notranslate"><span class="pre">my_file</span></code> on your local computer using knowledge from our previous sections</p></li>
+<li><p>copy <code class="docutils literal notranslate"><span class="pre">my_file</span></code> to your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> file system on Lonestar6</p></li>
 </ol>
 </section>
 </section>
@@ -640,12 +641,6 @@ additional example <code class="docutils literal notranslate"><span class="pre">
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">remote</span> <span class="pre">local</span></code></p></td>
 <td><p>copy a file from remote to local</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rsync</span> <span class="pre">-azv</span> <span class="pre">local</span> <span class="pre">remote</span></code></p></td>
-<td><p>sync files between local and remote</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rsync</span> <span class="pre">-azv</span> <span class="pre">remote</span> <span class="pre">local</span></code></p></td>
-<td><p>sync files between remote and local</p></td>
-</tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;Ctrl+d&gt;</span></code></p></td>
 <td><p>logout of host</p></td>
 </tr>
@@ -665,7 +660,7 @@ additional example <code class="docutils literal notranslate"><span class="pre">
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="overview.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="Introduction to the Command Line Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="02_running_on_hpc.html" class="btn btn-neutral float-right" title="Running on HPC Systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
