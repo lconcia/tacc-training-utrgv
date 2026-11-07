@@ -1,16 +1,15 @@
-Your First Steps at TACC
+Starting with TACC
 ===========================================
 
-Welcome to this workshop on using Texas Advanced Computing Center (TACC) resources. 
-This training is intended for people who have little to no experience with a command line interface, but intend to use a HPC cluster for scientific research. 
+Welcome at the "Starting at TACC" training! This workshop introduces foundational computing skills needed for scientific research, including high-performance computing (HPC) and the Linux command line. It is designed for researchers with little to no command line experience who plan to use a Linux workstation or HPC cluster in their work.
 
-Attendees will also gain hands-on experience utilizing TACC's high performance computing (HPC) systems, logging in, navigating the environment, managing files, and submitting HPC jobs.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
    
    section1/overview
+   section2/overview
    section4/overview
 
 Additional Resources

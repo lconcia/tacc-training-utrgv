@@ -12,7 +12,6 @@ learning models from the web.
    intro_containers
    building_containers
    running_containers_on_hpc
-   finding_running_models
 
 .. note::
 

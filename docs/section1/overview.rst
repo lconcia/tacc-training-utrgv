@@ -1,16 +1,13 @@
-Introduction to Systems and Data
-================================
+Introduction 
+================================================
 
-In this unit we introduce the computational resources and software environments that will be used
-throughout the workshop. Concepts covered will include the Linux command line interface, TACC
-high performance computing (HPC) systems.
-analysis. Mastery of these concepts is essential for successful completion of the hands-on exercises
-to come.
-
+In this unit we learn about the basic architecture of a high performance computing (HPC) cluster, and how to access TACC's HPC system.
 
 .. toctree::
    :maxdepth: 1
 
-   intro_to_hpc
-   running_on_hpc
-   set_up_for_tutorials
+   01_intro_to_hpc
+   02_connecting_to_the_cluster
+
+
+

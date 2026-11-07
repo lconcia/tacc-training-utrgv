@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Management &mdash; Introduction to TACC 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=ccdb6887"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to TACC
+              <img src="../_static/TACC-White-No-Mask.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section2/overview.html">Introduction to the Command Line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section4/overview.html">ML/DL on HPC Systems</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to TACC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data Management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section1/DataManagement.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-management">
+<h1>Data Management<a class="headerlink" href="#data-management" title="Link to this heading"></a></h1>
+<section id="creating-and-changing-folders">
+<h2>Creating and Changing Folders<a class="headerlink" href="#creating-and-changing-folders" title="Link to this heading"></a></h2>
+<p>On a Windows or Mac desktop, our present location determines what files and folders we can access. I
+can “see” my present location visually with the help of the graphic interface - I could be looking
+at my Desktop, or the contents of a folder, for example. In a Linux command-line interface, we lack
+the same visual cues to tell us what our location is. Instead, we use a command - <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (print
+working directory) - to tell us our present location. Try executing this command on Frontera:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia</span>
+</pre></div>
+</div>
+<p>This home location on the Linux filesystem is unique for each user, and it is roughly analogous to
+C:\Users\username on Windows, or /Users/username on Mac.</p>
+<p>To see what files and folders are available at this location, use the <code class="docutils literal notranslate"><span class="pre">ls</span></code> (list) command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span>ls
+</pre></div>
+</div>
+<p>I have no files or folders in my home directory yet, so I do not get a response. We can create some
+folders using the <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> (make directory) command. The words  ‘folder’ and ‘directory’ are
+interchangeable:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span>mkdir<span class="w"> </span>folder1
+<span class="gp">[frontera]$ </span>mkdir<span class="w"> </span>folder2
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span>ls
+<span class="go">folder1 folder2</span>
+</pre></div>
+</div>
+<p>Now we have some folders to work with. To “open” a folder, navigate into that folder using the
+<code class="docutils literal notranslate"><span class="pre">cd</span></code> (change directory) command. This process is analogous to double-clicking a folder on Windows
+or Mac:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia</span>
+<span class="gp">[frontera]$ </span><span class="nb">cd</span><span class="w"> </span>folder1
+<span class="gp">[frontera]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia/folder1</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">ls</span></code> to list the contents. What do you expect to see?</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span>ls
+</pre></div>
+</div>
+<p>There is nothing there because we have not made anything yet. Next, we will navigate back to the
+home directory. So far we have seen how to navigate “down” into folders, but how do we navigate
+back “up” to the parent folder? There are different ways to do it. For example, we could use a
+shortcut, <code class="docutils literal notranslate"><span class="pre">..</span></code>,  which refers to the <strong>parent folder</strong> - one level higher than the current
+location:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span><span class="nb">cd</span><span class="w"> </span>..
+<span class="gp">[frontera]$ </span><span class="nb">pwd</span>
+<span class="go">/home1/03302/lconcia</span>
+</pre></div>
+</div>
+<p>We are back in our home directory. Instead, we could specify the complete path of where we want to
+go, in this case <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/home1/03302/lconcia</span></code>. Finally, let’s remove the directories we have made,
+using <code class="docutils literal notranslate"><span class="pre">rmdir</span></code> to remove our folder <code class="docutils literal notranslate"><span class="pre">folder1</span></code> and any contents. The <code class="docutils literal notranslate"><span class="pre">-r</span></code> command line
+option recursively removes subfolders and files located “down” the parent directory. <code class="docutils literal notranslate"><span class="pre">-r</span></code> is
+required for folders.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span>rm<span class="w"> </span>-r<span class="w"> </span>folder1
+<span class="gp">[frontera]$ </span>ls
+<span class="go">folder2</span>
+</pre></div>
+</div>
+</section>
+<section id="transferring-files-to-and-from-frontera">
+<h2>Transferring Files to and from Frontera<a class="headerlink" href="#transferring-files-to-and-from-frontera" title="Link to this heading"></a></h2>
+<p>To practice transferring files to Frontera’s <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, we need to identify the
+path to our <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> and <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> directory.  To identify these paths, we can use helpful
+command shortcuts.</p>
+<p>To identify the path to our <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directory, we can use <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$WORK</span></code> or the helpful shortcut
+<code class="docutils literal notranslate"><span class="pre">cdw</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span>cdw
+<span class="gp">[frontera]$ </span><span class="nb">pwd</span>
+<span class="go">/work2/03302/lconcia/frontera</span>
+</pre></div>
+</div>
+<p>To identify the path to our <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> directory, we can use <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$SCRATCH</span></code> or the helpful
+shortcut <code class="docutils literal notranslate"><span class="pre">cds</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span>cds
+<span class="gp">[frontera]$ </span><span class="nb">pwd</span>
+<span class="go">/scratch1/03302/lconcia</span>
+</pre></div>
+</div>
+<p>Copying files from your local computer to Frontera’s <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> requires the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command. This
+should be available in your local Terminal (Mac/Linux) or WSL2 (Windows):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>lconcia@frontera.tacc.utexas.edu:/work2/03302/lconcia/frontera
+<span class="gp gp-VirtualEnv">(enter password)</span>
+<span class="gp gp-VirtualEnv">(enter token)</span>
+</pre></div>
+</div>
+<p>In this command, you specify the name of the file you want to transfer (<code class="docutils literal notranslate"><span class="pre">my_file</span></code>), the username
+(<code class="docutils literal notranslate"><span class="pre">lconcia</span></code>), the hostname (<code class="docutils literal notranslate"><span class="pre">frontera.tacc.utexas.edu</span></code>), and the path you want to put the file
+(<code class="docutils literal notranslate"><span class="pre">/work2/03302/lconcia/frontera</span></code>). Take careful notice of the separators including spaces, the &#64;
+symbol, and the colon.</p>
+<p>Copying files from your local computer <strong>to</strong> Frontera’s <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> using <code class="docutils literal notranslate"><span class="pre">scp</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>lconcia@frontera.tacc.utexas.edu:/scratch1/03302/lconcia/frontera
+<span class="gp gp-VirtualEnv">(enter password)</span>
+<span class="gp gp-VirtualEnv">(enter token)</span>
+</pre></div>
+</div>
+<p>Copy files <strong>from</strong> Frontera to your local computer using the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>lconcia@frontera.tacc.utexas.edu:/work2/03302/lconcia/frontera/my_file<span class="w"> </span>./
+<span class="gp gp-VirtualEnv">(enter password)</span>
+<span class="gp gp-VirtualEnv">(enter token)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you wanted to copy <code class="docutils literal notranslate"><span class="pre">my_file</span></code> from <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, the path you would specify after the
+colon would be <code class="docutils literal notranslate"><span class="pre">/scratch1/03302/lconcia/frontera/my_file</span></code>.</p>
+</div>
+<p>Instead of files, full directories can be copied using the “recursive” flag (<code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">...</span></code>). See
+additional example <code class="docutils literal notranslate"><span class="pre">scp</span></code> usage <a class="reference external" href="https://en.wikipedia.org/wiki/Secure_copy">here</a>.</p>
+<section id="exercise">
+<h3>EXERCISE<a class="headerlink" href="#exercise" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Download the file <a class="reference external" href="https://github.com/TACC/life_sciences_ml_at_tacc/raw/refs/heads/main/docs/section1/files/firststeps.zip">firststeps.zip</a>
+to your local laptop.</p></li>
+<li><p>Login to Frontera.</p></li>
+<li><p>Identify your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directory path using <code class="docutils literal notranslate"><span class="pre">cdw</span></code> and <code class="docutils literal notranslate"><span class="pre">pwd</span></code>.</p></li>
+<li><p>From your local computer, copy the file <code class="docutils literal notranslate"><span class="pre">firststeps.zip</span></code> to Frontera. (You will need to know where
+the file <code class="docutils literal notranslate"><span class="pre">firststeps.zip</span></code> was downloaded on your local computer and navigate to this folder.)</p></li>
+<li><p>Login to Frontera, navigate to your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, and unzip the file using <code class="docutils literal notranslate"><span class="pre">unzip</span> <span class="pre">firststeps.zip</span></code>.</p></li>
+</ol>
+<div class="toggle docutils container">
+<ol class="arabic">
+<li><p>Download the file <a class="reference external" href="https://github.com/TACC/life_sciences_ml_at_tacc/raw/refs/heads/main/docs/section1/files/firststeps.zip">firststeps.zip</a>.</p></li>
+<li><p>Login to Frontera:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>ssh<span class="w"> </span>username@frontera.tacc.utexas.edu
+<span class="gp gp-VirtualEnv">(enter password)</span>
+<span class="gp gp-VirtualEnv">(enter 6-digit token)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Identify your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directory path using <code class="docutils literal notranslate"><span class="pre">cdw</span></code> and <code class="docutils literal notranslate"><span class="pre">pwd</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[frontera]$ </span>cdw
+<span class="gp">[frontera]$ </span><span class="nb">pwd</span>
+<span class="go">/work2/03302/lconcia/frontera</span>
+<span class="gp">[frontera]$ </span><span class="nb">logout</span>
+</pre></div>
+</div>
+</li>
+<li><p>From your local computer, copy the file <code class="docutils literal notranslate"><span class="pre">firststeps.zip</span></code> to Frontera. (You will need to know
+where the file <code class="docutils literal notranslate"><span class="pre">firststeps.zip</span></code> was downloaded on your local computer and navigate to this
+folder.)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>firststeps.zip<span class="w"> </span>lconcia@frontera.tacc.utexas.edu:/work2/03302/lconcia/frontera
+<span class="gp gp-VirtualEnv">(enter password)</span>
+<span class="gp gp-VirtualEnv">(enter token)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Login to Frontera, navigate to your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, and unzip the file using
+<code class="docutils literal notranslate"><span class="pre">unzip</span> <span class="pre">firststeps.zip</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>ssh<span class="w"> </span>username@frontera.tacc.utexas.edu
+<span class="gp gp-VirtualEnv">(enter password)</span>
+<span class="gp gp-VirtualEnv">(enter 6-digit token)</span>
+<span class="gp">[frontera]$ </span>cdw
+<span class="gp">[frontera]$ </span>unzip<span class="w"> </span>firststeps.zip
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Avoid multiple logins by using <code class="docutils literal notranslate"><span class="pre">wget</span></code> to download files from the internet directly to
+Frontera.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="review-of-topics-covered">
+<h1>Review of Topics Covered<a class="headerlink" href="#review-of-topics-covered" title="Link to this heading"></a></h1>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code></p></td>
+<td><p>print working directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ls</span></code></p></td>
+<td><p>list files and directories</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">dir_name</span></code></p></td>
+<td><p>make a new directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">dir_name/</span></code></p></td>
+<td><p>navigate into a directory</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">dir_name/</span></code></p></td>
+<td><p>remove a directory and its contents</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">./</span></code></p></td>
+<td><p>refers to the present location</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">..</span></code> or <code class="docutils literal notranslate"><span class="pre">../</span></code></p></td>
+<td><p>refers to the parent directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$WORK</span></code>, <code class="docutils literal notranslate"><span class="pre">cdw</span></code></p></td>
+<td><p>Navigate to <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> file system</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$SCRATCH</span></code>, <code class="docutils literal notranslate"><span class="pre">cds</span></code></p></td>
+<td><p>Navigate to <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> file system</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">local</span> <span class="pre">remote</span></code></p></td>
+<td><p>Copy a file from local to remote</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">remote</span> <span class="pre">local</span></code></p></td>
+<td><p>Copy a file from remote to local</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Secure_copy">SCP examples</a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Texas Advanced Computing Center.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
