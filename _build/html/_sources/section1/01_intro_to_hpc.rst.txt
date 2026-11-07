@@ -3,13 +3,6 @@ High Peformance Computing (HPC)
 
 High Peformance Computing (HPC) refers to the aggregation of computing resources (i.e.
 supercomputers or clusters) to achieve performance far greater than a single workstation or server.
-By the end of this section, you should be able to:
-
-* Describe basic HPC architecture
-* Log in to a remote HPC system at TACC
-* Navigate the TACC file systems
-* Transfer files to and from TACC systems
-
 
 Basic HPC System Architecture
 -----------------------------
@@ -22,7 +15,7 @@ architecture. We can think of an HPC system as a very large and complicated labo
    :alt: HPC System Architecture
 
 
-Users need to learn how to:
+To use a HPC cluster for scientific research, users need to learn how to:
 
 * Interface with the cluster via command line
 * Load samples (transfer data)
@@ -34,6 +27,7 @@ Users need to learn how to:
 An HPC system has login nodes and compute nodes. We cannot run applications on the **login nodes**
 because they require too many resources and will interrupt the work of others. Instead, we must
 submit a job to a queue to run on **compute nodes**.
+
 
 Some Systems Available at TACC
 ------------------------------
@@ -58,8 +52,33 @@ Storage Systems
 * `Ranch <https://tacc.utexas.edu/systems/ranch/>`_: Long-term data archiving system, high capacity (1,000,000 TB).
 
 
-User Responsibility on Shared Resources
+HPC terminology
+----------------
+
+On an HPC cluster, thousands of users run jobs simultaneously; therefore, the cluster is partitioned to accommodate jobs with varying priorities, hardware requirements, and execution times. To understand the organization of a cluster, it is useful to learn these concepts:
+
+**Service Units (SUs)** are the unit of measure of compute time on a supercomputer. 1 SU = one node per one hour. Difference types of nodes may have different "charge rates". GPU nodes, for example, charge 3 SUs per hour, whereas a CPU node charge just 1 SU per hour. 
+
+**Allocation**: An allocation is a "bundle" of SUs (node-hours) assigned to a user or a project. It is an approved budget of computing time that a project can use.  
+
+**Reservation**: A reservation is a pre-arranged, guaranteed block of specific compute nodes set aside exclusively for a user during a designated timeframe, typically for special events like workshops, training, or live demonstrations.
+
+**Queue**: A queue is a specific subdivision of a supercomputer's nodes, categorized by hardware type, time limit, or job size and priority, where users submit their computing jobs to be scheduled and executed.
+
+  
+Lonestar6 Queues
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For example, these are the queues available on Lonestar 6. It is important to understand the queue limitations and pick a queue that is appropriate for your job. Documentation can be found `here <https://docs.tacc.utexas.edu/hpc/lonestar6/#table5>`_.
+
+.. image:: ./images/lonestar6_queues.png
+   :target: ./images/lonestar6_queues.png
+   :alt: Lonestar6 Queues
+  
+
+
+User Responsibility on Shared Resources
+------------------------------------------------
 
 HPC systems are shared resources. Your jobs and activity on a cluster, if mismanaged,
 can affect others. TACC staff are always
@@ -80,7 +99,7 @@ Read the `documentation <https://docs.tacc.utexas.edu/>`_.
 Additional Resources
 --------------------
 
-* `Lonestar6 User Guide <https://docs.tacc.utexas.edu/hpc/lonestar6/>`_
+* `Lonestar6 documentation <https://docs.tacc.utexas.edu/hpc/lonestar6/>`_
 * `TACC documentation <https://docs.tacc.utexas.edu/>`_
 * `TACC help desk <https://www.tacc.utexas.edu/about/help>`_
 

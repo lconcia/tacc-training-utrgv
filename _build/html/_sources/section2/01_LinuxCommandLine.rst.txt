@@ -1,13 +1,7 @@
-Linux Command Line 
-==================
+Basic Linux Commands 
+====================
 
-Learning how to use the Linux command line interface is an essential skill for research computing. Once you are comfortable working in a Linux environment, you can work on virtually any research computing system in the world. After completing this module, participants should be able to:
-
- * Describe basic functions of essential Linux commands
- * Use Linux commands to navigate a file system and manipulate files
- * Edit files directly on a Linux system using a command line utility (e.g. vim, nano, emacs)
- * Transfer data to a remote Linux file system
-
+Learning how to use the Linux command line interface is an essential skill for research computing. Once you are comfortable working in a Linux environment, you can work on virtually any research computing system in the world.
 Topics covered include:
 
  * Creating and changing folders (``pwd``, ``ls``, ``mkdir``, ``cd``, ``rmdir``)
@@ -459,7 +453,7 @@ Copy files from Lonestar6 to your local computer using the following:
 .. note::
 
    If you wanted to copy ``my_file`` from ``$SCRATCH``, the path you would specify after the
-   colon would be ``/scratch1/03302/lconcia/frontera/my_file``.
+   colon would be ``/scratch1/03302/lconcia/ls6/my_file``.
 
 Instead of files, full directories can be copied using the "recursive" flag (``scp -r ...``). See
 additional example ``scp`` usage `here <https://en.wikipedia.org/wiki/Secure_copy>`__.

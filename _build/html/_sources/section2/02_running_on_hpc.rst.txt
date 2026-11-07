@@ -1,18 +1,40 @@
 Running on HPC Systems
 ======================
 
-Running tasks on a high performance computing (HPC) systems is different from running tasks on a
-personal computer. You can either run tasks interactively on a compute node, or submit tasks as 
-batch jobs to a queue. The former is useful for development (e.g. exploratory data analysis, testing
+
+As we discussed before, on Lonestar6 there are login nodes and compute nodes.
+
+.. image:: ./images/hpc_schematic.png
+   :target: ./images/hpc_schematic.png
+   :alt: HPC System Architecture
+
+We cannot run the applications we need for our research on the **login nodes** because they require too 
+many resources and will interrupt the work of others. Instead, we need to run our jobs on the **computing nodes**, 
+either with an interactive session ``idev`` or by submitting tasks as batch jobs to a queue wtih ``sbatch`` . 
+The former is useful for development (e.g. exploratory data analysis, testing
 models, troubleshooting), while the latter is useful for production runs (e.g. training models at
-scale). By the end of this section, you should be able to:
+scale). 
+
+In this section, you will learn to:
 
 * Start an interactive session on a compute node
 * Describe the components of a SLURM batch job submission file
-* Use a Linux text editor such as VIM
-* Submit a batch job to a queue
+* Use a Linux text editor such as Nano or VIM
+* Submit a batch job to a queue and monitor the job progress
 * Manage software modules
 
+  
+Lonestar6 Queues
+----------------
+
+There are several queues available on Lonestar6. It is important to understand the queue limitations and pick a queue that is appropriate for your job. 
+The default queue for ``idev`` is the ``development`` queue which has a max runtime of 2 hours, and users can only submit one job at a time.
+Today, we will be using the ``normal`` queue instead. 
+
+.. image:: ./images/lonestar6_queues.png
+   :target: ./images/lonestar6_queues.png
+   :alt: Lonestar6 Queues
+  
 
 Run Interactively with idev
 ---------------------------
@@ -26,12 +48,12 @@ To learn about the command line options available for ``idev``, use ``idev -help
 
 .. code-block:: console
    
-   [frontera]$ idev --help
+   [ls6]$ idev --help
    ...
    OPTION ARGUMENTS         DESCRIPTION
-   -A     account_name      sets account name (default: in .idevrc)
+   -A     account_name      sets allocation name or account name (default: in .idevrc)
    -m     minutes           sets time in minutes (default: 30)
-   -p     queue_name        sets queue to named queue (default: -p development)
+   -p     queue_name        sets queue to named queue (default for idev: -p development)
    -r     resource_name     sets hardware
    -t     hh:mm:ss          sets time to hh:mm:ss (default: 00:30:00)
    -help      [--help     ] displays (this) help message
@@ -49,24 +71,24 @@ interactive session:
   ``-A`` to set the allocation I want to be used like so: ``-A TACC`` or ``-A Training``.
 * To change the **queue** to be different than the default ``development`` queue, users can use the
   ``-p`` command line option. For example, if a user wants to launch an interactive session on one
-  of Frontera GPU nodes, they would use the command line option ``-p rtx`` or ``-p rtx-dev``. You
-  can learn more about the different queues of Frontera 
-  `here <https://docs.tacc.utexas.edu/hpc/frontera/#table6>`_.
+  of Lonestar6 GPU nodes, they would use the command line option ``-p gpu-a100`` or ``-p gpu-a100-dev``. You
+  can learn more about the different queues of Lonestar6 
+  `here <https://docs.tacc.utexas.edu/hpc/lonestar6/#table5>`_.
 
 .. note::
    
-   For the scope of this section, we will be using the default ``development`` queue.  
+   For the scope of this section, we will be using the default ``normal`` queue.  
 
 To start a thirty-minute interactive session on a compute node in the development queue with our
 ``EXAMPLE`` allocation:
 
 .. code-block:: console
    
-   [frontera]$ idev -A EXAMPLE   
+   [ls6]$ idev -A EXAMPLE -p normal 
 
 .. note::
 
-   For this workshop, using allocation name ``Frontera-Training`` instead of "EXAMPLE"
+   For this workshop, using allocation name ``TRA25008`` instead of "EXAMPLE"
 
 If launch is successful, you will see output that includes the following excerpts:
 
@@ -74,20 +96,34 @@ If launch is successful, you will see output that includes the following excerpt
    
    ...
    -----------------------------------------------------------------
-         Welcome to the Frontera Supercomputer          
+              Welcome to the Lonestar6 Supercomputer                
    -----------------------------------------------------------------
-   ...
+   
+   No reservation for this job
+   --> Verifying valid submit host (login2)...OK
+   --> Verifying valid jobname...OK
+   --> Verifying valid ssh keys...OK
+   --> Verifying access to desired queue (development)...OK
+   --> Checking available allocation (TACC-SCI)...OK
+   --> Verifying that quota for filesystem /home1/03302/lconcia is at 10.51% allocated...OK
+   --> Verifying that quota for filesystem /work/03302/lconcia/ls6 is at 85.81% allocated...OK
+   Submitted batch job 3559849
 
-   -> After your idev job begins to run, a command prompt will appear,
-   -> and you can begin your interactive development session. 
-   -> We will report the job status every 4 seconds: (PD=pending, R=running).
-
-   -> job status:  PD
-   -> job status:  R
-
-   -> Job is now running on masternode= c205-004...OK
-   ...
-   c205-004[clx](633)$
+     -> After your idev job begins to run, a command prompt will appear,
+     -> and you can begin your interactive development session. 
+     -> Waiting for idev job to Run (change from PD=pending to R=running).
+    
+            Job  Wait
+           State (m:s)
+        #    R    0:23
+    
+     -> Job is now running on masternode= c313-213...OK
+     -> Checking for an environment file in master node.... FOUND
+     ->          Time Waited for env file: 2 (sec)
+     -> Creating interactive terminal session    on master node c313-213.
+     -> Node access by: ssh -Y -A -o "StrictHostKeyChecking no" c313-213
+     
+    c313-213.ls6(1000)$ 
 
 
 EXERCISE
@@ -99,9 +135,9 @@ EXERCISE
    
    .. code-block:: console
    
-      [frontera]$ cdw
-      [frontera]$ wget https://github.com/TACC/life_sciences_ml_at_tacc/raw/refs/heads/main/docs/section1/files/firststeps.zip
-      [frontera]$ unzip firststeps.zip
+      [ls6]$ cdw
+      [ls6]$ wget https://github.com/TACC/life_sciences_ml_at_tacc/raw/refs/heads/main/docs/section1/files/firststeps.zip
+      [ls6]$ unzip firststeps.zip
 
 Let's execute some Python code that determines the larger of two numbers. The code also includes a
 3-second delay before finishing. Note, the ``[clx]`` syntax in the prompt refers to an interactive
@@ -139,6 +175,21 @@ To exit an interactive session, you can use the command ``logout``.
 
 
 
+
+
+Batch Job Submission
+====================
+
+ 
+we must write a short text file containing a list of the resources we need, and containing the command(s) for running the 
+application. Then, we submit that text file to a queue to run on compute nodes. This process is
+called **batch job submission**.
+
+
+
+
+
+
 Run Non-Interactively with sbatch
 ---------------------------------
 
@@ -168,9 +219,9 @@ First, navigate to the ``Lab01`` directory where we have an example job script p
 
 .. code-block:: console
 
-   [frontera]$ cdw
-   [frontera]$ cd Lab01
-   [frontera]$ cat example_template.slurm
+   [ls6]$ cdw
+   [ls6]$ cd Lab01
+   [ls6]$ cat example_template.slurm
 
    #!/bin/bash
    #----------------------------------------------------
@@ -266,11 +317,11 @@ includes a 3-second delay before finishing.
 
 .. code-block:: console
 
-   [frontera]$ cdw
-   [frontera]$ cd Lab01
-   [frontera]$ pwd
+   [ls6]$ cdw
+   [ls6]$ cd Lab01
+   [ls6]$ pwd
    /work2/03302/lconcia/frontera/Lab01
-   [frontera]$ ls
+   [ls6]$ ls
    example.slurm  example_template.slurm  my_code.py
 
 Next, we need to fill out ``example_template.slurm`` to request the necessary resources. I know that
@@ -319,7 +370,7 @@ Open the file ``example_template.slurm``:
 
 .. code-block:: console
  
-   [frontera]$ vim example_template.slurm
+   [ls6]$ vim example_template.slurm
 
 There are two "modes" in VIM that we will talk about today. They are called "insert mode" and
 "normal mode".  In insert mode, the user is typing text into a file as seen through the terminal
@@ -378,29 +429,29 @@ using the ``sbatch`` command`:
 
 .. code-block:: console
 
-   [frontera]$ sbatch example_template.slurm
+   [ls6]$ sbatch example_template.slurm
 
 To view the jobs you have currently in the queue, use the ``showq`` or ``squeue`` commands:
 
 .. code-block:: console
 
-   [frontera]$ showq -u               # shows my jobs
-   [frontera]$ showq                  # shows all jobs by all users
-   [frontera]$ squeue -u $USERNAME    # shows my jobs
-   [frontera]$ squeue                 # shows all jobs by all users
+   [ls6]$ showq -u               # shows my jobs
+   [ls6]$ showq                  # shows all jobs by all users
+   [ls6]$ squeue -u $USERNAME    # shows my jobs
+   [ls6]$ squeue                 # shows all jobs by all users
 
 If for any reason you need to cancel a job, use the ``scancel`` command with the 6- or 7-digit
 ``jobid``:
 
 .. code-block:: console
 
-   [frontera]$ scancel jobid
+   [ls6]$ scancel jobid
 
 For more example scripts, see this directory on Frontera:
 
 .. code-block:: console
 
-   [frontera]$ ls /share/doc/slurm/
+   [ls6]$ ls /share/doc/slurm/
 
 If everything went well, you should have a file named ``duration.txt``, 
 an output file named something similar to ``output.o6146935``, 
@@ -409,7 +460,7 @@ and an error file named something similar to ``error.o6146935`` in the same dire
 
 .. code-block:: console
 
-   [frontera]$ ls
+   [ls6]$ ls
    duration.txt  error.6146935  example.slurm  example_template.slurm  my_code.py  output.6146935
 
 **Congratulations! You ran a batch job on Frontera!**
@@ -433,7 +484,7 @@ default set of modules.  A user can list the modules loaded by:
 
 .. code-block:: console
 
-   [frontera]$ module list
+   [ls6]$ module list
    
    Currently Loaded Modules:
      1) intel/19.1.1   3) git/2.24.1      5) python3/3.7.0   7) hwloc/1.11.12   9) TACC
@@ -443,9 +494,9 @@ To find out available modules for loading, a user can use:
 
 .. code-block:: console
 
-   [frontera]$ module avail
+   [ls6]$ module avail
    - or -
-   [frontera]$ module spider
+   [ls6]$ module spider
 
 Press the ``<Enter>`` key to scroll through line-by-line, or the ``<Space>`` key to scroll through
 page-by-page. Press ``q`` to quit the view.
@@ -455,7 +506,7 @@ modules are available to load. To display a concise listing:
 
 .. code-block:: console
 
-   [frontera]$ module overview
+   [ls6]$ module overview
    
    ----------------- /opt/apps/intel19/impi19_0/python3_7/modulefiles -----------------
    boost-mpi (2)
@@ -480,7 +531,7 @@ To check all the versions of a package (e.g., Rstats):
 
 .. code-block:: console
 
-   [frontera]$ module avail Rstats
+   [ls6]$ module avail Rstats
    
    --------------- /opt/apps/intel19/impi19_0/modulefiles ---------------
       Rstats/3.6.3    Rstats/4.0.3 (D)
@@ -490,25 +541,25 @@ specify the version, the default module will be loaded. To load packages a user 
 
 .. code-block:: console
 
-    [frontera]$ module load package1 package2 ...
+    [ls6]$ module load package1 package2 ...
 
 To unload packages a user does:
 
 .. code-block:: console
 
-    [frontera]$ module unload package1 package2 ...
+    [ls6]$ module unload package1 package2 ...
 
 Modules can contain help messages.  To access a module's help do:
 
 .. code-block:: console
 
-    [frontera]$ module help packageName
+    [ls6]$ module help packageName
 
 To get a list of all the commands that module knows about do:
 
 .. code-block:: console
 
-    [frontera]$ module help
+    [ls6]$ module help
 
 
 Review of Topics Covered

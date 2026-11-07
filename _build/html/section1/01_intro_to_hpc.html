@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Connecting to the HPC cluster" href="02_connecting_to_the_cluster.html" />
-    <link rel="prev" title="Introduction to High Performance Computing (HPC)" href="overview.html" /> 
+    <link rel="prev" title="Introduction" href="overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,13 +56,19 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction to High Performance Computing (HPC)</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">High Peformance Computing (HPC)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#basic-hpc-system-architecture">Basic HPC System Architecture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#some-systems-available-at-tacc">Some Systems Available at TACC</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#clusters">Clusters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#storage-systems">Storage Systems</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#user-responsibility-on-shared-resources">User Responsibility on Shared Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hpc-terminology">HPC terminology</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lonestar6-queues">Lonestar6 Queues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user-responsibility-on-shared-resources">User Responsibility on Shared Resources</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#tips-for-success">Tips for Success</a></li>
 </ul>
 </li>
@@ -90,7 +96,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="overview.html">Introduction to High Performance Computing (HPC)</a></li>
+          <li class="breadcrumb-item"><a href="overview.html">Introduction</a></li>
       <li class="breadcrumb-item active">High Peformance Computing (HPC)</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/section1/01_intro_to_hpc.rst.txt" rel="nofollow"> View page source</a>
@@ -104,21 +110,14 @@
   <section id="high-peformance-computing-hpc">
 <h1>High Peformance Computing (HPC)<a class="headerlink" href="#high-peformance-computing-hpc" title="Link to this heading"></a></h1>
 <p>High Peformance Computing (HPC) refers to the aggregation of computing resources (i.e.
-supercomputers or clusters) to achieve performance far greater than a single workstation or server.
-By the end of this section, you should be able to:</p>
-<ul class="simple">
-<li><p>Describe basic HPC architecture</p></li>
-<li><p>Log in to a remote HPC system at TACC</p></li>
-<li><p>Navigate the TACC file systems</p></li>
-<li><p>Transfer files to and from TACC systems</p></li>
-</ul>
+supercomputers or clusters) to achieve performance far greater than a single workstation or server.</p>
 <section id="basic-hpc-system-architecture">
 <h2>Basic HPC System Architecture<a class="headerlink" href="#basic-hpc-system-architecture" title="Link to this heading"></a></h2>
 <p>As you prepare to use TACC systems for your research, it is important to understand the basic
 architecture. We can think of an HPC system as a very large and complicated laboratory instrument.</p>
 <a class="reference external image-reference" href="./images/hpc_schematic.png"><img alt="HPC System Architecture" src="../_images/hpc_schematic.png" />
 </a>
-<p>Users need to learn how to:</p>
+<p>To use a HPC cluster for scientific research, users need to learn how to:</p>
 <ul class="simple">
 <li><p>Interface with the cluster via command line</p></li>
 <li><p>Load samples (transfer data)</p></li>
@@ -151,12 +150,26 @@ NSF’s supercomputing ecosystem for the nation’s open science community.</p><
 <li><p><a class="reference external" href="https://tacc.utexas.edu/systems/ranch/">Ranch</a>: Long-term data archiving system, high capacity (1,000,000 TB).</p></li>
 </ul>
 </section>
+</section>
+<section id="hpc-terminology">
+<h2>HPC terminology<a class="headerlink" href="#hpc-terminology" title="Link to this heading"></a></h2>
+<p>On an HPC cluster, thousands of users run jobs simultaneously; therefore, the cluster is partitioned to accommodate jobs with varying priorities, hardware requirements, and execution times. To understand the organization of a cluster, it is useful to learn these concepts:</p>
+<p><strong>Service Units (SUs)</strong> are the unit of measure of compute time on a supercomputer. 1 SU = one node per one hour. Difference types of nodes may have different “charge rates”. GPU nodes, for example, charge 3 SUs per hour, whereas a CPU node charge just 1 SU per hour.</p>
+<p><strong>Allocation</strong>: An allocation is a “bundle” of SUs (node-hours) assigned to a user or a project. It is an approved budget of computing time that a project can use.</p>
+<p><strong>Reservation</strong>: A reservation is a pre-arranged, guaranteed block of specific compute nodes set aside exclusively for a user during a designated timeframe, typically for special events like workshops, training, or live demonstrations.</p>
+<p><strong>Queue</strong>: A queue is a specific subdivision of a supercomputer’s nodes, categorized by hardware type, time limit, or job size and priority, where users submit their computing jobs to be scheduled and executed.</p>
+<section id="lonestar6-queues">
+<h3>Lonestar6 Queues<a class="headerlink" href="#lonestar6-queues" title="Link to this heading"></a></h3>
+<p>For example, these are the queues available on Lonestar 6. It is important to understand the queue limitations and pick a queue that is appropriate for your job. Documentation can be found <a class="reference external" href="https://docs.tacc.utexas.edu/hpc/lonestar6/#table5">here</a>.</p>
+<a class="reference external image-reference" href="./images/lonestar6_queues.png"><img alt="Lonestar6 Queues" src="../_images/lonestar6_queues.png" />
+</a>
+</section>
+</section>
 <section id="user-responsibility-on-shared-resources">
-<h3>User Responsibility on Shared Resources<a class="headerlink" href="#user-responsibility-on-shared-resources" title="Link to this heading"></a></h3>
+<h2>User Responsibility on Shared Resources<a class="headerlink" href="#user-responsibility-on-shared-resources" title="Link to this heading"></a></h2>
 <p>HPC systems are shared resources. Your jobs and activity on a cluster, if mismanaged,
 can affect others. TACC staff are always
 <a class="reference external" href="https://www.tacc.utexas.edu/about/help/">available to help</a>.</p>
-</section>
 <section id="tips-for-success">
 <h3>Tips for Success<a class="headerlink" href="#tips-for-success" title="Link to this heading"></a></h3>
 <p>Read the <a class="reference external" href="https://docs.tacc.utexas.edu/">documentation</a>.</p>
@@ -170,7 +183,7 @@ can affect others. TACC staff are always
 <section id="additional-resources">
 <h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.tacc.utexas.edu/hpc/lonestar6/">Lonestar6 User Guide</a></p></li>
+<li><p><a class="reference external" href="https://docs.tacc.utexas.edu/hpc/lonestar6/">Lonestar6 documentation</a></p></li>
 <li><p><a class="reference external" href="https://docs.tacc.utexas.edu/">TACC documentation</a></p></li>
 <li><p><a class="reference external" href="https://www.tacc.utexas.edu/about/help">TACC help desk</a></p></li>
 </ul>
@@ -181,7 +194,7 @@ can affect others. TACC staff are always
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="overview.html" class="btn btn-neutral float-left" title="Introduction to High Performance Computing (HPC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="02_connecting_to_the_cluster.html" class="btn btn-neutral float-right" title="Connecting to the HPC cluster" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

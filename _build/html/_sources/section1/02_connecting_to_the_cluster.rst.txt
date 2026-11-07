@@ -178,7 +178,7 @@ To navigate the different file systems available on TACC HPC systems, you can us
 
       [ls6]$ cd $HOME
       # or
-      [ls6]$ cd
+      [ls6]$ cdh
 
 2. **Work Directory**: To change to your work directory, you can use:
 

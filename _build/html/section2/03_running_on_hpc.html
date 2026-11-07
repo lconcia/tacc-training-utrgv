@@ -1,0 +1,730 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running on HPC Systems &mdash; Introduction to TACC 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=ccdb6887"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Introduction to TACC
+              <img src="../_static/TACC-White-No-Mask.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction to the Command Line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section4/overview.html">ML/DL on HPC Systems</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Introduction to TACC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Running on HPC Systems</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/section2/03_running_on_hpc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="running-on-hpc-systems">
+<h1>Running on HPC Systems<a class="headerlink" href="#running-on-hpc-systems" title="Link to this heading"></a></h1>
+<p>As we discussed before, on Lonestar6 there are login nodes and compute nodes.</p>
+<a class="reference external image-reference" href="./images/hpc_schematic.png"><img alt="HPC System Architecture" src="../_images/hpc_schematic1.png" />
+</a>
+<p>We cannot run the applications we need for our research on the <strong>login nodes</strong> because they require too
+many resources and will interrupt the work of others. Instead, we need to run our jobs on the <strong>computing nodes</strong>,
+either with an interactive session <code class="docutils literal notranslate"><span class="pre">idev</span></code> or by submitting tasks as batch jobs to a queue wtih <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> .
+The former is useful for development (e.g. exploratory data analysis, testing
+models, troubleshooting), while the latter is useful for production runs (e.g. training models at
+scale).</p>
+<p>In this section, you will learn to:</p>
+<ul class="simple">
+<li><p>Start an interactive session on a compute node</p></li>
+<li><p>Describe the components of a SLURM batch job submission file</p></li>
+<li><p>Use a Linux text editor such as Nano or VIM</p></li>
+<li><p>Submit a batch job to a queue and monitor the job progress</p></li>
+<li><p>Manage software modules</p></li>
+</ul>
+<section id="lonestar6-queues">
+<h2>Lonestar6 Queues<a class="headerlink" href="#lonestar6-queues" title="Link to this heading"></a></h2>
+<p>There are several queues available on Lonestar6. It is important to understand the queue limitations and pick a queue that is appropriate for your job.
+The default queue for <code class="docutils literal notranslate"><span class="pre">idev</span></code> is the <code class="docutils literal notranslate"><span class="pre">development</span></code> queue which has a max runtime of 2 hours, and users can only submit one job at a time.
+Today, we will be using the <code class="docutils literal notranslate"><span class="pre">normal</span></code> queue instead.</p>
+<a class="reference external image-reference" href="./images/lonestar6_queues.png"><img alt="Lonestar6 Queues" src="../_images/lonestar6_queues1.png" />
+</a>
+</section>
+<section id="run-interactively-with-idev">
+<h2>Run Interactively with idev<a class="headerlink" href="#run-interactively-with-idev" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">idev</span></code> utility initiates an interactive session on one or more compute nodes so that you can
+issue commands and run code as if you were doing so on your personal machine. An interactive session
+is useful for development, as you can quickly compile, run, and validate code. This is accomplished
+by simply executing <code class="docutils literal notranslate"><span class="pre">idev</span></code> on any of the TACC systems.</p>
+<p>To learn about the command line options available for <code class="docutils literal notranslate"><span class="pre">idev</span></code>, use <code class="docutils literal notranslate"><span class="pre">idev</span> <span class="pre">-help</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>idev<span class="w"> </span>--help
+<span class="go">...</span>
+<span class="go">OPTION ARGUMENTS         DESCRIPTION</span>
+<span class="go">-A     account_name      sets allocation name or account name (default: in .idevrc)</span>
+<span class="go">-m     minutes           sets time in minutes (default: 30)</span>
+<span class="go">-p     queue_name        sets queue to named queue (default for idev: -p development)</span>
+<span class="go">-r     resource_name     sets hardware</span>
+<span class="go">-t     hh:mm:ss          sets time to hh:mm:ss (default: 00:30:00)</span>
+<span class="go">-help      [--help     ] displays (this) help message</span>
+<span class="go">-v         [--version  ] output version information and exit</span>
+</pre></div>
+</div>
+<p>Let’s go over some of the most useful <code class="docutils literal notranslate"><span class="pre">idev</span></code> command line options that can customize your
+interactive session:</p>
+<ul class="simple">
+<li><p>To change the <strong>time</strong> limit from the default 30 minutes, users can apply the <code class="docutils literal notranslate"><span class="pre">-m</span></code> command line
+option. For example, a user requesting an interactive session for an hour would use the command
+line option <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">60</span></code>.</p></li>
+<li><p>To change the <strong>allocation_name</strong> associated with the interactive session, users can use the
+<code class="docutils literal notranslate"><span class="pre">-A</span></code> command line option. This option is useful for when a user has multiple allocations they
+belong to. For example, if I have allocations on accounts <code class="docutils literal notranslate"><span class="pre">TACC</span></code> and <code class="docutils literal notranslate"><span class="pre">Training</span></code>, I can use
+<code class="docutils literal notranslate"><span class="pre">-A</span></code> to set the allocation I want to be used like so: <code class="docutils literal notranslate"><span class="pre">-A</span> <span class="pre">TACC</span></code> or <code class="docutils literal notranslate"><span class="pre">-A</span> <span class="pre">Training</span></code>.</p></li>
+<li><p>To change the <strong>queue</strong> to be different than the default <code class="docutils literal notranslate"><span class="pre">development</span></code> queue, users can use the
+<code class="docutils literal notranslate"><span class="pre">-p</span></code> command line option. For example, if a user wants to launch an interactive session on one
+of Lonestar6 GPU nodes, they would use the command line option <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">gpu-a100</span></code> or <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">gpu-a100-dev</span></code>. You
+can learn more about the different queues of Lonestar6
+<a class="reference external" href="https://docs.tacc.utexas.edu/hpc/lonestar6/#table5">here</a>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the scope of this section, we will be using the default <code class="docutils literal notranslate"><span class="pre">normal</span></code> queue.</p>
+</div>
+<p>To start a thirty-minute interactive session on a compute node in the development queue with our
+<code class="docutils literal notranslate"><span class="pre">EXAMPLE</span></code> allocation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>idev<span class="w"> </span>-A<span class="w"> </span>EXAMPLE<span class="w"> </span>-p<span class="w"> </span>normal
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For this workshop, using allocation name <code class="docutils literal notranslate"><span class="pre">TRA25008</span></code> instead of “EXAMPLE”</p>
+</div>
+<p>If launch is successful, you will see output that includes the following excerpts:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">...</span>
+<span class="go">-----------------------------------------------------------------</span>
+<span class="go">           Welcome to the Lonestar6 Supercomputer</span>
+<span class="go">-----------------------------------------------------------------</span>
+
+<span class="go">No reservation for this job</span>
+<span class="go">--&gt; Verifying valid submit host (login2)...OK</span>
+<span class="go">--&gt; Verifying valid jobname...OK</span>
+<span class="go">--&gt; Verifying valid ssh keys...OK</span>
+<span class="go">--&gt; Verifying access to desired queue (development)...OK</span>
+<span class="go">--&gt; Checking available allocation (TACC-SCI)...OK</span>
+<span class="go">--&gt; Verifying that quota for filesystem /home1/03302/lconcia is at 10.51% allocated...OK</span>
+<span class="go">--&gt; Verifying that quota for filesystem /work/03302/lconcia/ls6 is at 85.81% allocated...OK</span>
+<span class="go">Submitted batch job 3559849</span>
+
+<span class="go">  -&gt; After your idev job begins to run, a command prompt will appear,</span>
+<span class="go">  -&gt; and you can begin your interactive development session.</span>
+<span class="go">  -&gt; Waiting for idev job to Run (change from PD=pending to R=running).</span>
+
+<span class="go">         Job  Wait</span>
+<span class="go">        State (m:s)</span>
+<span class="gp">     #    </span>R<span class="w">    </span><span class="m">0</span>:23
+
+<span class="go">  -&gt; Job is now running on masternode= c313-213...OK</span>
+<span class="go">  -&gt; Checking for an environment file in master node.... FOUND</span>
+<span class="go">  -&gt;          Time Waited for env file: 2 (sec)</span>
+<span class="go">  -&gt; Creating interactive terminal session    on master node c313-213.</span>
+<span class="go">  -&gt; Node access by: ssh -Y -A -o &quot;StrictHostKeyChecking no&quot; c313-213</span>
+
+<span class="go"> c313-213.ls6(1000)$</span>
+</pre></div>
+</div>
+<section id="exercise">
+<h3>EXERCISE<a class="headerlink" href="#exercise" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case you didn’t donwload the code in the previous section, you can download by doing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cdw
+<span class="gp">[ls6]$ </span>wget<span class="w"> </span>https://github.com/TACC/life_sciences_ml_at_tacc/raw/refs/heads/main/docs/section1/files/firststeps.zip
+<span class="gp">[ls6]$ </span>unzip<span class="w"> </span>firststeps.zip
+</pre></div>
+</div>
+</div>
+<p>Let’s execute some Python code that determines the larger of two numbers. The code also includes a
+3-second delay before finishing. Note, the <code class="docutils literal notranslate"><span class="pre">[clx]</span></code> syntax in the prompt refers to an interactive
+session that has been started on a Frontera Cascade Lake node.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[clx]$ </span>cdw
+<span class="gp">[clx]$ </span>unzip<span class="w"> </span>firststeps.zip
+<span class="gp">[clx]$ </span><span class="nb">cd</span><span class="w"> </span>Lab01
+<span class="gp">[clx]$ </span><span class="nb">pwd</span>
+<span class="go">/work2/03302/lconcia/frontera/Lab01</span>
+<span class="gp">[clx]$ </span>ls
+<span class="go">example.slurm  example_template.slurm  my_code.py</span>
+</pre></div>
+</div>
+<p>Load the appropriate modules, and run <code class="docutils literal notranslate"><span class="pre">my_code.py</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[clx]$ </span>module<span class="w"> </span>load<span class="w"> </span>python3
+<span class="gp">[clx]$ </span>python3<span class="w"> </span>my_code.py
+<span class="go">The larger number of 51 and 20 is 51</span>
+</pre></div>
+</div>
+<p>You can check the files that were generated using <code class="docutils literal notranslate"><span class="pre">ls</span></code>, and see the contents of the file with
+<code class="docutils literal notranslate"><span class="pre">cat</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[clx]$ </span>ls
+<span class="go">duration.txt  example.slurm  example_template.slurm  my_code.py</span>
+<span class="gp">[clx]$ </span>cat<span class="w"> </span>duration.txt
+<span class="go">Done in 3.009739637374878 seconds.</span>
+</pre></div>
+</div>
+<p>To exit an interactive session, you can use the command <code class="docutils literal notranslate"><span class="pre">logout</span></code>.</p>
+</section>
+</section>
+</section>
+<section id="batch-job-submission">
+<h1>Batch Job Submission<a class="headerlink" href="#batch-job-submission" title="Link to this heading"></a></h1>
+<p>we must write a short text file containing a list of the resources we need, and containing the command(s) for running the
+application. Then, we submit that text file to a queue to run on compute nodes. This process is
+called <strong>batch job submission</strong>.</p>
+<section id="run-non-interactively-with-sbatch">
+<h2>Run Non-Interactively with sbatch<a class="headerlink" href="#run-non-interactively-with-sbatch" title="Link to this heading"></a></h2>
+<p>As we discussed before, on Frontera there are login nodes and compute nodes.</p>
+<a class="reference external image-reference" href="./images/hpc_schematic.png"><img alt="HPC System Architecture" src="../_images/hpc_schematic1.png" />
+</a>
+<p>We cannot run the applications we need for our research on the login nodes because they are designed
+as a prep area, where you may edit and manage files, compile code, perform file management, issue
+transfers, submit new and track existing batch jobs etc. The login nodes provide an interface to the
+“back-end” compute nodes, where actual computations occur and where research is done.</p>
+<p>To run a job, instead, we must write a short text file containing a list of the resources we need,
+and containing the job command(s). Then, we submit that text file to a queue to run on compute nodes.
+This process is called <strong>batch job submission</strong>.</p>
+<p>There are several queues available on Frontera. It is important to understand the queue limitations
+and pick a queue that is appropriate for your job.  Documentation can be found
+<a class="reference external" href="https://docs.tacc.utexas.edu/hpc/frontera/#running-queues">here</a>.
+Today, we will be using the <code class="docutils literal notranslate"><span class="pre">development</span></code> queue which has a max runtime of 2 hours, and users can
+only submit one job at a time.</p>
+<p>First, navigate to the <code class="docutils literal notranslate"><span class="pre">Lab01</span></code> directory where we have an example job script prepared, called
+<code class="docutils literal notranslate"><span class="pre">example_template.slurm</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cdw
+<span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span>Lab01
+<span class="gp">[ls6]$ </span>cat<span class="w"> </span>example_template.slurm
+
+<span class="gp">#</span>!/bin/bash
+<span class="gp">#</span>----------------------------------------------------
+<span class="gp"># </span>Example<span class="w"> </span>SLURM<span class="w"> </span>job<span class="w"> </span>script<span class="w"> </span>to<span class="w"> </span>run<span class="w"> </span>applications<span class="w"> </span>on
+<span class="gp"># </span>TACCs<span class="w"> </span>Frontera<span class="w"> </span>system.
+<span class="gp">#</span>
+<span class="gp"># </span>Example<span class="w"> </span>of<span class="w"> </span>job<span class="w"> </span>submission
+<span class="gp"># </span>To<span class="w"> </span>submit<span class="w"> </span>a<span class="w"> </span>batch<span class="w"> </span>job,<span class="w"> </span>execute:<span class="w">             </span>sbatch<span class="w"> </span>example.slurm
+<span class="gp"># </span>To<span class="w"> </span>show<span class="w"> </span>all<span class="w"> </span>queued<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>from<span class="w"> </span>user,<span class="w"> </span>execute:<span class="w"> </span>showq<span class="w"> </span>-u
+<span class="gp"># </span>To<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>a<span class="w"> </span>queued<span class="w"> </span>job,<span class="w"> </span>execute:<span class="w">              </span>scancel<span class="w"> </span>&lt;jobId&gt;
+<span class="gp">#</span>----------------------------------------------------
+
+<span class="gp">#</span>SBATCH<span class="w"> </span>-J<span class="w">                                  </span><span class="c1"># Job name</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-o<span class="w">                                  </span><span class="c1"># Name of stdout output file (%j expands to jobId)</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-e<span class="w">                                  </span><span class="c1"># Name of stderr error file (%j expands to jobId)</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-p<span class="w">                                  </span><span class="c1"># Queue (partition) name</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-N<span class="w">                                  </span><span class="c1"># Total number of nodes (must be 1 for serial)</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-n<span class="w">                                  </span><span class="c1"># Total number of threas tasks requested (should be 1 for serial)</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-t<span class="w">                                  </span><span class="c1"># Run time (hh:mm:ss), development queue max 2:00:00</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>--mail-user<span class="o">=</span>your_email@domaim.com<span class="w">   </span><span class="c1"># Address email notifications</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>--mail-type<span class="o">=</span>all<span class="w">                     </span><span class="c1"># Email at begin and end of job</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-A<span class="w">                                  </span><span class="c1"># Project/Allocation name (req&#39;d if you have more than 1)</span>
+
+<span class="gp"># </span>Everything<span class="w"> </span>below<span class="w"> </span>here<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>Linux<span class="w"> </span>commands
+</pre></div>
+</div>
+<section id="frontera-production-queues">
+<h3>Frontera Production Queues<a class="headerlink" href="#frontera-production-queues" title="Link to this heading"></a></h3>
+<p>Here, we are comparing the differences between two queues: <code class="docutils literal notranslate"><span class="pre">development</span></code> and <code class="docutils literal notranslate"><span class="pre">normal</span></code>.
+For information about other queues, please refer to the
+<a class="reference external" href="https://docs.tacc.utexas.edu/hpc/frontera/#table6">Frontera Production Queues</a>.</p>
+<table class="docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Queue Name</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">development</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">normal</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Min-Max Nodes per Job (assoc’d cores)</p></td>
+<td><p>1-40 nodes (2,240 cores)</p></td>
+<td><p>3-512 nodes (28,672 cores)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max Job Duration</p></td>
+<td><p>2 hrs</p></td>
+<td><p>48 hrs</p></td>
+</tr>
+<tr class="row-even"><td><p>Max Nodes per User</p></td>
+<td><p>40 nodes</p></td>
+<td><p>1836 nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max Jobs per User</p></td>
+<td><p>1 job</p></td>
+<td><p>100 jobs</p></td>
+</tr>
+<tr class="row-even"><td><p>Charge Rate per node-hour</p></td>
+<td><p>1 SU</p></td>
+<td><p>1 SU</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you submit a job requesting 48 hrs in the normal queue, and it takes a total of 10 hrs
+to run, you will be charged as follows:</p>
+<p><strong>SUs charged = (Number of nodes) X (job wall-clock time) X (charge rate per node-hour).</strong></p>
+<p><strong>SUs charged = (Number of nodes) X 10 X 1.</strong></p>
+</div>
+</section>
+<section id="gpus-available-at-tacc">
+<h3>GPUs Available at TACC<a class="headerlink" href="#gpus-available-at-tacc" title="Link to this heading"></a></h3>
+<p>Users frequently need to access GPUs to accelerate their machine learning workloads.
+Here a summary of GPUs available at TACC.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>System</p></th>
+<th class="head"><p>GPU Nodes</p></th>
+<th class="head"><p>#</p></th>
+<th class="head"><p>GPUs per node</p></th>
+<th class="head"><p>Queues</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="4"><p>Lonestar6</p></td>
+<td rowspan="3"><p>A100</p></td>
+<td rowspan="3"><p>84</p></td>
+<td rowspan="3"><p>3x NVIDIA A100</p></td>
+<td><p>gpu-a100</p></td>
+</tr>
+<tr class="row-odd"><td><p>gpu-a100-dev</p></td>
+</tr>
+<tr class="row-even"><td><p>gpu-a100-small</p></td>
+</tr>
+<tr class="row-odd"><td><p>H100</p></td>
+<td><p>4</p></td>
+<td><p>2x NVIDIA H100</p></td>
+<td><p>gpu-h100</p></td>
+</tr>
+<tr class="row-even"><td><p>Stampede3</p></td>
+<td><p>Ponte Vecchio</p></td>
+<td><p>20</p></td>
+<td><p>4x Intel Data Center Max 1550s</p></td>
+<td><p>pvc</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Frontera</p></td>
+<td rowspan="2"></td>
+<td rowspan="2"><p>90</p></td>
+<td rowspan="2"><p>4x NVIDIA Quadro RTX 5000</p></td>
+<td><p>rtx</p></td>
+</tr>
+<tr class="row-even"><td><p>rtx-dev</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Vista</p></td>
+<td rowspan="2"><p>Grace Hopper</p></td>
+<td rowspan="2"><p>600</p></td>
+<td rowspan="2"><p>1x NVIDIA H200 GPU</p></td>
+<td><p>gh</p></td>
+</tr>
+<tr class="row-even"><td><p>gh-dev</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="executing-basic-job-management-tasks">
+<h3>Executing Basic Job Management Tasks<a class="headerlink" href="#executing-basic-job-management-tasks" title="Link to this heading"></a></h3>
+<p>First, we must know an application we want to run, and a research question we want to ask. In this
+example, we aim to execute a Python code that determines the larger of two numbers. The code also
+includes a 3-second delay before finishing.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>cdw
+<span class="gp">[ls6]$ </span><span class="nb">cd</span><span class="w"> </span>Lab01
+<span class="gp">[ls6]$ </span><span class="nb">pwd</span>
+<span class="go">/work2/03302/lconcia/frontera/Lab01</span>
+<span class="gp">[ls6]$ </span>ls
+<span class="go">example.slurm  example_template.slurm  my_code.py</span>
+</pre></div>
+</div>
+<p>Next, we need to fill out <code class="docutils literal notranslate"><span class="pre">example_template.slurm</span></code> to request the necessary resources. I know that
+this code will take a little more than 3 seconds, so I can reasonably predict how much we will need.
+When running your first jobs with your applications, it will take some trial and error, and reading
+online documentation, to get a feel for how many resources you should use. Open <code class="docutils literal notranslate"><span class="pre">example_template.slurm</span></code>
+with VIM and fill out the following information:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>!/bin/bash
+<span class="gp">#</span>----------------------------------------------------
+<span class="gp"># </span>Example<span class="w"> </span>SLURM<span class="w"> </span>job<span class="w"> </span>script<span class="w"> </span>to<span class="w"> </span>run<span class="w"> </span>applications<span class="w"> </span>on
+<span class="gp"># </span>TACCs<span class="w"> </span>Frontera<span class="w"> </span>system.
+<span class="gp">#</span>
+<span class="gp"># </span>Example<span class="w"> </span>of<span class="w"> </span>job<span class="w"> </span>submission
+<span class="gp"># </span>To<span class="w"> </span>submit<span class="w"> </span>a<span class="w"> </span>batch<span class="w"> </span>job,<span class="w"> </span>execute:<span class="w">             </span>sbatch<span class="w"> </span>example.slurm
+<span class="gp"># </span>To<span class="w"> </span>show<span class="w"> </span>all<span class="w"> </span>queued<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>from<span class="w"> </span>user,<span class="w"> </span>execute:<span class="w"> </span>showq<span class="w"> </span>-u
+<span class="gp"># </span>To<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>a<span class="w"> </span>queued<span class="w"> </span>job,<span class="w"> </span>execute:<span class="w">              </span>scancel<span class="w"> </span>&lt;jobId&gt;
+<span class="gp">#</span>----------------------------------------------------
+
+<span class="gp">#</span>SBATCH<span class="w"> </span>-J<span class="w"> </span>first_job<span class="w">                       </span><span class="c1"># Job name</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-o<span class="w"> </span>output.%j<span class="w">                       </span><span class="c1"># Name of stdout output file (%j expands to jobId)</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-e<span class="w"> </span>error.%j<span class="w">                        </span><span class="c1"># Name of stderr error file (%j expands to jobId)</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-p<span class="w"> </span>development<span class="w">                     </span><span class="c1"># Queue (partition) name</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w">                               </span><span class="c1"># Total number of nodes (must be 1 for serial)</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w">                               </span><span class="c1"># Total number of threas tasks requested (should be 1 for serial)</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-t<span class="w"> </span><span class="m">0</span>:30:00<span class="w">                         </span><span class="c1"># Run time (hh:mm:ss), development queue max 2:00:00</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>-A<span class="w"> </span>Frontera-Training<span class="w">               </span><span class="c1"># Project/Allocation name (req&#39;d if you have more than 1)</span>
+
+<span class="gp"># </span>Everything<span class="w"> </span>below<span class="w"> </span>here<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>Linux<span class="w"> </span>commands
+
+<span class="go">module load python3</span>
+
+<span class="go">python3 my_code.py</span>
+</pre></div>
+</div>
+<p>The way this job is configured, it will load the appropriate modules, and run <code class="docutils literal notranslate"><span class="pre">my_code.py</span></code>.</p>
+</section>
+<section id="text-editing-with-vim">
+<h3>Text Editing with VIM<a class="headerlink" href="#text-editing-with-vim" title="Link to this heading"></a></h3>
+<p>VIM is a text editor used on Linux file systems.</p>
+<p>Open the file <code class="docutils literal notranslate"><span class="pre">example_template.slurm</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>vim<span class="w"> </span>example_template.slurm
+</pre></div>
+</div>
+<p>There are two “modes” in VIM that we will talk about today. They are called “insert mode” and
+“normal mode”.  In insert mode, the user is typing text into a file as seen through the terminal
+(think about typing text into TextEdit or Notepad).  In normal mode, the user can perform other
+functions like save, quit, cut and paste, find and replace, etc. (think about clicking the menu
+options in TextEdit or Notepad). The two main keys to remember to toggle between the modes are <code class="docutils literal notranslate"><span class="pre">i</span></code>
+and <code class="docutils literal notranslate"><span class="pre">Esc</span></code>.</p>
+<p>Entering VIM insert mode:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; i
+</pre></div>
+</div>
+<p>Entering VIM normal mode:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; Esc
+</pre></div>
+</div>
+<p>A summary of the most important keys to know for normal mode are (more on your cheat sheet):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># Navigating the file:
+
+arrow keys        move up, down, left, right
+    Ctrl+u        page up
+    Ctrl+d        page down
+
+         0        move to beginning of line
+         $        move to end of line
+
+        gg        move to beginning of file
+         G        move to end of file
+        :N        move to line N
+
+# Saving and quitting:
+
+        :q        quit editing the file
+        :q!       quit editing the file without saving
+
+        :w        save the file, continue editing
+        :wq       save and quit
+</pre></div>
+</div>
+<dl class="simple">
+<dt>For more information, see:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="http://openvim.com/">http://openvim.com/</a></p></li>
+<li><p>Or type on the command line: <code class="docutils literal notranslate"><span class="pre">vimtutor</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="submit-a-batch-job-to-the-queue">
+<h3>Submit a Batch Job to the Queue<a class="headerlink" href="#submit-a-batch-job-to-the-queue" title="Link to this heading"></a></h3>
+<p>Once you have filled in the job description, save and quit the file. Submit the job to the queue
+using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command`:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>sbatch<span class="w"> </span>example_template.slurm
+</pre></div>
+</div>
+<p>To view the jobs you have currently in the queue, use the <code class="docutils literal notranslate"><span class="pre">showq</span></code> or <code class="docutils literal notranslate"><span class="pre">squeue</span></code> commands:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>showq<span class="w"> </span>-u<span class="w">               </span><span class="c1"># shows my jobs</span>
+<span class="gp">[ls6]$ </span>showq<span class="w">                  </span><span class="c1"># shows all jobs by all users</span>
+<span class="gp">[ls6]$ </span>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USERNAME</span><span class="w">    </span><span class="c1"># shows my jobs</span>
+<span class="gp">[ls6]$ </span>squeue<span class="w">                 </span><span class="c1"># shows all jobs by all users</span>
+</pre></div>
+</div>
+<p>If for any reason you need to cancel a job, use the <code class="docutils literal notranslate"><span class="pre">scancel</span></code> command with the 6- or 7-digit
+<code class="docutils literal notranslate"><span class="pre">jobid</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>scancel<span class="w"> </span>jobid
+</pre></div>
+</div>
+<p>For more example scripts, see this directory on Frontera:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>ls<span class="w"> </span>/share/doc/slurm/
+</pre></div>
+</div>
+<p>If everything went well, you should have a file named <code class="docutils literal notranslate"><span class="pre">duration.txt</span></code>,
+an output file named something similar to <code class="docutils literal notranslate"><span class="pre">output.o6146935</span></code>,
+and an error file named something similar to <code class="docutils literal notranslate"><span class="pre">error.o6146935</span></code> in the same directory as the
+<code class="docutils literal notranslate"><span class="pre">example_template.slurm</span></code> script.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>ls
+<span class="go">duration.txt  error.6146935  example.slurm  example_template.slurm  my_code.py  output.6146935</span>
+</pre></div>
+</div>
+<p><strong>Congratulations! You ran a batch job on Frontera!</strong></p>
+</section>
+</section>
+<section id="managing-modules">
+<h2>Managing Modules<a class="headerlink" href="#managing-modules" title="Link to this heading"></a></h2>
+<p>Modules enable users to run specific applications or access libraries without the need to log out
+and back in. Modules for applications adjust the user’s path for easy access, while those for
+library packages set environment variables indicating the location of library and header files.
+Switching between package versions or removing a package is straightforward.</p>
+<section id="tour-of-the-module-command">
+<h3>Tour of the Module Command<a class="headerlink" href="#tour-of-the-module-command" title="Link to this heading"></a></h3>
+<p>The module command sets the appropriate environment variable
+independent of the user’s shell.  Typically the system will load a
+default set of modules.  A user can list the modules loaded by:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>module<span class="w"> </span>list
+
+<span class="go">Currently Loaded Modules:</span>
+<span class="go">  1) intel/19.1.1   3) git/2.24.1      5) python3/3.7.0   7) hwloc/1.11.12   9) TACC</span>
+<span class="go">  2) impi/19.0.9    4) autotools/1.2   6) cmake/3.24.2    8) xalt/2.10.34</span>
+</pre></div>
+</div>
+<p>To find out available modules for loading, a user can use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>module<span class="w"> </span>avail
+<span class="go">- or -</span>
+<span class="gp">[ls6]$ </span>module<span class="w"> </span>spider
+</pre></div>
+</div>
+<p>Press the <code class="docutils literal notranslate"><span class="pre">&lt;Enter&gt;</span></code> key to scroll through line-by-line, or the <code class="docutils literal notranslate"><span class="pre">&lt;Space&gt;</span></code> key to scroll through
+page-by-page. Press <code class="docutils literal notranslate"><span class="pre">q</span></code> to quit the view.</p>
+<p>If there are many modules on a system, it can be difficult to see what
+modules are available to load. To display a concise listing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>module<span class="w"> </span>overview
+
+<span class="go">----------------- /opt/apps/intel19/impi19_0/python3_7/modulefiles -----------------</span>
+<span class="go">boost-mpi (2)</span>
+
+<span class="go">--------------------- /opt/apps/intel19/python3_7/modulefiles ----------------------</span>
+<span class="go">boost (2)</span>
+
+<span class="go">---------------------- /opt/apps/intel19/impi19_0/modulefiles ----------------------</span>
+<span class="go">Rstats    (2)   gromacs    (4)    openfoam        (4)     remora      (2)</span>
+<span class="go">adcirc    (1)   hpctoolkit (2)    opensees        (4)     rosetta     (1)</span>
+<span class="go">adios2    (1)   hypre      (16)   p3dfft++        (1)     slepc       (39)</span>
+<span class="go">amask     (1)   ipm        (1)    p4est           (2)     suitesparse (10)</span>
+<span class="go">arpack    (1)   kokkos     (4)    parallel-netcdf (4)     sundials    (9)</span>
+<span class="go">aspect    (1)   lammps     (4)    parmetis        (1)     superlu     (12)</span>
+</pre></div>
+</div>
+<p>This shows the short name of the module (i.e. git, or Rstats)
+and the number in the parentheses is the number of versions for each.
+This list above shows that there is one version of git and two
+versions of Rstats.</p>
+<p>To check all the versions of a package (e.g., Rstats):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>module<span class="w"> </span>avail<span class="w"> </span>Rstats
+
+<span class="go">--------------- /opt/apps/intel19/impi19_0/modulefiles ---------------</span>
+<span class="go">   Rstats/3.6.3    Rstats/4.0.3 (D)</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">Rstats/4.0.3</span> <span class="pre">(D)</span></code>, the <code class="docutils literal notranslate"><span class="pre">(D)</span></code> denotes the default module. When loading packages, if you don’t
+specify the version, the default module will be loaded. To load packages a user simply does:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>module<span class="w"> </span>load<span class="w"> </span>package1<span class="w"> </span>package2<span class="w"> </span>...
+</pre></div>
+</div>
+<p>To unload packages a user does:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>module<span class="w"> </span>unload<span class="w"> </span>package1<span class="w"> </span>package2<span class="w"> </span>...
+</pre></div>
+</div>
+<p>Modules can contain help messages.  To access a module’s help do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>module<span class="w"> </span><span class="nb">help</span><span class="w"> </span>packageName
+</pre></div>
+</div>
+<p>To get a list of all the commands that module knows about do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>module<span class="w"> </span><span class="nb">help</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="review-of-topics-covered">
+<h2>Review of Topics Covered<a class="headerlink" href="#review-of-topics-covered" title="Link to this heading"></a></h2>
+<p><strong>VIM</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vim</span> <span class="pre">file.txt</span></code></p></td>
+<td><p>open “file.txt” and edit with <code class="docutils literal notranslate"><span class="pre">vim</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">i</span></code></p></td>
+<td><p>toggle to insert mode</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;Esc&gt;</span></code></p></td>
+<td><p>toggle to normal mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;arrow</span> <span class="pre">keys&gt;</span></code></p></td>
+<td><p>navigate the file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:q</span></code></p></td>
+<td><p>quit ending the file</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:q!</span></code></p></td>
+<td><p>quit editing the file without saving</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">:w</span></code></p></td>
+<td><p>save the file, continue editing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:wq</span></code></p></td>
+<td><p>save and quit</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>SLURM</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">JOB.SLURM</span></code></p></td>
+<td><p>submit batch job to the queue</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showq</span></code></p></td>
+<td><p>show all jobs by all users</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showq</span> <span class="pre">-u</span></code></p></td>
+<td><p>show the current user’s jobs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code></p></td>
+<td><p>show all jobs by all users</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">USERNAME</span></code></p></td>
+<td><p>show user USERNAME’s jobs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scancel</span> <span class="pre">JOBID</span></code></p></td>
+<td><p>cancel a job given a job ID</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Modules</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code></p></td>
+<td><p>List currently loaded modules</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code></p></td>
+<td><p>See what modules are available</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">overview</span></code></p></td>
+<td><p>See what modules are available (concise)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span> <span class="pre">name</span></code></p></td>
+<td><p>Search for module “name”</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">name</span></code></p></td>
+<td><p>Load module “name”</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span> <span class="pre">name</span></code></p></td>
+<td><p>Unload module “name”</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">help</span> <span class="pre">name</span></code></p></td>
+<td><p>Show module “name” help</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">help</span></code></p></td>
+<td><p>Show module command help</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.tacc.utexas.edu/hpc/frontera/#table6">Frontera queues</a></p></li>
+<li><p><a class="reference external" href="http://openvim.com/">VIM tutorial</a></p></li>
+<li><p><a class="reference external" href="https://lmod.readthedocs.io/en/latest/">Lmod module system</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Texas Advanced Computing Center.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

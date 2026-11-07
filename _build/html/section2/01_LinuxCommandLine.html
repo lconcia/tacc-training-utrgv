@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Linux Command Line &mdash; Introduction to TACC 0.1 documentation</title>
+  <title>Basic Linux Commands &mdash; Introduction to TACC 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -56,9 +56,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction to High Performance Computing (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction to the Command Line Interface</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Linux Command Line</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Basic Linux Commands</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#creating-and-changing-folders">Creating and Changing Folders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creating-and-manipulating-files">Creating and Manipulating Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#looking-at-the-contents-of-files">Looking at the Contents of Files</a><ul>
@@ -74,6 +74,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="02_running_on_hpc.html">Running on HPC Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_running_on_hpc.html#batch-job-submission">Batch Job Submission</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_set_up_for_tutorials.html">Set up for Tutorials</a></li>
 </ul>
 </li>
@@ -95,7 +96,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="overview.html">Introduction to the Command Line Interface</a></li>
-      <li class="breadcrumb-item active">Linux Command Line</li>
+      <li class="breadcrumb-item active">Basic Linux Commands</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/section2/01_LinuxCommandLine.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -105,18 +106,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="linux-command-line">
-<h1>Linux Command Line<a class="headerlink" href="#linux-command-line" title="Link to this heading"></a></h1>
-<p>Learning how to use the Linux command line interface is an essential skill for research computing. Once you are comfortable working in a Linux environment, you can work on virtually any research computing system in the world. After completing this module, participants should be able to:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Describe basic functions of essential Linux commands</p></li>
-<li><p>Use Linux commands to navigate a file system and manipulate files</p></li>
-<li><p>Edit files directly on a Linux system using a command line utility (e.g. vim, nano, emacs)</p></li>
-<li><p>Transfer data to a remote Linux file system</p></li>
-</ul>
-</div></blockquote>
-<p>Topics covered include:</p>
+  <section id="basic-linux-commands">
+<h1>Basic Linux Commands<a class="headerlink" href="#basic-linux-commands" title="Link to this heading"></a></h1>
+<p>Learning how to use the Linux command line interface is an essential skill for research computing. Once you are comfortable working in a Linux environment, you can work on virtually any research computing system in the world.
+Topics covered include:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Creating and changing folders (<code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code>, <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span></code>, <code class="docutils literal notranslate"><span class="pre">rmdir</span></code>)</p></li>
@@ -475,7 +468,7 @@ and the colon.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you wanted to copy <code class="docutils literal notranslate"><span class="pre">my_file</span></code> from <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code>, the path you would specify after the
-colon would be <code class="docutils literal notranslate"><span class="pre">/scratch1/03302/lconcia/frontera/my_file</span></code>.</p>
+colon would be <code class="docutils literal notranslate"><span class="pre">/scratch1/03302/lconcia/ls6/my_file</span></code>.</p>
 </div>
 <p>Instead of files, full directories can be copied using the “recursive” flag (<code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">...</span></code>). See
 additional example <code class="docutils literal notranslate"><span class="pre">scp</span></code> usage <a class="reference external" href="https://en.wikipedia.org/wiki/Secure_copy">here</a>.</p>

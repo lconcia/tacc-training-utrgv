@@ -1,8 +1,7 @@
-Introduction to High Performance Computing (HPC)
+Introduction 
 ================================================
 
-In this unit we learn about TACC's high performance computing (HPC) architecture, and how to access to it by
-creating an account and connecting to an HPC cluster.
+In this unit we learn about the basic architecture of a high performance computing (HPC) cluster, and how to access TACC's HPC system.
 
 .. toctree::
    :maxdepth: 1
