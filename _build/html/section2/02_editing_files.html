@@ -56,21 +56,22 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction to the Command Line Interface</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../section1/overview.html">Introduction to TACC</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">The Command Line Interface</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_LinuxCommandLine.html">Basic Linux Commands</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Text Editors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#text-editing-with-nano">Text Editing with Nano</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#text-editing-with-nano">1) Text Editing with Nano</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#opening-a-file">Opening a File</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#understanding-nano-interface">Understanding Nano Interface</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#essential-key-shortcuts">Essential Key Shortcuts</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#text-editing-with-vim">Text Editing with VIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-editing-with-vim">2) Text Editing with VIM</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="03_running_on_hpc.html">Running on HPC Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_running_on_hpc.html#start-from-here">START FROM HERE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_running_on_hpc.html#batch-job-submission">Batch Job Submission</a></li>
 </ul>
 </li>
@@ -91,7 +92,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="overview.html">Introduction to the Command Line Interface</a></li>
+          <li class="breadcrumb-item"><a href="overview.html">The Command Line Interface</a></li>
       <li class="breadcrumb-item active">Text Editors</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/section2/02_editing_files.rst.txt" rel="nofollow"> View page source</a>
@@ -104,10 +105,10 @@
              
   <section id="text-editors">
 <h1>Text Editors<a class="headerlink" href="#text-editors" title="Link to this heading"></a></h1>
-<p>In this section we will learn how to edit text files with command line tools.
-This will allow us to create configurations files to launch jobs on the cluster.</p>
+<p>As an HPC user, you will frequently need to edit text files directly from the command line, for example to create the configuration files needed to launch jobs on the cluster.
+In this section, you will learn how to use command-line text editors.</p>
 <section id="text-editing-with-nano">
-<h2>Text Editing with Nano<a class="headerlink" href="#text-editing-with-nano" title="Link to this heading"></a></h2>
+<h2>1) Text Editing with Nano<a class="headerlink" href="#text-editing-with-nano" title="Link to this heading"></a></h2>
 <p>Nano is a straightforward, modeless text editor used on Linux file systems.</p>
 <section id="opening-a-file">
 <h3>Opening a File<a class="headerlink" href="#opening-a-file" title="Link to this heading"></a></h3>
@@ -118,8 +119,7 @@ This will allow us to create configurations files to launch jobs on the cluster.
 </section>
 <section id="understanding-nano-interface">
 <h3>Understanding Nano Interface<a class="headerlink" href="#understanding-nano-interface" title="Link to this heading"></a></h3>
-<p>You can start typing directly into the file as soon as it opens (similar to typing in TextEdit or Notepad).</p>
-<p>Commands are performed using key combinations:</p>
+<p>You can start typing directly into the file as soon as it opens (similar to typing in TextEdit or Notepad). Commands are performed using key combinations:</p>
 <ul class="simple">
 <li><p><strong>Control Key (``^``):</strong> Represented by a caret symbol <code class="docutils literal notranslate"><span class="pre">^</span></code> in the bottom menu. Hold down <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> and press the specified letter (e.g., <code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code>).</p></li>
 <li><p><strong>Meta Key (``M-``):</strong> Represented by <code class="docutils literal notranslate"><span class="pre">M-</span></code> in documentation. On most systems, this corresponds to the <code class="docutils literal notranslate"><span class="pre">Alt</span></code> key or pressing <code class="docutils literal notranslate"><span class="pre">Esc</span></code> followed by the key.</p></li>
@@ -159,7 +159,7 @@ arrow keys        move up, down, left, right
 </section>
 </section>
 <section id="text-editing-with-vim">
-<h2>Text Editing with VIM<a class="headerlink" href="#text-editing-with-vim" title="Link to this heading"></a></h2>
+<h2>2) Text Editing with VIM<a class="headerlink" href="#text-editing-with-vim" title="Link to this heading"></a></h2>
 <p>VIM is another text editor used on Linux file systems.</p>
 <p>Open the file <code class="docutils literal notranslate"><span class="pre">example_template.slurm</span></code>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[ls6]$ </span>vim<span class="w"> </span>example_template.slurm

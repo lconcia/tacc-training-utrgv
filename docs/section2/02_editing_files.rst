@@ -1,10 +1,11 @@
 Text Editors
 ======================
 
-In this section we will learn how to edit text files with command line tools.
-This will allow us to create configurations files to launch jobs on the cluster. 
+As an HPC user, you will frequently need to edit text files directly from the command line, for example to create the configuration files needed to launch jobs on the cluster. 
+In this section, you will learn how to use command-line text editors. 
 
-Text Editing with Nano
+
+1) Text Editing with Nano
 ^^^^^^^^^^^^^^^^^^^^^
 
 Nano is a straightforward, modeless text editor used on Linux file systems.
@@ -21,9 +22,7 @@ Open the file ``example_template.slurm``:
 Understanding Nano Interface
 ----------------------------
 
-You can start typing directly into the file as soon as it opens (similar to typing in TextEdit or Notepad). 
-
-Commands are performed using key combinations:
+You can start typing directly into the file as soon as it opens (similar to typing in TextEdit or Notepad). Commands are performed using key combinations:
 
 * **Control Key (``^``):** Represented by a caret symbol ``^`` in the bottom menu. Hold down ``Ctrl`` and press the specified letter (e.g., ``Ctrl+O``).
 * **Meta Key (``M-``):** Represented by ``M-`` in documentation. On most systems, this corresponds to the ``Alt`` key or pressing ``Esc`` followed by the key.
@@ -66,7 +65,7 @@ Additional Resources
 
 
 
-Text Editing with VIM
+2) Text Editing with VIM
 ^^^^^^^^^^^^^^^^^^^^^
 
 VIM is another text editor used on Linux file systems.

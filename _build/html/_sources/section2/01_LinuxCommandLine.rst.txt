@@ -343,8 +343,8 @@ of the commands above. Instead of printing to screen, the output can be redirect
    [ls6]$ cat websters.txt > websters_new.txt
    [ls6]$ head websters.txt > first_10_lines.txt
 
-A single greater than sign ``>`` will redirect and **overwrite** any contents in the target file. A
-double greater than sign ``>>`` will redirect and **append** any output to the end of the target
+A single "greater than" sign ``>`` will redirect and **overwrite** any contents in the target file. A
+double "greater than" sign ``>>`` will redirect and **append** any output to the end of the target
 file.
 
 One final useful way to look at the contents of files is with the ``grep`` command. ``grep``
@@ -425,6 +425,7 @@ Copying files from your local computer to Lonestar6's ``$WORK`` would require th
 
 .. code-block:: console
 
+   [local]$ touch my_file 
    [local]$ scp my_file lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6
    (enter password)
    (enter token)
@@ -434,19 +435,12 @@ In this command, you specify the name of the file you want to transfer (``my_fil
 (``/work/03302/lconcia/ls6``). Take careful notice of the separators including spaces, the @ symbol,
 and the colon. 
 
-Copying files from your local computer to Lonestar6's ``$SCRATCH`` using ``scp``:
+
+Copy files from Lonestar6's ``$WORK`` to your local computer using the following:
 
 .. code-block:: console
 
-   [local]$ scp my_file lconcia@ls6.tacc.utexas.edu:/scratch/03302/lconcia
-   (enter password)
-   (enter token)
-
-Copy files from Lonestar6 to your local computer using the following:
-
-.. code-block:: console
-
-   [local]$ scp lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6/my_file ./
+   [local]$ scp lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6/my_file .
    (enter password)
    (enter token)
 
@@ -464,7 +458,7 @@ EXERCISE
 
 1. Logout until you are back to your local computer.
 2. Make your own ``my_file`` on your local computer using knowledge from our previous sections 
-3. copy ``my_file`` to your ``$WORK`` file system on Lonestar6 
+3. copy ``my_file`` to your ``$SCRATCH`` file system on Lonestar6 
 
 
 
