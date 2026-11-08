@@ -30,7 +30,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Running on HPC Systems" href="02_running_on_hpc.html" />
+    <link rel="next" title="Text Editors" href="02_editing_files.html" />
     <link rel="prev" title="Introduction to the Command Line Interface" href="overview.html" /> 
 </head>
 
@@ -73,9 +73,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="02_running_on_hpc.html">Running on HPC Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_running_on_hpc.html#batch-job-submission">Batch Job Submission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_set_up_for_tutorials.html">Set up for Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_editing_files.html">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_running_on_hpc.html">Running on HPC Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_running_on_hpc.html#start-from-here">START FROM HERE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_running_on_hpc.html#batch-job-submission">Batch Job Submission</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../section4/overview.html">ML/DL on HPC Systems</a></li>
@@ -382,8 +383,8 @@ of the commands above. Instead of printing to screen, the output can be redirect
 <span class="gp">[ls6]$ </span>head<span class="w"> </span>websters.txt<span class="w"> </span>&gt;<span class="w"> </span>first_10_lines.txt
 </pre></div>
 </div>
-<p>A single greater than sign <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> will redirect and <strong>overwrite</strong> any contents in the target file. A
-double greater than sign <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> will redirect and <strong>append</strong> any output to the end of the target
+<p>A single “greater than” sign <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> will redirect and <strong>overwrite</strong> any contents in the target file. A
+double “greater than” sign <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> will redirect and <strong>append</strong> any output to the end of the target
 file.</p>
 <p>One final useful way to look at the contents of files is with the <code class="docutils literal notranslate"><span class="pre">grep</span></code> command. <code class="docutils literal notranslate"><span class="pre">grep</span></code>
 searches a file for a specific pattern, and returns all lines that match the pattern. For example:</p>
@@ -444,7 +445,8 @@ shortcut <code class="docutils literal notranslate"><span class="pre">cds</span>
 </pre></div>
 </div>
 <p>Copying files from your local computer to Lonestar6’s <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> would require the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>touch<span class="w"> </span>my_file
+<span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6
 <span class="gp gp-VirtualEnv">(enter password)</span>
 <span class="gp gp-VirtualEnv">(enter token)</span>
 </pre></div>
@@ -453,14 +455,8 @@ shortcut <code class="docutils literal notranslate"><span class="pre">cds</span>
 (<code class="docutils literal notranslate"><span class="pre">lconcia</span></code>), the hostname (<code class="docutils literal notranslate"><span class="pre">ls6.tacc.utexas.edu</span></code>), and the path you want to put the file
 (<code class="docutils literal notranslate"><span class="pre">/work/03302/lconcia/ls6</span></code>). Take careful notice of the separators including spaces, the &#64; symbol,
 and the colon.</p>
-<p>Copying files from your local computer to Lonestar6’s <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> using <code class="docutils literal notranslate"><span class="pre">scp</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>my_file<span class="w"> </span>lconcia@ls6.tacc.utexas.edu:/scratch/03302/lconcia
-<span class="gp gp-VirtualEnv">(enter password)</span>
-<span class="gp gp-VirtualEnv">(enter token)</span>
-</pre></div>
-</div>
-<p>Copy files from Lonestar6 to your local computer using the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6/my_file<span class="w"> </span>./
+<p>Copy files from Lonestar6’s <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> to your local computer using the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[local]$ </span>scp<span class="w"> </span>lconcia@ls6.tacc.utexas.edu:/work/03302/lconcia/ls6/my_file<span class="w"> </span>.
 <span class="gp gp-VirtualEnv">(enter password)</span>
 <span class="gp gp-VirtualEnv">(enter token)</span>
 </pre></div>
@@ -477,7 +473,7 @@ additional example <code class="docutils literal notranslate"><span class="pre">
 <ol class="arabic simple">
 <li><p>Logout until you are back to your local computer.</p></li>
 <li><p>Make your own <code class="docutils literal notranslate"><span class="pre">my_file</span></code> on your local computer using knowledge from our previous sections</p></li>
-<li><p>copy <code class="docutils literal notranslate"><span class="pre">my_file</span></code> to your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> file system on Lonestar6</p></li>
+<li><p>copy <code class="docutils literal notranslate"><span class="pre">my_file</span></code> to your <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> file system on Lonestar6</p></li>
 </ol>
 </section>
 </section>
@@ -654,7 +650,7 @@ additional example <code class="docutils literal notranslate"><span class="pre">
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="overview.html" class="btn btn-neutral float-left" title="Introduction to the Command Line Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="02_running_on_hpc.html" class="btn btn-neutral float-right" title="Running on HPC Systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="02_editing_files.html" class="btn btn-neutral float-right" title="Text Editors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

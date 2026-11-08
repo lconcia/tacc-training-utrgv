@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Connecting to the HPC cluster" href="02_connecting_to_the_cluster.html" />
-    <link rel="prev" title="Introduction" href="overview.html" /> 
+    <link rel="prev" title="Introduction to TACC" href="overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,7 +56,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Introduction to TACC</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">High Peformance Computing (HPC)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#basic-hpc-system-architecture">Basic HPC System Architecture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#some-systems-available-at-tacc">Some Systems Available at TACC</a><ul>
@@ -78,7 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="02_connecting_to_the_cluster.html">Connecting to the HPC cluster</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../section2/overview.html">Introduction to the Command Line Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../section2/overview.html">The Command Line Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../section4/overview.html">ML/DL on HPC Systems</a></li>
 </ul>
 
@@ -96,7 +96,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="overview.html">Introduction</a></li>
+          <li class="breadcrumb-item"><a href="overview.html">Introduction to TACC</a></li>
       <li class="breadcrumb-item active">High Peformance Computing (HPC)</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/section1/01_intro_to_hpc.rst.txt" rel="nofollow"> View page source</a>
@@ -113,20 +113,14 @@
 supercomputers or clusters) to achieve performance far greater than a single workstation or server.</p>
 <section id="basic-hpc-system-architecture">
 <h2>Basic HPC System Architecture<a class="headerlink" href="#basic-hpc-system-architecture" title="Link to this heading"></a></h2>
-<p>As you prepare to use TACC systems for your research, it is important to understand the basic
-architecture. We can think of an HPC system as a very large and complicated laboratory instrument.</p>
+<p>We can think of an HPC system as a very large and complicated laboratory instrument.</p>
 <a class="reference external image-reference" href="./images/hpc_schematic.png"><img alt="HPC System Architecture" src="../_images/hpc_schematic.png" />
 </a>
-<p>To use a HPC cluster for scientific research, users need to learn how to:</p>
-<ul class="simple">
-<li><p>Interface with the cluster via command line</p></li>
-<li><p>Load samples (transfer data)</p></li>
-<li><p>Run experiments (submit batch jobs)</p></li>
-</ul>
 <p><strong>IMPORTANT: Login vs. Compute Nodes</strong></p>
 <p>An HPC system has login nodes and compute nodes. We cannot run applications on the <strong>login nodes</strong>
-because they require too many resources and will interrupt the work of others. Instead, we must
-submit a job to a queue to run on <strong>compute nodes</strong>.</p>
+because they are designed as a prep area, where you may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. The login nodes provide an interface to the “back-end” compute nodes, where actual computations occur and where research is done.
+Most importanly, login nodes are a shared resources.
+To run a job, instead, we must use the <strong>compute nodes</strong>.</p>
 </section>
 <section id="some-systems-available-at-tacc">
 <h2>Some Systems Available at TACC<a class="headerlink" href="#some-systems-available-at-tacc" title="Link to this heading"></a></h2>
@@ -138,7 +132,7 @@ providing simulation, data analysis, visualization, and AI/machine learning.</p>
 <li><p><a class="reference external" href="https://tacc.utexas.edu/systems/vista/">Vista</a>: Vista expands TACC’s capacity for AI and
 ensures that the broadscience, engineering, and education research communities have access to the
 most advanced computing and AI technologies.</p></li>
-<li><p><a class="reference external" href="https://tacc.utexas.edu/systems/stampede3/">Stampede3</a>: The newest strategic resource advancing
+<li><p><a class="reference external" href="https://tacc.utexas.edu/systems/stampede3/">Stampede3</a>: A strategic resource advancing
 NSF’s supercomputing ecosystem for the nation’s open science community.</p></li>
 </ul>
 </section>
@@ -149,6 +143,7 @@ NSF’s supercomputing ecosystem for the nation’s open science community.</p><
 <li><p><a class="reference external" href="https://tacc.utexas.edu/systems/corral/">Corral</a>: Storage and data management system designed to support large-scale collections and a collaborative research environment. Capacity of 40,000 TB.</p></li>
 <li><p><a class="reference external" href="https://tacc.utexas.edu/systems/ranch/">Ranch</a>: Long-term data archiving system, high capacity (1,000,000 TB).</p></li>
 </ul>
+<p>Storage systems are shared across all TACC clusters.</p>
 </section>
 </section>
 <section id="hpc-terminology">
@@ -160,7 +155,8 @@ NSF’s supercomputing ecosystem for the nation’s open science community.</p><
 <p><strong>Queue</strong>: A queue is a specific subdivision of a supercomputer’s nodes, categorized by hardware type, time limit, or job size and priority, where users submit their computing jobs to be scheduled and executed.</p>
 <section id="lonestar6-queues">
 <h3>Lonestar6 Queues<a class="headerlink" href="#lonestar6-queues" title="Link to this heading"></a></h3>
-<p>For example, these are the queues available on Lonestar 6. It is important to understand the queue limitations and pick a queue that is appropriate for your job. Documentation can be found <a class="reference external" href="https://docs.tacc.utexas.edu/hpc/lonestar6/#table5">here</a>.</p>
+<p>For example, these are the queues available on Lonestar 6. It is important to understand the queue limitations and pick a queue that is appropriate for your job. Documentation can be found <a class="reference external" href="https://docs.tacc.utexas.edu/hpc/lonestar6/#table5">here</a>.
+Today we will use the queue <code class="docutils literal notranslate"><span class="pre">normal</span></code>.</p>
 <a class="reference external image-reference" href="./images/lonestar6_queues.png"><img alt="Lonestar6 Queues" src="../_images/lonestar6_queues.png" />
 </a>
 </section>
@@ -194,7 +190,7 @@ can affect others. TACC staff are always
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="overview.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="Introduction to TACC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="02_connecting_to_the_cluster.html" class="btn btn-neutral float-right" title="Connecting to the HPC cluster" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

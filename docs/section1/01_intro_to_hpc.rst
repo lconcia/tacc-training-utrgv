@@ -7,26 +7,20 @@ supercomputers or clusters) to achieve performance far greater than a single wor
 Basic HPC System Architecture
 -----------------------------
 
-As you prepare to use TACC systems for your research, it is important to understand the basic
-architecture. We can think of an HPC system as a very large and complicated laboratory instrument.
+We can think of an HPC system as a very large and complicated laboratory instrument.
 
 .. image:: ./images/hpc_schematic.png
    :target: ./images/hpc_schematic.png
    :alt: HPC System Architecture
 
 
-To use a HPC cluster for scientific research, users need to learn how to:
-
-* Interface with the cluster via command line
-* Load samples (transfer data)
-* Run experiments (submit batch jobs)
-
-
 **IMPORTANT: Login vs. Compute Nodes**
 
 An HPC system has login nodes and compute nodes. We cannot run applications on the **login nodes**
-because they require too many resources and will interrupt the work of others. Instead, we must
-submit a job to a queue to run on **compute nodes**.
+because they are designed as a prep area, where you may edit and manage files, compile code, perform file management, issue transfers, submit new and track existing batch jobs etc. The login nodes provide an interface to the “back-end” compute nodes, where actual computations occur and where research is done.
+Most importanly, login nodes are a shared resources.
+To run a job, instead, we must use the **compute nodes**.
+
 
 
 Some Systems Available at TACC
@@ -40,7 +34,7 @@ Clusters
 * `Vista <https://tacc.utexas.edu/systems/vista/>`_: Vista expands TACC's capacity for AI and
   ensures that the broadscience, engineering, and education research communities have access to the
   most advanced computing and AI technologies.
-* `Stampede3 <https://tacc.utexas.edu/systems/stampede3/>`_: The newest strategic resource advancing
+* `Stampede3 <https://tacc.utexas.edu/systems/stampede3/>`_: A strategic resource advancing
   NSF's supercomputing ecosystem for the nation's open science community.
 
 
@@ -51,6 +45,7 @@ Storage Systems
 * `Corral <https://tacc.utexas.edu/systems/corral/>`_: Storage and data management system designed to support large-scale collections and a collaborative research environment. Capacity of 40,000 TB.
 * `Ranch <https://tacc.utexas.edu/systems/ranch/>`_: Long-term data archiving system, high capacity (1,000,000 TB).
 
+Storage systems are shared across all TACC clusters.
 
 HPC terminology
 ----------------
@@ -70,6 +65,7 @@ Lonestar6 Queues
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For example, these are the queues available on Lonestar 6. It is important to understand the queue limitations and pick a queue that is appropriate for your job. Documentation can be found `here <https://docs.tacc.utexas.edu/hpc/lonestar6/#table5>`_.
+Today we will use the queue ``normal``. 
 
 .. image:: ./images/lonestar6_queues.png
    :target: ./images/lonestar6_queues.png
