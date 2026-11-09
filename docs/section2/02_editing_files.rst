@@ -6,7 +6,7 @@ In this section, you will learn how to use command-line text editors.
 
 
 1) Text Editing with Nano
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nano is a straightforward, modeless text editor used on Linux file systems.
 
@@ -60,13 +60,9 @@ Additional Resources
 * Official Documentation: `GNU Nano Documentation <https://www.nano-editor.org/docs.php>`_
 * Command Line Help: Run ``man nano`` in your terminal window.
  
- 
-
-
-
 
 2) Text Editing with VIM
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 VIM is another text editor used on Linux file systems.
 
