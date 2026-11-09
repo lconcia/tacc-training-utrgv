@@ -1,5 +1,5 @@
-Running on HPC Systems
-======================
+Running and monitoring jobs
+===========================
 
 .. image:: ./images/hpc_schematic.png
    :target: ./images/hpc_schematic.png
@@ -112,14 +112,14 @@ EXERCISE
    .. code-block:: console
    
       [ls6]$ cdw
-      [ls6]$ wget https://github.com/lconcia/tacc-training-utrgv/raw/refs/heads/main/docs/section1/files/UTRGV_tutorial.zip
+      [ls6]$ cp /work/03302/lconcia/public/UTRGV_tutorial.zip .
 
-or
+   or
 
    .. code-block:: console
    
       [ls6]$ cdw
-      [ls6]$ cp /work/03302/lconcia/public/UTRGV_tutorial.zip .
+      [ls6]$ wget https://github.com/lconcia/tacc-training-utrgv/raw/refs/heads/main/docs/section1/files/UTRGV_tutorial.zip
 
 
 As an exercise, we will now run some code in our open ``idev`` session.
