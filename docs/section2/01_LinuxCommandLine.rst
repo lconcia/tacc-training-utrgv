@@ -264,7 +264,7 @@ some real data. Navigate to your home directory, then issue the following ``cp``
    [ls6]$ cd ~    # the tilde ~ is also a shortcut referring to your home directory
    [ls6]$ pwd
    /home1/03302/lconcia
-   [ls6]$ cp /work/03302/lconcia/public/IntroToLinuxHPC.tar .
+   [ls6]$ cp /work/03302/lconcia/public/UTRGV_tutorial.zip  .
 
 Try to use ``<Tab>`` to autocomplete the name of the file. Do NOT change the username or lustre
 number to your username and lustre number - in this case you are copying a file from my directory
@@ -277,18 +277,18 @@ transportable object. Once it is copied over, un-pack the file with the followin
 .. code-block:: console
 
    [ls6]$ ls
-   IntroToLinuxHPC.tar
-   [ls6]$ tar -xvf IntroToLinuxHPC.tar
+   UTRGV_tutorial.zip
+   [ls6]$ unzip UTRGV_tutorial.zip 
 
 In the first lab (``Lab01``), we have a file called ``websters.txt``. This a list of all the words
 in Webster's Dictionary. But how can we see the contents of the file?
 
 .. code-block:: console
 
-   [ls6]$ cd IntroToLinuxHPC
+   [ls6]$ cd UTRGV_tutorial
    [ls6]$ cd Lab01
    [ls6]$ pwd
-   /home1/03302/lconcia/IntroToLinuxHPC/Lab01
+   /home1/03302/lconcia/UTRGV_tutorial/Lab01
    [ls6]$ ls
    README websters.txt
 
