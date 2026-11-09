@@ -8,8 +8,8 @@ In this section, you will learn to:
 * Use the CLI to interact with HPC clusters
 * Use a Linux text editor such as Nano or VIM
 * Start an interactive session on a compute node
-* Describe the components of a SLURM batch job submission file
-* Submit a batch job to a queue and monitor the job progress
+* Submit a batch job to a queue with a SLURM batch job submission file
+* Monitor the job progress
 * Manage software modules
 
 

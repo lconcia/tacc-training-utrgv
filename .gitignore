@@ -28,7 +28,7 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
 
 # Thumbnails
 ._*
@@ -204,3 +204,6 @@ cython_debug/
 
 docs/_build
 _build/
+
+## temp files
+docs/section1/DataManagement.rst

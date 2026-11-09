@@ -22,8 +22,6 @@ You can do this by visiting the `TACC registration <https://accounts.tacc.utexas
 Multi-factor authentication (MFA)  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
- and must
-have set up 
 Once you have a TACC account, you need to set up multi-factor authentication using a token app or SMS.
 The MFA is required to connect to the cluster via SSH. You can do this by visiting the
 `TACC portal <https://tacc.utexas.edu/portal/login>`_:
