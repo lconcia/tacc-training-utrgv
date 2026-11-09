@@ -165,7 +165,7 @@ Files in ``$SCRATCH`` are subject to purge if access time is more than 10 days o
 
 
 Navigating File Systems
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 To navigate the different file systems available on TACC HPC systems, you can use the standard
 ``cd`` command along with the ``PATH``, or you can use some TACC-specific shortcuts:

@@ -1,5 +1,5 @@
-Running on HPC Systems
-======================
+Running and monitoring jobs
+===========================
 
 .. image:: ./images/hpc_schematic.png
    :target: ./images/hpc_schematic.png
@@ -112,7 +112,14 @@ EXERCISE
    .. code-block:: console
    
       [ls6]$ cdw
-      [ls6]$ wget https://github.com/lconcia/tacc-training-utrgv/raw/refs/heads/main/docs/section2/files/firststeps.zip
+      [ls6]$ cp /work/03302/lconcia/public/UTRGV_tutorial.zip .
+
+   or
+
+   .. code-block:: console
+   
+      [ls6]$ cdw
+      [ls6]$ wget https://github.com/lconcia/tacc-training-utrgv/raw/refs/heads/main/docs/section1/files/UTRGV_tutorial.zip
 
 
 As an exercise, we will now run some code in our open ``idev`` session.
@@ -123,12 +130,13 @@ session that has been started on a Lonestar6 node. Each of you will see a differ
 .. code-block:: console
 
    [ls6]$ cdw
-   [ls6]$ unzip firststeps.zip
-   [ls6]$ cd Lab01
+   [ls6]$ unzip UTRGV_tutorial.zip
+   [ls6]$ cd UTRGV_tutorial/Lab02
    [ls6]$ pwd
-   /work2/03302/lconcia/ls6/Lab01
+   /work/03302/lconcia/ls6/UTRGV_tutorial/Lab02
    [ls6]$ ls
    example.slurm  example_template.slurm  my_code.py
+
 
 Load the appropriate modules, and run ``my_code.py``. 
 

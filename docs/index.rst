@@ -10,7 +10,7 @@ Welcome at the "Starting at TACC" training! This workshop introduces foundationa
    
    section1/overview
    section2/overview
-   section4/overview
+   section3/overview
 
 Additional Resources
 ====================
