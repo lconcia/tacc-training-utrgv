@@ -9,12 +9,12 @@ In this section, you will learn to:
 * Transfer file from and to the HPC clusters 
 * Use a Linux text editor such as Nano or VIM
 
-The unit includes two sections:
+The unit includes four sections:
 
 .. toctree::
    :maxdepth: 1
 
-   01_LinuxCommandLine
-   02_file_transfer
-   03_editing_files
-
+   01_LinuxCommandLine.rst
+   02_files_permission_system.rst
+   03_file_transfer.rst
+   04_editing_files.rst
